@@ -1,0 +1,15 @@
+{
+  "private": true,
+  "name": "europride",
+  "author": "Oslo Pride <teknologi@oslopride.no>",
+  "license": "MPL-2.0",
+  "workspaces": [
+    "web",
+    "sanity"
+  ],
+  "scripts": {
+    "sanity": "yarn workspace @oslopride/sanity",
+    "web": "yarn workspace @oslopride/web"
+  },
+  "devDependencies": {}
+}
