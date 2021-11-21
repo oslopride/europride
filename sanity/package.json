@@ -2,7 +2,7 @@
   "name": "@europride/sanity",
   "private": true,
   "version": "1.0.0",
-  "description": "",
+  "description": "Headless CMS for Beograd Pride/Europride 2022",
   "main": "package.json",
   "author": "Filip Cordas <filip.cordas@oslopride.no>",
   "license": "UNLICENSED",
@@ -20,9 +20,12 @@
     "@sanity/default-login": "^2.21.6",
     "@sanity/desk-tool": "^2.21.6",
     "@sanity/vision": "^2.21.6",
+    "get-youtube-id": "^1.0.1",
     "prop-types": "^15.7",
     "react": "^17.0",
     "react-dom": "^17.0",
+    "react-frame-component": "^5.1.0",
+    "react-icons": "^4.3.1",
     "styled-components": "^5.2.0"
   },
   "devDependencies": {}
