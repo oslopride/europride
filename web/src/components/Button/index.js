@@ -1,19 +1,18 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { css } from "@emotion/react";
-import theme from "../../styles/theme";
+import { css, useTheme } from "@emotion/react";
 
 export const Button = ({
   text = "",
-  onPress,
-  backgroundColor = theme.colors.white,
-  textColor = theme.colors.black,
-  gradient = [theme.colors.white, theme.colors.black],
+  onClick,
+  backgroundColor = "#FFF",
+  textColor = "#000",
+  gradient = ["#FFF", "#000"],
 }) => {
   return (
     <Touchable
       gradient={gradient}
-      onClick={onPress}
+      onClick={onClick}
       backgroundColor={backgroundColor}
     >
       <Text textColor={textColor} backgroundColor={backgroundColor}>

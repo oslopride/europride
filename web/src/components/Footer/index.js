@@ -2,7 +2,7 @@ import React from "react";
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import Image from "next/image";
-import logo from "../../public/logo.png";
+import logo from "../../../public/logo.png";
 import Button from "../../components/Button";
 import FaIconButton from "../FaIconButton";
 import {
@@ -26,8 +26,8 @@ const Footer = ({}) => {
           <Description>parada@parada.rs</Description>
           <Button
             text="Donate"
-            gradient={theme.gradients.orange}
-            backgroundColor={theme.colors.neutralGray}
+            gradient={theme?.gradients?.orange}
+            backgroundColor={theme?.colors?.neutralGray}
           />
         </Column>
         <Column>
@@ -81,7 +81,7 @@ const Footer = ({}) => {
   );
 };
 
-const Wrapper = styled.div`
+const Wrapper = styled.footer`
   display: flex;
   background-color: ${({ theme }) => theme.colors.neutralGray};
   margin-top: auto;

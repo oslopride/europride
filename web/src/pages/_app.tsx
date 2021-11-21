@@ -1,9 +1,11 @@
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
-import theme from "../styles/theme";
+import theme from "../../styles/theme";
 import Footer from "../components/Footer";
 import Header from "../components/Header";
 import { normalize } from "polished";
+import { SWRConfig } from "swr";
+import sanity, { previewMode } from "../sanity";
 
 import { ThemeProvider, Global, css } from "@emotion/react";
 
@@ -47,9 +49,16 @@ function MyApp({ Component, pageProps }: AppProps) {
   return (
     <ThemeProvider theme={theme}>
       <Global styles={globalStyles} />
-      <Header />
-      <Component {...pageProps} />;
-      <Footer />
+      <SWRConfig
+        value={{
+          refreshInterval: previewMode ? 5000 : 0,
+          fetcher: (query: string) => sanity.fetch(query),
+        }}
+      >
+        <Header />
+        <Component {...pageProps} />;
+        <Footer />
+      </SWRConfig>
     </ThemeProvider>
   );
 }

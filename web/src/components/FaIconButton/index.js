@@ -3,9 +3,9 @@ import styled from "@emotion/styled";
 
 import React from "react";
 
-const FaIconButton = ({ faIcon, onPress, ...restProps }) => {
+const FaIconButton = ({ faIcon, onClick, ...restProps }) => {
   return (
-    <Button onPress={onPress}>
+    <Button onClick={onClick}>
       <FontAwesomeIcon icon={faIcon} {...restProps} />
     </Button>
   );

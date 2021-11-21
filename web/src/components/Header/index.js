@@ -1,7 +1,7 @@
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import Image from "next/image";
-import logo from "../../public/logo.png";
+import logo from "../../../public/logo.png";
 import Link from "next/link";
 import { slide as Menu } from "react-burger-menu";
 import Button from "../Button";
@@ -23,7 +23,7 @@ const Header = () => {
       </Menu>
       <Wrapper id="page-wrap">
         <Left>
-          <Button text="Donate" gradient={theme.gradients.orange}>
+          <Button text="Donate" gradient={theme?.gradients?.orange}>
             Donate
           </Button>
           <Socials>

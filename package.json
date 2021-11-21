@@ -1,8 +1,8 @@
 {
-  "private": true,
   "name": "europride",
   "author": "Oslo Pride <teknologi@oslopride.no>",
   "license": "MPL-2.0",
+  "private": true,
   "workspaces": [
     "web",
     "sanity"

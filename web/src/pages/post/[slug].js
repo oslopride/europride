@@ -1,7 +1,7 @@
 import imageUrlBuilder from "@sanity/image-url";
 import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
-import projectId from "../../lib/projectId";
+import projectId from "../../utils/projectId";
 import BlockContent from "@sanity/block-content-to-react";
 
 const Post = ({ title, body, image }) => {
