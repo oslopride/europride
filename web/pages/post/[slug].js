@@ -3,7 +3,6 @@ import { useState, useEffect } from "react";
 import styled from "@emotion/styled";
 import projectId from "../../lib/projectId";
 import BlockContent from "@sanity/block-content-to-react";
-import Header from "../../components/Header";
 
 const Post = ({ title, body, image }) => {
   const [imageUrl, setImageUrl] = useState("");
@@ -18,7 +17,6 @@ const Post = ({ title, body, image }) => {
 
   return (
     <Content>
-      <Header />
       {title}
       {imageUrl && <Image src={imageUrl} />}
       <Body>
@@ -63,8 +61,12 @@ const Content = styled.div`
   flex-direction: column;
 `;
 
-const Image = styled.img``;
+const Image = styled.img`
+  padding: 0 80px;
+`;
 
-const Body = styled.div``;
+const Body = styled.div`
+  padding: 0 80px;
+`;
 
 export default Post;
