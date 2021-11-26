@@ -8,8 +8,8 @@
     "sanity"
   ],
   "scripts": {
-    "sanity": "yarn workspace @oslopride/sanity",
-    "web": "yarn workspace @oslopride/web"
+    "sanity": "yarn workspace @europride/sanity",
+    "web": "yarn workspace @europride/web"
   },
   "devDependencies": {}
 }
