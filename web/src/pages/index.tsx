@@ -36,7 +36,7 @@ const Home: NextPage = (props) => {
     if (error) return <div>Failed {JSON.stringify(error)}</div>;
     if (!data) return <div>Loading...</div>;
     console.log(data);
-    return <SanityBlock blocks={data[0].body.no} />;
+    return <SanityBlock blocks={data[0]?.body.no} />;
   };
 
   return (

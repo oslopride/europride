@@ -24,6 +24,7 @@ import venue from "./venue";
 import partnerOverview from "./partner-overview";
 import simpleEvent from "./simple-event";
 import livestream from "./livestream";
+import staticText from "./static-text";
 
 // Blocks
 import blocks from "./blocks";
@@ -34,6 +35,7 @@ import partnerList from "./blocks/partner-list";
 import collapsible from "./blocks/collapsible";
 import splitPane from "./blocks/split-pane";
 import quote from "./blocks/quote";
+import colorBlock from "./blocks/color-block";
 
 // Types
 import externalLink from "./types/external-link";
@@ -69,6 +71,7 @@ export default createSchema({
     quote,
     textArea,
     splitPane,
+    colorBlock,
 
     page,
     webConfiguration,
@@ -83,5 +86,7 @@ export default createSchema({
     partnerOverview,
     simpleEvent,
     livestream,
+
+    staticText,
   ]),
 });

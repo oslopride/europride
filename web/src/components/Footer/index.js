@@ -12,76 +12,107 @@ import {
   faSnapchatGhost,
   faYoutube,
 } from "@fortawesome/free-brands-svg-icons";
+import ColorBlockButton from "./components/ColorBlock";
+
+import useSWR from "swr";
+import groq from "groq";
+import sanity from "../../sanity";
+import { createGlobalStyle } from "styled-components";
+
+// TODO - put placeholder text in sanity blob
 
 const Footer = ({}) => {
   const theme = useTheme();
+  const { data, error } = useSWR(groq`*[_type == 'staticText']`, (query) =>
+    sanity.fetch(query)
+  );
+  if (!data || error) return null;
+  const { no } = data[0].staticFooter;
+  console.log(no);
   return (
-    <Wrapper>
+    <Outer>
       <Row>
-        <Column>
-          <Image src={logo} width={250} height={190} />
-          <Title>Address</Title>
-          <Description>Kralja Milana 20, 11000 Belgrade</Description>
-          <Title>Email</Title>
-          <Description>parada@parada.rs</Description>
-          <Button
-            text="Donate"
-            gradient={theme?.gradients?.orange}
-            backgroundColor={theme?.colors?.neutralGray}
-          />
-        </Column>
-        <Column>
-          <Title>Working hours</Title>
-          <Description>Mon – Sat 12:00-20:00</Description>
-          <Socials>
-            <FaIconButton
-              faIcon={faFacebookSquare}
-              size="2x"
-              color={theme.colors.purpleLight}
-            />
-            <FaIconButton
-              faIcon={faInstagram}
-              size="2x"
-              color={theme.colors.purpleLight}
-            />
-            <FaIconButton
-              faIcon={faSnapchatGhost}
-              size="2x"
-              color={theme.colors.purpleLight}
-            />
-            <FaIconButton
-              faIcon={faYoutube}
-              size="2x"
-              color={theme.colors.purpleLight}
-            />
-            <FaIconButton
-              faIcon={faTwitter}
-              size="2x"
-              color={theme.colors.purpleLight}
-            />
-          </Socials>
-        </Column>
-        <Column>
-          <Title>Shortcuts</Title>
-          <Description>Link</Description>
-          <Description>Link</Description>
-          <Description>Link</Description>
-          <Description>Link</Description>
-        </Column>
+        <>
+          {no.colorBlock.map((block, i) => {
+            return (
+              <ColorBlockButton
+                color={theme.colors[block.color]}
+                text={block.text.no}
+              />
+            );
+          })}
+        </>
       </Row>
-      <Row>
-        <SpaceBetween>
-          <Description>
-            © Licensed by European Pride Organisers Association - epoa.eu - GDPR
-          </Description>
-          <Description>🌈 Website built with love by Oslo Pride</Description>
-        </SpaceBetween>
-      </Row>
-    </Wrapper>
+      <Wrapper>
+        <Row>
+          <Column>
+            <Image src={logo} width={250} height={190} />
+            <Title>Address</Title>
+            <Description>{no.address}</Description>
+            <Title>Email</Title>
+            <Description>{no.email}</Description>
+            <Button
+              text="Donate"
+              gradient={theme?.gradients?.orange}
+              backgroundColor={theme?.colors?.neutralGray}
+            />
+          </Column>
+          <Column>
+            <Title>Working hours</Title>
+            <Description>{no.workingHours}</Description>
+            <Socials>
+              <FaIconButton
+                faIcon={faFacebookSquare}
+                size="2x"
+                color={theme.colors.purpleLight}
+              />
+              <FaIconButton
+                faIcon={faInstagram}
+                size="2x"
+                color={theme.colors.purpleLight}
+              />
+              <FaIconButton
+                faIcon={faSnapchatGhost}
+                size="2x"
+                color={theme.colors.purpleLight}
+              />
+              <FaIconButton
+                faIcon={faYoutube}
+                size="2x"
+                color={theme.colors.purpleLight}
+              />
+              <FaIconButton
+                faIcon={faTwitter}
+                size="2x"
+                color={theme.colors.purpleLight}
+              />
+            </Socials>
+          </Column>
+          <Column>
+            <Title>Shortcuts</Title>
+            <Description>Link</Description>
+            <Description>Link</Description>
+            <Description>Link</Description>
+            <Description>Link</Description>
+          </Column>
+        </Row>
+        <Row>
+          <SpaceBetween>
+            <Description>
+              © Licensed by European Pride Organisers Association - epoa.eu -
+              GDPR
+            </Description>
+            <Description>🌈 Website built with love by Oslo Pride</Description>
+          </SpaceBetween>
+        </Row>
+      </Wrapper>
+    </Outer>
   );
 };
 
-const Wrapper = styled.footer`
+const Outer = styled.footer``;
+
+const Wrapper = styled.div`
   display: flex;
   background-color: ${({ theme }) => theme.colors.neutralGray};
   margin-top: auto;
