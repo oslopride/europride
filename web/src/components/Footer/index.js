@@ -17,9 +17,14 @@ import ColorBlockButton from "./components/ColorBlock";
 import useSWR from "swr";
 import groq from "groq";
 import sanity from "../../sanity";
-import { createGlobalStyle } from "styled-components";
+import Link from "next/link";
 
-// TODO - put placeholder text in sanity blob
+/**  TODO - put all placeholder text in sanity
+ *    add socials
+ *    move out of SWR
+ *   DRY map of elements
+ * Home component
+ */
 
 const Footer = ({}) => {
   const theme = useTheme();
@@ -27,17 +32,18 @@ const Footer = ({}) => {
     sanity.fetch(query)
   );
   if (!data || error) return null;
-  const { no } = data[0].staticFooter;
-  console.log(no);
+  const { eng } = data[0].staticFooter;
   return (
     <Outer>
       <Row>
         <>
-          {no.colorBlock.map((block, i) => {
+          {eng.colorBlock.map((block, i) => {
+            const color = block.color;
             return (
               <ColorBlockButton
-                color={theme.colors[block.color]}
-                text={block.text.no}
+                key={block.text.eng}
+                color={theme.colors[color]}
+                text={block.text.eng}
               />
             );
           })}
@@ -48,9 +54,9 @@ const Footer = ({}) => {
           <Column>
             <Image src={logo} width={250} height={190} />
             <Title>Address</Title>
-            <Description>{no.address}</Description>
+            <Description>{eng.address}</Description>
             <Title>Email</Title>
-            <Description>{no.email}</Description>
+            <Description>{eng.email}</Description>
             <Button
               text="Donate"
               gradient={theme?.gradients?.orange}
@@ -59,7 +65,7 @@ const Footer = ({}) => {
           </Column>
           <Column>
             <Title>Working hours</Title>
-            <Description>{no.workingHours}</Description>
+            <Description>{eng.workingHours}</Description>
             <Socials>
               <FaIconButton
                 faIcon={faFacebookSquare}
@@ -90,19 +96,19 @@ const Footer = ({}) => {
           </Column>
           <Column>
             <Title>Shortcuts</Title>
-            <Description>Link</Description>
-            <Description>Link</Description>
-            <Description>Link</Description>
-            <Description>Link</Description>
+            {eng.shortcuts.map((s) => {
+              return (
+                <Description key={s.text}>
+                  <Link href={s.url}>{s.text}</Link>
+                </Description>
+              );
+            })}
           </Column>
         </Row>
         <Row>
           <SpaceBetween>
-            <Description>
-              © Licensed by European Pride Organisers Association - epoa.eu -
-              GDPR
-            </Description>
-            <Description>🌈 Website built with love by Oslo Pride</Description>
+            <Description>{eng.license}</Description>
+            <Description>{eng.signature}</Description>
           </SpaceBetween>
         </Row>
       </Wrapper>
