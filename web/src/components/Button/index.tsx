@@ -2,13 +2,21 @@ import React from "react";
 import styled from "@emotion/styled";
 import { css, useTheme } from "@emotion/react";
 
+interface IButtonProps {
+  text?: String;
+  onClick: () => void;
+  backgroundColor?: string;
+  textColor: string;
+  gradient: string[];
+}
+
 export const Button = ({
   text = "",
   onClick,
   backgroundColor = "#FFF",
   textColor = "#000",
   gradient = ["#FFF", "#000"],
-}) => {
+}: IButtonProps) => {
   return (
     <Touchable
       gradient={gradient}
@@ -22,7 +30,12 @@ export const Button = ({
   );
 };
 
-const Touchable = styled.button`
+interface ITouchableProps {
+  gradient: string[];
+  backgroundColor: string;
+}
+
+const Touchable = styled.button<ITouchableProps>`
   cursor: pointer;
   border-width: 4px;
   border-image: linear-gradient(
@@ -36,7 +49,12 @@ const Touchable = styled.button`
   padding: 16px 24px 16px 24px;
 `;
 
-const Text = styled.p`
+interface ITextProps {
+  backgroundColor: string;
+  textColor: string;
+}
+
+const Text = styled.p<ITextProps>`
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ textColor }) => textColor};
   padding: 0;
