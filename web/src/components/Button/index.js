@@ -1,6 +1,5 @@
 import React from "react";
 import styled from "@emotion/styled";
-import { css, useTheme } from "@emotion/react";
 
 export const Button = ({
   text = "",
@@ -39,8 +38,10 @@ const Touchable = styled.button`
 const Text = styled.p`
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ textColor }) => textColor};
-  padding: 0;
-  margin: 0;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 100%;
 `;
 
 export default Button;
