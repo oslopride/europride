@@ -14,6 +14,7 @@ const globalStyles = css`
 
   * {
     box-sizing: border-box;
+    margin: 0;
   }
 
   html,
@@ -29,13 +30,17 @@ const globalStyles = css`
     line-height: 1.75rem;
   }
 
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
   footer {
     flex-shrink: 0;
   }
 `;
 
 function MyApp({ Component, pageProps }: AppProps) {
-  /** SSR rendering requires us to load the font only when client is ready */
   useEffect(() => {
     const WebFont = require("webfontloader");
     if (typeof window !== "undefined") {
