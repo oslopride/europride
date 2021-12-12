@@ -27,9 +27,9 @@ const Header = () => {
             Donate
           </Button>
           <Socials>
-            <FaIconButton faIcon={faFacebookSquare} size="2x" />
-            <FaIconButton faIcon={faInstagram} size="2x" />
-            <FaIconButton faIcon={faTwitter} size="2x" />
+            <FaIconButton faIcon={faFacebookSquare} size="1x" />
+            <FaIconButton faIcon={faInstagram} size="1x" />
+            <FaIconButton faIcon={faTwitter} size="1x" />
           </Socials>
         </Left>
         <Image src={logo} width={153} height={117} />
