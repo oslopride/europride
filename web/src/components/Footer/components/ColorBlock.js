@@ -7,9 +7,10 @@ import theme from "../../../../styles/theme";
 import Link from "next/link";
 
 const ColorBlockButton = ({ color = "#fff", text, linkTo = "/" }) => {
+  console.log(linkTo);
   return (
-    <Block color={color}>
-      <Link href={linkTo}>
+    <Link href={linkTo}>
+      <Block color={color}>
         <>
           <Text>{text}</Text>
           <FontAwesomeIcon
@@ -18,8 +19,8 @@ const ColorBlockButton = ({ color = "#fff", text, linkTo = "/" }) => {
             color={theme.colors.white}
           />
         </>
-      </Link>
-    </Block>
+      </Block>
+    </Link>
   );
 };
 
@@ -30,6 +31,7 @@ const Block = styled.button`
   padding: 20px 20px;
   width: 100%;
   background-color: ${(props) => props.color};
+  border: none;
 `;
 
 const Text = styled.h3`
