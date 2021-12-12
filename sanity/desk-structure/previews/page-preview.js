@@ -4,20 +4,20 @@ import { PageProvider } from "@oslopride/web/src/hooks/page-context";
 import PreviewWrapper from "./preview-wrapper";
 
 export default function PagePreview({ document }) {
-	const { displayed } = document;
-	const blocks = displayed.blocks.no;
-	const context = {
-		locale: "no",
-		baseUrl: "/",
-		configuration: { navigationBar: [] },
-		gatsbyEnvironment: false
-	};
+  const { displayed } = document;
+  const blocks = displayed.blocks.eng;
+  const context = {
+    locale: "eng",
+    baseUrl: "/",
+    configuration: { navigationBar: [] },
+    gatsbyEnvironment: false,
+  };
 
-	return (
-		<PreviewWrapper>
-			<PageProvider context={context}>
-				<Page blocks={blocks} />
-			</PageProvider>
-		</PreviewWrapper>
-	);
+  return (
+    <PreviewWrapper>
+      <PageProvider context={context}>
+        <Page blocks={blocks} />
+      </PageProvider>
+    </PreviewWrapper>
+  );
 }

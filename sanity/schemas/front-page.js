@@ -6,49 +6,48 @@ export default {
   type: "document",
   fieldsets: [{ name: "header", title: "Header" }],
   fields: [
-    localize(
-      {
-        title: "Header",
-        name: "header",
-        type: "object",
-        fields: [
-          {
-            name: "subHeading",
-            title: "Sub heading",
-            type: "string",
-            validation: (Rule) => Rule.required(),
+    {
+      title: "Header",
+      name: "header",
+      type: "object",
+      fields: [
+        localize({
+          name: "subHeading",
+          title: "Sub heading",
+          type: "string",
+          validation: (lang, Rule) =>
+            lang.isDefault ? Rule.required() : undefined,
+        }),
+        localize({
+          name: "title",
+          title: "Title",
+          type: "string",
+          validation: (lang, Rule) =>
+            lang.isDefault ? Rule.required() : undefined,
+        }),
+        localize({
+          name: "subtitle",
+          title: "Subtitle",
+          type: "string",
+          validation: (lang, Rule) =>
+            lang.isDefault ? Rule.required() : undefined,
+        }),
+        {
+          title: "Links",
+          name: "links",
+          type: "array",
+          of: [{ type: "internalLink" }, { type: "externalLink" }],
+        },
+        {
+          title: "Image",
+          name: "image",
+          type: "image",
+          options: {
+            hotspot: true,
           },
-          {
-            name: "title",
-            title: "Title",
-            type: "string",
-            validation: (Rule) => Rule.required(),
-          },
-          {
-            name: "subtitle",
-            title: "Subtitle",
-            type: "string",
-            validation: (Rule) => Rule.required(),
-          },
-          {
-            title: "Links",
-            name: "links",
-            type: "array",
-            of: [{ type: "internalLink" }, { type: "externalLink" }],
-          },
-          {
-            title: "Image",
-            name: "image",
-            type: "image",
-            options: {
-              hotspot: true,
-            },
-            validation: (Rule) => Rule.required(),
-          },
-        ],
-      },
-      (lang, Rule) => (lang.isDefault ? Rule.required() : undefined)
-    ),
+        },
+      ],
+    },
     localize(
       {
         title: "Body",
