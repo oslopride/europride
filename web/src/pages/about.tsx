@@ -1,13 +1,12 @@
-import { useEffect } from "react";
 import styled from "@emotion/styled";
-import { useTheme } from "@emotion/react";
 import configuredSanityClient from "../sanity";
 import Img from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
 import AnchorButton from "../components/AnchorButton";
 import SanityBlock from "../components/SanityBlock";
+import Volunteers from "../components/Volunteers";
 
-const About = ({ data }: any) => {
+const About = ({ data, volunteers }: any) => {
   const mainImageProps = useNextSanityImage(configuredSanityClient, data.image);
   return (
     <Wrapper>
@@ -22,6 +21,7 @@ const About = ({ data }: any) => {
       <BlockWrapper id="body">
         <SanityBlock blocks={data?.body.eng} />
       </BlockWrapper>
+      <Volunteers volunteers={volunteers} />
     </Wrapper>
   );
 };
@@ -38,7 +38,7 @@ const Header = styled.h1`
   -webkit-text-fill-color: transparent;
 `;
 
-const Body = styled.body`
+const Body = styled.div`
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
@@ -46,7 +46,7 @@ const Body = styled.body`
 `;
 
 const BlockWrapper = styled.div`
-  margin: 0 270px;
+  margin: 50px 270px;
 `;
 
 const Wrapper = styled.div`
@@ -57,7 +57,11 @@ const Wrapper = styled.div`
 
 export const getServerSideProps = async (pageContext: any) => {
   const data = await configuredSanityClient.fetch(`*[_type == "about"][0]`);
-  if (!data) {
+  const volunteers = await configuredSanityClient.fetch(
+    `*[_type == "volunteer"]`
+  );
+  console.log(volunteers);
+  if (!data || !volunteers) {
     return {
       props: {
         data: [],
@@ -67,6 +71,7 @@ export const getServerSideProps = async (pageContext: any) => {
     return {
       props: {
         data: data,
+        volunteers: volunteers,
       },
     };
   }
