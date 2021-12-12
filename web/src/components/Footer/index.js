@@ -37,9 +37,8 @@ const Footer = ({}) => {
     <Outer>
       <Row>
         <>
-          {eng.colorBlock.map((block, i) => {
+          {eng.colorBlock.map((block) => {
             const color = block.color;
-            console.log(block);
             return (
               <ColorBlockButton
                 key={block.text.eng}

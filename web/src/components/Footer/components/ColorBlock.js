@@ -7,7 +7,6 @@ import theme from "../../../../styles/theme";
 import Link from "next/link";
 
 const ColorBlockButton = ({ color = "#fff", text, linkTo = "/" }) => {
-  console.log(linkTo);
   return (
     <Link href={linkTo}>
       <Block color={color}>
