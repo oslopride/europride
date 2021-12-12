@@ -39,11 +39,13 @@ const Footer = ({}) => {
         <>
           {eng.colorBlock.map((block, i) => {
             const color = block.color;
+            console.log(block);
             return (
               <ColorBlockButton
                 key={block.text.eng}
                 color={theme.colors[color]}
                 text={block.text.eng}
+                linkTo={block.link.url}
               />
             );
           })}
@@ -96,7 +98,7 @@ const Footer = ({}) => {
           </Column>
           <Column>
             <Title>Shortcuts</Title>
-            {eng.shortcuts.map((s) => {
+            {eng.shortcuts.map((s, i) => {
               return (
                 <Description key={s.text}>
                   <Link href={s.url}>{s.text}</Link>
