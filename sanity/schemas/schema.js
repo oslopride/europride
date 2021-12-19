@@ -9,6 +9,7 @@ import blockContent from "./blockContent";
 import category from "./category";
 import post from "./post";
 import volunteer from "./volunteer";
+import program from "./program";
 
 import frontPage from "./front-page";
 import page from "./page";
@@ -75,6 +76,7 @@ export default createSchema({
     colorBlock,
     volunteer,
     author,
+    program,
 
     page,
     webConfiguration,

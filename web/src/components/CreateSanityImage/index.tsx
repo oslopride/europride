@@ -9,7 +9,8 @@ const CreateSanityImage = ({ url, alt }: any) => {
       {...imageProps}
       alt={alt}
       layout="responsive"
-      sizes="(max-width: 500px) 100px"
+      sizes="(max-width: 10px, max-height: 10px) 20px"
+      objectFit="contain"
     />
   );
 };

@@ -27,7 +27,7 @@ const Block = styled.button`
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 20px 20px;
+  padding: 48px;
   width: 100%;
   background-color: ${(props) => props.color};
   border: none;

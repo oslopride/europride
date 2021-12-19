@@ -57,7 +57,7 @@ const Footer = ({}) => {
             <Title>Address</Title>
             <Description>{eng.address}</Description>
             <Title>Email</Title>
-            <Description>{eng.email}</Description>
+            <Email href={`mailto:${eng.email}`}>{eng.email}</Email>
             <Button
               text="Donate"
               gradient={theme?.gradients?.orange}
@@ -99,7 +99,7 @@ const Footer = ({}) => {
             <Title>Shortcuts</Title>
             {eng.shortcuts.map((s, i) => {
               return (
-                <Description key={s.text}>
+                <Description key={s.text + i}>
                   <Link href={s.url}>{s.text}</Link>
                 </Description>
               );
@@ -124,7 +124,7 @@ const Wrapper = styled.div`
   background-color: ${({ theme }) => theme.colors.neutralGray};
   margin-top: auto;
   flex-direction: column;
-  padding: 0 50px;
+  padding: 80px 80px 40px;
 `;
 
 const Socials = styled.div`
@@ -155,6 +155,10 @@ const Title = styled.h3`
 `;
 
 const Description = styled.p`
+  margin: 10px 0;
+`;
+
+const Email = styled.a`
   margin: 10px 0;
 `;
 

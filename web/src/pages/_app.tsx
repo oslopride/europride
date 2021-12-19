@@ -61,7 +61,7 @@ function MyApp({ Component, pageProps }: AppProps) {
         }}
       >
         <Header />
-        <Component {...pageProps} />;
+        <Component {...pageProps} />
         <Footer />
       </SWRConfig>
     </ThemeProvider>

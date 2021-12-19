@@ -1,10 +1,10 @@
 import styled from "@emotion/styled";
 import CreateSanityImage from "../CreateSanityImage";
 
-const Volunteers = ({ volunteers }) => {
+const Volunteers = ({ volunteers }: any) => {
   return (
     <Wrapper>
-      {volunteers?.map((v) => (
+      {volunteers?.map((v: any) => (
         <VolunteerWrapper>
           <ImageWrapper>
             <CreateSanityImage url={v.portrait.asset} alt={v.name} />
@@ -41,21 +41,21 @@ const Name = styled.p`
   font-weight: bold;
   font-size: 32px;
   line-height: 39px;
-  color:${({ theme }) => theme.colors.neutralDark};)}
+  color:${({ theme }: any) => theme.colors.neutralDark};)}
 `;
 
 const Email = styled.a`
-  color:${({ theme }) => theme.colors.purpleLight};)}
+  color:${({ theme }: any) => theme.colors.purpleLight};)}
 `;
 
 const Role = styled.p`
-  color:${({ theme }) => theme.colors.neutralGrey};)}
+  color:${({ theme }: any) => theme.colors.neutralGrey};)}
 `;
 
 const Pronouns = styled.p`
   font-size: 20px;
   line-height: 32px;
-  color:${({ theme }) => theme.colors.neutralGrey};)}
+  color:${({ theme }: any) => theme.colors.neutralGrey};)}
 `;
 
 const ImageWrapper = styled.div`

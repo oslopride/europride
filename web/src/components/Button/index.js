@@ -1,21 +1,17 @@
-import React from "react";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
 export const Button = ({
   text = "",
-  onClick,
   backgroundColor = "#FFF",
   textColor = "#000",
-  gradient = ["#FFF", "#000"],
+  gradient = ["#000", "#000"],
+  href = "/",
 }) => {
   return (
-    <Touchable
-      gradient={gradient}
-      onClick={onClick}
-      backgroundColor={backgroundColor}
-    >
+    <Touchable gradient={gradient} backgroundColor={backgroundColor}>
       <Text textColor={textColor} backgroundColor={backgroundColor}>
-        {text}
+        <Link href={href}>{text}</Link>
       </Text>
     </Touchable>
   );
@@ -33,6 +29,7 @@ const Touchable = styled.button`
   border-image-slice: 1;
   background-color: ${({ backgroundColor }) => backgroundColor};
   padding: 16px 24px 16px 24px;
+  max-width: 100%;
 `;
 
 const Text = styled.p`

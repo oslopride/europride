@@ -2,9 +2,9 @@ import type { NextPage } from "next";
 import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 import configuredSanityClient, { PROJECT_ID, DATASET } from "../sanity";
-import BlockContentToReact from "@sanity/block-content-to-react";
 import Img from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
+import SanityBlock from "../components/SanityBlock";
 
 const Home: NextPage = ({ data }: any) => {
   const theme: any = useTheme();
@@ -12,17 +12,8 @@ const Home: NextPage = ({ data }: any) => {
     configuredSanityClient,
     data.header.image
   );
-  const SanityBlock = ({ blocks }: any) => {
-    return (
-      <BlockContentToReact
-        blocks={blocks}
-        projectId={PROJECT_ID}
-        dataset={DATASET}
-        imageOptions={{ w: 1000, fit: "max" }}
-      />
-    );
-  };
 
+  // TODO: refactor to implement createsanityimage
   const renderContent = () => {
     const gradient = theme.gradients.greenYellow;
     return (
