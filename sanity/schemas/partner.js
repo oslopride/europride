@@ -1,4 +1,5 @@
 import { MdBusinessCenter } from "react-icons/md";
+import { getDefaultLanguage, localize } from "../utils/locale";
 
 export default {
   title: "Partner",
@@ -26,13 +27,16 @@ export default {
       type: "string",
       options: { list: ["owner", "main", "regular", "supporter", "allied"] },
     },
-    {
-      name: "description",
-      title: "Description",
-      type: "array",
-      of: [{ type: "block", styles: [], lists: [] }],
-      validation: (Rule) => Rule.required(),
-    },
+    localize(
+      {
+        name: "description",
+        title: "Description",
+        type: "array",
+        of: [{ type: "block", styles: [], lists: [] }],
+        validation: (Rule) => Rule.required(),
+      },
+      (lang, Rule) => (lang.isDefault ? Rule.required() : undefined)
+    ),
 
     {
       name: "content",

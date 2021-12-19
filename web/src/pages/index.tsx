@@ -1,77 +1,81 @@
 import type { NextPage } from "next";
-import { useEffect } from "react";
-import styled from "styled-components";
-import projectId from "../utils/projectId";
-import useSWR from "swr";
-import sanity, { PROJECT_ID, DATASET } from "../sanity";
-import groq from "groq";
-import BlockContentToReact from "@sanity/block-content-to-react";
+import { useTheme } from "@emotion/react";
+import styled from "@emotion/styled";
+import configuredSanityClient, { PROJECT_ID, DATASET } from "../sanity";
+import Img from "next/image";
+import { useNextSanityImage } from "next-sanity-image";
+import SanityBlock from "../components/SanityBlock";
 
-const Home: NextPage = (props) => {
-  const serializers = {
-    types: {
-      code: (props: any) => (
-        <pre data-language={props.node.language}>
-          <code>{props.node.code}</code>
-        </pre>
-      ),
-    },
-  };
-
-  const SanityBlock = ({ blocks }: any) => {
-    return (
-      <BlockContentToReact
-        blocks={blocks}
-        projectId={PROJECT_ID}
-        dataset={DATASET}
-        imageOptions={{ w: 1000, fit: "max" }}
-      />
-    );
-  };
-
-  const renderContent = () => {
-    const { data, error } = useSWR(groq`*[_type == 'frontPage']`, (query) =>
-      sanity.fetch(query)
-    );
-    if (error) return <div>Failed {JSON.stringify(error)}</div>;
-    if (!data) return <div>Loading...</div>;
-    console.log(data);
-    return <SanityBlock blocks={data[0].body.no} />;
-  };
-
-  return (
-    <>
-      <Body>{renderContent()}</Body>
-    </>
+const Home: NextPage = ({ data }: any) => {
+  const theme: any = useTheme();
+  const mainImageProps = useNextSanityImage(
+    configuredSanityClient,
+    data.header.image
   );
+
+  // TODO: refactor to implement createsanityimage
+  const renderContent = () => {
+    const gradient = theme.gradients.greenYellow;
+    return (
+      <>
+        <SubHeader>{data.header.subHeading.eng}</SubHeader>
+        <Header gradient={gradient}>{data.header.title.eng}</Header>
+        <Img
+          {...mainImageProps}
+          layout="responsive"
+          sizes="(max-width: 800px) 100vw, 800px"
+        />
+        <BodyTitle>{data.header.subtitle.eng}</BodyTitle>
+        <SanityBlock blocks={data?.body.eng} />
+      </>
+    );
+  };
+
+  return <Main>{renderContent()}</Main>;
 };
 
 export const getServerSideProps = async (pageContext: any) => {
-  const query = encodeURIComponent(' *[ _type == "post" ]');
-  const url = `https://${projectId}.api.sanity.io/v1/data/query/production?query=${query}`;
-  const data = await fetch(url).then((res) => res.json());
+  const data = await configuredSanityClient.fetch(`*[_type == "frontPage"][0]`);
   if (!data) {
     return {
       props: {
-        posts: [],
+        data: [],
       },
     };
   } else {
     return {
       props: {
-        posts: data.result,
+        data: data,
       },
     };
   }
 };
 
-const Body = styled.main`
+const Header = styled.h1`
+  font-size: 84px;
+  background: -webkit-linear-gradient(
+    320deg,
+    ${(props: { gradient: string[] }) => props.gradient.join(", ")}
+  );
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const SubHeader = styled.h2`
+  font-size: 24px;
+`;
+
+const BodyTitle = styled.h3``;
+
+const Body = styled.p``;
+
+const Main = styled.main`
   display: flex;
   flex-direction: column;
   justify-content: space-between;
   min-height: 100vh;
   height: 100%;
-  padding: 0 20%;
+  margin: 0 100px;
 `;
 
 export default Home;

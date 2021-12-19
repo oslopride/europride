@@ -7,6 +7,8 @@ const theme = {
     purpleDark: "#4E134C",
     purpleLight: "#91288C",
     blueLight: "#2A3B8F",
+    neutralDark: "#221F20",
+    neutralGrey: "#464646",
   },
   gradients: {
     orange: ["#F27323", "#F9A61A"],

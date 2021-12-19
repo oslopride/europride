@@ -1,22 +1,17 @@
-import React from "react";
 import styled from "@emotion/styled";
-import { css, useTheme } from "@emotion/react";
+import Link from "next/link";
 
 export const Button = ({
   text = "",
-  onClick,
   backgroundColor = "#FFF",
   textColor = "#000",
-  gradient = ["#FFF", "#000"],
+  gradient = ["#000", "#000"],
+  href = "/",
 }) => {
   return (
-    <Touchable
-      gradient={gradient}
-      onClick={onClick}
-      backgroundColor={backgroundColor}
-    >
+    <Touchable gradient={gradient} backgroundColor={backgroundColor}>
       <Text textColor={textColor} backgroundColor={backgroundColor}>
-        {text}
+        <Link href={href}>{text}</Link>
       </Text>
     </Touchable>
   );
@@ -34,13 +29,16 @@ const Touchable = styled.button`
   border-image-slice: 1;
   background-color: ${({ backgroundColor }) => backgroundColor};
   padding: 16px 24px 16px 24px;
+  max-width: 100%;
 `;
 
 const Text = styled.p`
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ textColor }) => textColor};
-  padding: 0;
-  margin: 0;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 100%;
 `;
 
 export default Button;

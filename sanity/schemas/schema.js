@@ -8,7 +8,8 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 import blockContent from "./blockContent";
 import category from "./category";
 import post from "./post";
-import author from "./author";
+import volunteer from "./volunteer";
+import program from "./program";
 
 import frontPage from "./front-page";
 import page from "./page";
@@ -24,6 +25,8 @@ import venue from "./venue";
 import partnerOverview from "./partner-overview";
 import simpleEvent from "./simple-event";
 import livestream from "./livestream";
+import staticText from "./static-text";
+import about from "./about";
 
 // Blocks
 import blocks from "./blocks";
@@ -34,6 +37,8 @@ import partnerList from "./blocks/partner-list";
 import collapsible from "./blocks/collapsible";
 import splitPane from "./blocks/split-pane";
 import quote from "./blocks/quote";
+import colorBlock from "./blocks/color-block";
+import author from "./author";
 
 // Types
 import externalLink from "./types/external-link";
@@ -51,7 +56,6 @@ export default createSchema({
     // The following are document types which will appear
     // in the studio.
     post,
-    author,
     category,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
@@ -69,6 +73,10 @@ export default createSchema({
     quote,
     textArea,
     splitPane,
+    colorBlock,
+    volunteer,
+    author,
+    program,
 
     page,
     webConfiguration,
@@ -83,5 +91,7 @@ export default createSchema({
     partnerOverview,
     simpleEvent,
     livestream,
+    about,
+    staticText,
   ]),
 });

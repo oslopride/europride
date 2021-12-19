@@ -16,7 +16,7 @@ export function isEmptyResult(result: object | null): boolean {
 export const PROJECT_ID = projectId;
 export const DATASET = process.env.SANITY_STUDIO_API_DATASET || "production";
 
-const sanity = sanityClient({
+const configuredSanityClient = sanityClient({
   projectId: PROJECT_ID,
   dataset: DATASET,
   apiVersion: "2021-08-31",
@@ -24,10 +24,10 @@ const sanity = sanityClient({
   withCredentials: previewMode,
 });
 
-const builder = imageUrlBuilder(sanity);
+const builder = imageUrlBuilder(configuredSanityClient);
 
 export function urlFor(source: SanityImageSource) {
   return builder.image(source);
 }
 
-export default sanity;
+export default configuredSanityClient;
