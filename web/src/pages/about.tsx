@@ -60,7 +60,6 @@ export const getServerSideProps = async (pageContext: any) => {
   const volunteers = await configuredSanityClient.fetch(
     `*[_type == "volunteer"]`
   );
-  console.log(volunteers);
   if (!data || !volunteers) {
     return {
       props: {

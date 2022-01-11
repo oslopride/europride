@@ -1,11 +1,12 @@
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import theme from "../../styles/theme";
-import Footer from "../components/Footer";
-import Header from "../components/Header";
+import Footer from "../components/Layout/Footer";
+import Header from "../components/Layout/Header";
 import { normalize } from "polished";
 import { SWRConfig } from "swr";
-import sanity, { previewMode } from "../sanity";
+import Layout from "../components/Layout";
+import configuredSanityClient, { previewMode } from "../sanity";
 
 import { ThemeProvider, Global, css } from "@emotion/react";
 
@@ -40,7 +41,7 @@ const globalStyles = css`
   }
 `;
 
-function MyApp({ Component, pageProps }: AppProps) {
+function MyApp({ Component, pageProps, data }: any) {
   useEffect(() => {
     const WebFont = require("webfontloader");
     if (typeof window !== "undefined") {
@@ -56,15 +57,16 @@ function MyApp({ Component, pageProps }: AppProps) {
       <Global styles={globalStyles} />
       <SWRConfig
         value={{
-          refreshInterval: previewMode ? 5000 : 0,
-          fetcher: (query: string) => sanity.fetch(query),
+          refreshInterval: previewMode ? 60000 : 0,
+          fetcher: (query: string) => configuredSanityClient.fetch(query),
         }}
       >
-        <Header />
-        <Component {...pageProps} />
-        <Footer />
+        <Layout>
+          <Component {...pageProps} />
+        </Layout>
       </SWRConfig>
     </ThemeProvider>
   );
 }
+
 export default MyApp;
