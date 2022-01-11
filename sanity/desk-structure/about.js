@@ -5,14 +5,14 @@ import { MdBusiness } from "react-icons/md";
 import JSONpreview from "./previews/json-preview";
 
 export default S.listItem()
-  .title("Partner Overview")
+  .title("About")
   .icon(MdBusiness)
   .child(
     S.document()
-      .title("Partner Overview")
-      .id("partners")
-      .schemaType("partners")
-      .documentId("partners")
+      .title("About")
+      .id("about")
+      .schemaType("About")
+      .documentId("About")
       .views([
         S.view.form().icon(EditIcon),
         S.view.component(JSONpreview).title("JSON"),

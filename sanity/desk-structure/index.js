@@ -10,7 +10,6 @@ import livestream from "./livestream";
 import configuration from "./configuration";
 import events from "./events";
 import eventOverview from "./event-overview";
-import venue from "./venue";
 import volunteers from "./volunteer";
 
 import JSONpreview from "./previews/json-preview";
@@ -29,11 +28,11 @@ const hiddenDocTypes = (listItem) =>
     "event",
     "eventOverview",
     "simpleEvent",
-    "venue",
     "arena",
     "partnerOverview",
     "livestream",
     "volunteer",
+    "about",
   ].includes(listItem.getId());
 
 export default () =>
@@ -50,7 +49,6 @@ export default () =>
       partners,
       configuration,
       livestream,
-      venue,
       volunteers,
       ...S.documentTypeListItems().filter(hiddenDocTypes),
     ]);

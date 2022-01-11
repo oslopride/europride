@@ -25,7 +25,6 @@ import venue from "./venue";
 import partnerOverview from "./partner-overview";
 import simpleEvent from "./simple-event";
 import livestream from "./livestream";
-import staticText from "./static-text";
 import about from "./about";
 
 // Blocks
@@ -92,6 +91,5 @@ export default createSchema({
     simpleEvent,
     livestream,
     about,
-    staticText,
   ]),
 });

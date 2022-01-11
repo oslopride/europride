@@ -39,6 +39,6 @@ export default {
     },
   ],
   preview: {
-    prepare: () => ({ title: "About page" }),
+    prepare: () => ({ title: "About" }),
   },
 };
