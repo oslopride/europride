@@ -1,20 +1,26 @@
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import Image from "next/image";
-import logo from "../../../public/logo.png";
+import logo from "../../../../public/logo.png";
 import Link from "next/link";
 import { slide as Menu } from "react-burger-menu";
-import Button from "../Button";
-import FaIconButton from "../FaIconButton";
+import GradientButton from "../../GradientButton";
+import FaIconButton from "../../FaIconButton";
 import {
   faFacebookSquare,
   faTwitter,
   faInstagram,
 } from "@fortawesome/free-brands-svg-icons";
+import useSWR from "swr";
+import groq from "groq";
 
 const Header = () => {
   const theme = useTheme();
-  return (
+  const { data, error } = useSWR(
+    groq`*[_type == 'webConfiguration'][0]`,
+    (query) => configuredSanityClient.fetch(query)
+  );
+  return data ? (
     <Outer>
       <Menu right styles={styles} pageWrapId={"page-wrap"}>
         <Link href="/about">
@@ -23,9 +29,11 @@ const Header = () => {
       </Menu>
       <Wrapper id="page-wrap">
         <Left>
-          <Button text="Donate" gradient={theme?.gradients?.orange}>
-            Donate
-          </Button>
+          <GradientButton
+            text={data?.footer.donateButton}
+            gradient={theme?.gradients?.orange}
+            href={data?.footer.donateLink}
+          />
           <Socials>
             <FaIconButton faIcon={faFacebookSquare} size="1x" />
             <FaIconButton faIcon={faInstagram} size="1x" />
@@ -33,10 +41,10 @@ const Header = () => {
           </Socials>
         </Left>
         <Image src={logo} width={153} height={117} />
-        <Text>2. – 18 September 2022</Text>
+        <DateText>{data?.date}</DateText>
       </Wrapper>
     </Outer>
-  );
+  ) : null;
 };
 
 const Outer = styled.div`
@@ -69,7 +77,7 @@ const Left = styled.div`
   display: flex;
 `;
 
-const Text = styled.text`
+const DateText = styled.text`
   font-size: 20px;
   font-weight: bold;
   color: #049648;

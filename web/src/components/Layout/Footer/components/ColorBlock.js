@@ -3,10 +3,11 @@ import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import theme from "../../../../styles/theme";
+// import theme from "../../../../../styles/theme";
 import Link from "next/link";
 
 const ColorBlockButton = ({ color = "#fff", text, linkTo = "/" }) => {
+  const theme = useTheme();
   return (
     <Link href={linkTo}>
       <Block color={color}>

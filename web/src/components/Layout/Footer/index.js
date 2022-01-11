@@ -1,10 +1,10 @@
-import React from "react";
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import Image from "next/image";
-import logo from "../../../public/logo.png";
-import Button from "../../components/Button";
-import FaIconButton from "../FaIconButton";
+import logo from "../../../../public/logo.png";
+import SimpleButton from "../../SimpleButton";
+import GradientButton from "../../SimpleButton";
+import FaIconButton from "../../FaIconButton";
 import {
   faFacebookSquare,
   faTwitter,
@@ -14,10 +14,9 @@ import {
 } from "@fortawesome/free-brands-svg-icons";
 import ColorBlockButton from "./components/ColorBlock";
 
+import configuredSanityClient from "../../../sanity";
 import useSWR from "swr";
 import groq from "groq";
-import sanity from "../../sanity";
-import Link from "next/link";
 
 /**  TODO - put all placeholder text in sanity
  *    add socials
@@ -26,18 +25,18 @@ import Link from "next/link";
  * Home component
  */
 
-const Footer = ({}) => {
+const Footer = () => {
   const theme = useTheme();
-  const { data, error } = useSWR(groq`*[_type == 'staticText']`, (query) =>
-    sanity.fetch(query)
+  const { data, error } = useSWR(
+    groq`*[_type == 'webConfiguration'][0]`,
+    (query) => configuredSanityClient.fetch(query)
   );
-  if (!data || error) return null;
-  const { eng } = data[0].staticFooter;
-  return (
+  const footer = data?.footer;
+  return footer ? (
     <Outer>
       <Row>
         <>
-          {eng.colorBlock.map((block) => {
+          {footer.colorBlock.map((block) => {
             const color = block.color;
             return (
               <ColorBlockButton
@@ -54,19 +53,20 @@ const Footer = ({}) => {
         <Row>
           <Column>
             <Image src={logo} width={250} height={190} />
-            <Title>Address</Title>
-            <Description>{eng.address}</Description>
-            <Title>Email</Title>
-            <Email href={`mailto:${eng.email}`}>{eng.email}</Email>
-            <Button
+            <Title>{footer.addressTitle.eng}</Title>
+            <Description>{footer.address}</Description>
+            <Title>{footer.emailTitle.eng}</Title>
+            <Email href={`mailto:${footer.email}`}>{footer.email}</Email>
+            <SimpleButton
               text="Donate"
               gradient={theme?.gradients?.orange}
               backgroundColor={theme?.colors?.neutralGray}
+              href={footer.donateLink}
             />
           </Column>
           <Column>
-            <Title>Working hours</Title>
-            <Description>{eng.workingHours}</Description>
+            <Title>{footer.workingHours}</Title>
+            <Description>{footer.workingHours}</Description>
             <Socials>
               <FaIconButton
                 faIcon={faFacebookSquare}
@@ -96,28 +96,31 @@ const Footer = ({}) => {
             </Socials>
           </Column>
           <Column>
-            <Title>Shortcuts</Title>
-            {eng.shortcuts.map((s, i) => {
-              return (
-                <Description key={s.text + i}>
-                  <Link href={s.url}>{s.text}</Link>
-                </Description>
-              );
-            })}
+            <Title>{footer.shortcutsTitle.eng}</Title>
+            {footer.shortcuts.map((s, i) => (
+              <GradientButton
+                key={s.text + i}
+                backgroundColor={"#0000"}
+                href={s}
+                text={s.text}
+              />
+            ))}
           </Column>
         </Row>
         <Row>
           <SpaceBetween>
-            <Description>{eng.license}</Description>
-            <Description>{eng.signature}</Description>
+            <Description>{footer.license}</Description>
+            <Description>{footer.signature}</Description>
           </SpaceBetween>
         </Row>
       </Wrapper>
     </Outer>
-  );
+  ) : null;
 };
 
-const Outer = styled.footer``;
+const Outer = styled.footer`
+  margin-top: 20px;
+`;
 
 const Wrapper = styled.div`
   display: flex;

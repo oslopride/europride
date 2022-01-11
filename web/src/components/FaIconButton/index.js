@@ -1,17 +1,23 @@
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import styled from "@emotion/styled";
+import Link from "next/link";
 
-import React from "react";
-
-const FaIconButton = ({ faIcon, onClick, ...restProps }) => {
+const FaIconButton = ({
+  faIcon,
+  onClick = () => {},
+  href = "/",
+  ...restProps
+}) => {
   return (
-    <Button onClick={onClick}>
-      <FontAwesomeIcon icon={faIcon} {...restProps} />
-    </Button>
+    <ButtonDiv onClick={onClick}>
+      <FontAwesomeIcon icon={faIcon} {...restProps}>
+        <Link href={href} />
+      </FontAwesomeIcon>
+    </ButtonDiv>
   );
 };
 
-const Button = styled.button`
+const ButtonDiv = styled.button`
   cursor: pointer;
   border: none;
   background-color: transparent;
