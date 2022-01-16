@@ -32,7 +32,6 @@ const hiddenDocTypes = (listItem) =>
     "partnerOverview",
     "livestream",
     "volunteer",
-    "about",
   ].includes(listItem.getId());
 
 export default () =>

@@ -52,30 +52,46 @@ export const getServerSideProps = async (pageContext: any) => {
 };
 
 const Header = styled.h1`
-  font-size: 84px;
+  font-size: 40px;
   background: -webkit-linear-gradient(
     320deg,
     ${(props: { gradient: string[] }) => props.gradient.join(", ")}
   );
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
+    font-size: 60px;
+  }
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
+    font-size: 80px;
+  }
 `;
 
 const SubHeader = styled.h2`
   font-size: 24px;
+  text-align: center;
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
+    text-align: left;
+  }
 `;
 
 const BodyTitle = styled.h3``;
 
-const Body = styled.p``;
-
 const Main = styled.main`
   display: flex;
   flex-direction: column;
-  justify-content: space-between;
+  justify-content: space-evenly;
   min-height: 100vh;
   height: 100%;
-  margin: 0 100px;
+  max-width: 100%;
+  align-self: center;
+  margin: 24px;
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
+    margin: 38px;
+  }
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
+    margin: 80px;
+  }
 `;
 
 export default Home;

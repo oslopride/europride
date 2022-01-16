@@ -15,6 +15,12 @@ const theme = {
     greenYellow: ["#049648", "#8DC343", "#FCBB16", "#91288C"],
     green: ["#049648", "#8DC343"],
   },
+  breakpoints: {
+    mobile: 0,
+    tablet: 640,
+    laptop: 900,
+    desktop: 1000,
+  },
 };
 
 export default theme;

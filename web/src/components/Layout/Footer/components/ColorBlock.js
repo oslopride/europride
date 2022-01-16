@@ -1,26 +1,26 @@
-import React from "react";
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-// import theme from "../../../../../styles/theme";
 import Link from "next/link";
 
 const ColorBlockButton = ({ color = "#fff", text, linkTo = "/" }) => {
   const theme = useTheme();
   return (
-    <Link href={linkTo}>
-      <Block color={color}>
-        <>
-          <Text>{text}</Text>
-          <FontAwesomeIcon
-            icon={faArrowRight}
-            size="1x"
-            color={theme.colors.white}
-          />
-        </>
-      </Block>
-    </Link>
+    <>
+      <Link href={linkTo}>
+        <Block color={color}>
+          <>
+            <Text>{text}</Text>
+            <FontAwesomeIcon
+              icon={faArrowRight}
+              size="1x"
+              color={theme.colors.white}
+            />
+          </>
+        </Block>
+      </Link>
+    </>
   );
 };
 
@@ -29,6 +29,9 @@ const Block = styled.button`
   align-items: center;
   justify-content: space-between;
   padding: 48px;
+  @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    padding: 32px;
+  }
   width: 100%;
   background-color: ${(props) => props.color};
   border: none;

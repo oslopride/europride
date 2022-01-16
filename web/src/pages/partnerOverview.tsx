@@ -36,6 +36,7 @@ const Partners = ({ data, partnerOverview }: any) => {
             href={partnerOverview.callToAction.eng.link.url}
             text={partnerOverview.callToAction.eng.link.text}
             gradient={["#F27323", "#F9A61A"]}
+            width={170}
           />
         </CTAWrapper>
       </ArticleWrapper>
@@ -70,7 +71,13 @@ export const getServerSideProps = async (pageContext: any) => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  margin: 0 80px 80px 80px;
+  padding: 24px;
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
+    padding: 38px;
+  }
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
+    margin: 80px;
+  }
 `;
 
 const Spacing = styled.div`
@@ -118,9 +125,7 @@ const CTAWrapper = styled.div`
 const ArticleWrapper = styled.div`
   display: flex;
   flex: 1;
-  margin: 80px 0 0 0;
   flex-direction: column;
-  max-width: 900px;
   justify-content: space-between;
   align-self: center;
 `;

@@ -49,17 +49,21 @@ const Header = () => {
 
 const Outer = styled.div`
   flex-direction: row;
-  padding: 0 80px;
 `;
 
 const Wrapper = styled.div`
-  margin: auto;
+  margin: 12px;
   display: flex;
   max-width: 100%;
   margin-bottom: 50px;
-  margin-right: 100px;
   justify-content: space-between;
   align-items: center;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    margin: 24px;
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+    margin: 80px;
+  }
 `;
 
 const LinkItem = styled.a`
@@ -68,19 +72,29 @@ const LinkItem = styled.a`
 `;
 
 const Socials = styled.div`
-  display: flex;
+  display: none;
   justify-content: space-evenly;
   width: 150px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    display: flex;
+  }
 `;
 
 const Left = styled.div`
-  display: flex;
+  display: none;
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+    display: flex;
+  }
 `;
 
 const DateText = styled.text`
+  display: none;
   font-size: 20px;
   font-weight: bold;
   color: #049648;
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+    display: flex;
+  }
 `;
 
 const styles = {

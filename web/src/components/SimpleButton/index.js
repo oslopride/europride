@@ -13,7 +13,6 @@ export const SimpleButton = ({ text = "", textColor = "#000", href = "/" }) => {
 
 const Touchable = styled.a`
   cursor: pointer;
-  text-align: center;
   margin-bottom: 20px;
 `;
 

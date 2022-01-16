@@ -61,12 +61,8 @@ const Content = styled.div`
   flex-direction: column;
 `;
 
-const Image = styled.img`
-  padding: 0 80px;
-`;
+const Image = styled.img``;
 
-const Body = styled.div`
-  padding: 0 80px;
-`;
+const Body = styled.div``;
 
 export default Post;

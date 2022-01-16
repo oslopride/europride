@@ -11,7 +11,7 @@ const About = ({ data, volunteers }: any) => {
   return (
     <Wrapper>
       <Header>{data.header.eng}</Header>
-      <Body>{data.subheaderText.eng}</Body>
+      <Subheader>{data.subheaderText.eng}</Subheader>
       <AnchorButton href="#body" text="Read more" />
       <Img
         {...mainImageProps}
@@ -38,21 +38,25 @@ const Header = styled.h1`
   -webkit-text-fill-color: transparent;
 `;
 
-const Body = styled.div`
+const Subheader = styled.div`
   font-style: normal;
   font-weight: normal;
   font-size: 24px;
   line-height: 40px;
 `;
 
-const BlockWrapper = styled.div`
-  margin: 50px 270px;
-`;
+const BlockWrapper = styled.div``;
 
 const Wrapper = styled.div`
   display: flex;
-  margin: 80px;
   flex-direction: column;
+  margin: 24px;
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
+    margin: 38px;
+  }
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
+    margin: 80px;
+  }
 `;
 
 export const getServerSideProps = async (pageContext: any) => {

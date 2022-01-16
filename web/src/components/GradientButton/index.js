@@ -7,9 +7,14 @@ export const GradientButton = ({
   textColor = "#000",
   gradient = ["#0000", "#0000"],
   href = "/",
+  width = 101,
 }) => {
   return (
-    <Touchable gradient={gradient} backgroundColor={backgroundColor}>
+    <Touchable
+      width={width}
+      gradient={gradient}
+      backgroundColor={backgroundColor}
+    >
       <Title textColor={textColor} backgroundColor={backgroundColor}>
         <SanityLink href={href} text={text} />
       </Title>
@@ -28,8 +33,10 @@ const Touchable = styled.button`
     1 100%;
   border-image-slice: 1;
   background-color: ${({ backgroundColor }) => backgroundColor};
-  padding: 16px 24px 16px 24px;
   max-width: 100%;
+  width: ${({ width }) => width}px;
+  height: 48px;
+  max-height: 100%;
 `;
 
 const Title = styled.p`
@@ -38,7 +45,6 @@ const Title = styled.p`
   font-style: normal;
   font-weight: bold;
   font-size: 16px;
-  line-height: 100%;
 `;
 
 export default GradientButton;

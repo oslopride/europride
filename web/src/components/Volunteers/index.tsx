@@ -33,7 +33,6 @@ const VolunteerWrapper = styled.div`
   flex: 1 0 21%;
   flex-direction: column;
   justify-content: space-between;
-  margin: 40px;
 `;
 
 const Name = styled.p`

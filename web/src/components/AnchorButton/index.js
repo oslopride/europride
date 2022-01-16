@@ -17,7 +17,6 @@ const Border = styled.a`
   border-bottom-style: solid;
   border-bottom-width: 5px;
   border-image: linear-gradient(45deg, #f27323, #f9a61a) 1;
-  padding: 0;
 `;
 
 const Text = styled.p`
