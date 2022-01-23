@@ -9,7 +9,7 @@ import partnerOverview from "./partner-overview";
 import livestream from "./livestream";
 import configuration from "./configuration";
 import events from "./events";
-import eventOverview from "./event-overview";
+import program from "./program";
 import volunteers from "./volunteer";
 
 import JSONpreview from "./previews/json-preview";
@@ -26,7 +26,7 @@ const hiddenDocTypes = (listItem) =>
     "webConfiguration",
     "appConfiguration",
     "event",
-    "eventOverview",
+    "program",
     "simpleEvent",
     "arena",
     "partnerOverview",
@@ -40,7 +40,7 @@ export default () =>
     .items([
       frontPage,
       articleArchive,
-      eventOverview,
+      program,
       partnerOverview,
       pages,
       articles,

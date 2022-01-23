@@ -33,8 +33,8 @@ const Partners = ({ data, partnerOverview }: any) => {
           <SanityBlock blocks={partnerOverview.callToAction.eng.description} />
           <Spacing />
           <GradientButton
-            href={partnerOverview.callToAction.eng.link.url}
-            text={partnerOverview.callToAction.eng.link.text}
+            link={partnerOverview.callToAction.eng.link.url}
+            title={partnerOverview.callToAction.eng.link.text}
             gradient={["#F27323", "#F9A61A"]}
             width={170}
           />

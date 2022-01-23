@@ -1,18 +1,18 @@
 import S from "@sanity/desk-tool/structure-builder";
 import EditIcon from "part:@sanity/base/edit-icon";
-import { MdInfo } from "react-icons/md";
+import { MdEventNote } from "react-icons/md";
 
 import JSONpreview from "./previews/json-preview";
 
 export default S.listItem()
-  .title("About")
-  .icon(MdInfo)
+  .title("Program")
+  .icon(MdEventNote)
   .child(
     S.document()
-      .title("About")
-      .id("about")
-      .schemaType("About")
-      .documentId("About")
+      .title("Program")
+      .id("program")
+      .schemaType("program")
+      .documentId("program")
       .views([
         S.view.form().icon(EditIcon),
         S.view.component(JSONpreview).title("JSON"),

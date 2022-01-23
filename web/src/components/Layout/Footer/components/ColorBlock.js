@@ -4,14 +4,14 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import Link from "next/link";
 
-const ColorBlockButton = ({ color = "#fff", text, linkTo = "/" }) => {
+const ColorBlockButton = ({ color = "#fff", title, linkTo = "/" }) => {
   const theme = useTheme();
   return (
     <>
       <Link href={linkTo}>
         <Block color={color}>
           <>
-            <Text>{text}</Text>
+            <Title>{title}</Title>
             <FontAwesomeIcon
               icon={faArrowRight}
               size="1x"
@@ -37,7 +37,7 @@ const Block = styled.button`
   border: none;
 `;
 
-const Text = styled.h3`
+const Title = styled.p`
   font-size: 24px;
   font-weight: 700;
   color: ${(props) => props.theme.colors.white};

@@ -1,32 +1,35 @@
 import styled from "@emotion/styled";
 import CreateSanityImage from "../CreateSanityImage";
 
-const Volunteers = ({ volunteers }: any) => {
+const Volunteer = ({ volunteer }: any) => {
   return (
     <Wrapper>
-      {volunteers?.map((v: any) => (
-        <VolunteerWrapper>
-          <ImageWrapper>
-            <CreateSanityImage url={v.portrait.asset} alt={v.name} />
-          </ImageWrapper>
-          <Name>{v.name}</Name>
-          <Pronouns>{v.pronouns.eng}</Pronouns>
-          <Role>{v.role.eng}</Role>
-          <Email href={`mailto:${v.email}`}>{v.email}</Email>
-        </VolunteerWrapper>
-      ))}
+      <VolunteerWrapper>
+        <ImageWrapper>
+          <CreateSanityImage
+            url={volunteer.portrait.asset}
+            alt={volunteer.name}
+          />
+        </ImageWrapper>
+        <Name>{volunteer.name}</Name>
+        <Pronouns>{volunteer.pronouns.eng}</Pronouns>
+        <Role>{volunteer.role.eng}</Role>
+        <Email href={`mailto:${volunteer.email}`}>{volunteer.email}</Email>
+      </VolunteerWrapper>
     </Wrapper>
   );
 };
 
-export default Volunteers;
+export default Volunteer;
 
 const Wrapper = styled.div`
   display: flex;
-  flex: 1;
-  height: 100%;
-  width: 100%;
+  margin: 20px 20px 0 0;
   flex-wrap: wrap;
+  flex: 0 0 30%;
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
+    flex: 0 0 20%;
+  }
 `;
 
 const VolunteerWrapper = styled.div`

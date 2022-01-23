@@ -9,7 +9,6 @@ import blockContent from "./blockContent";
 import category from "./category";
 import post from "./post";
 import volunteer from "./volunteer";
-import program from "./program";
 
 import frontPage from "./front-page";
 import page from "./page";
@@ -19,7 +18,7 @@ import article from "./article";
 import articleArchive from "./article-archive";
 import partner from "./partner";
 import event from "./event";
-import eventOverview from "./event-overview";
+import program from "./program";
 import arena from "./arena";
 import venue from "./venue";
 import partnerOverview from "./partner-overview";
@@ -75,18 +74,17 @@ export default createSchema({
     colorBlock,
     volunteer,
     author,
-    program,
 
     page,
     webConfiguration,
     appConfiguration,
     article,
     articleArchive,
-    partner,
     event,
-    eventOverview,
+    program,
     arena,
     venue,
+    partner,
     partnerOverview,
     simpleEvent,
     livestream,

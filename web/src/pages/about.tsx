@@ -4,7 +4,7 @@ import Img from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
 import AnchorButton from "../components/AnchorButton";
 import SanityBlock from "../components/SanityBlock";
-import Volunteers from "../components/Volunteers";
+import Volunteer from "../components/Volunteer";
 
 const About = ({ data, volunteers }: any) => {
   const mainImageProps = useNextSanityImage(configuredSanityClient, data.image);
@@ -13,20 +13,39 @@ const About = ({ data, volunteers }: any) => {
       <Header>{data.header.eng}</Header>
       <Subheader>{data.subheaderText.eng}</Subheader>
       <AnchorButton href="#body" text="Read more" />
-      <Img
-        {...mainImageProps}
-        layout="responsive"
-        sizes="(max-width: 800px) 100vw, 800px"
-      />
+      <ImageWrapper>
+        <Img
+          {...mainImageProps}
+          layout="responsive"
+          sizes="(max-width: 800px) 100vw, 800px"
+        />
+      </ImageWrapper>
       <BlockWrapper id="body">
         <SanityBlock blocks={data?.body.eng} />
       </BlockWrapper>
-      <Volunteers volunteers={volunteers} />
+      <VolunteerWrapper>
+        {volunteers.map((v: any) => (
+          <Volunteer volunteer={v} key={v.name} />
+        ))}
+      </VolunteerWrapper>
     </Wrapper>
   );
 };
 
 export default About;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  margin: 24px;
+  max-width: 1200px;
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
+    margin: 38px;
+  }
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
+    margin: 80px;
+  }
+`;
 
 const Header = styled.h1`
   font-style: normal;
@@ -45,18 +64,18 @@ const Subheader = styled.div`
   line-height: 40px;
 `;
 
+const ImageWrapper = styled.div`
+  display: flex;
+  max-width: 800px;
+`;
+
 const BlockWrapper = styled.div``;
 
-const Wrapper = styled.div`
+const VolunteerWrapper = styled.div`
   display: flex;
-  flex-direction: column;
-  margin: 24px;
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
-    margin: 38px;
-  }
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
-    margin: 80px;
-  }
+  flex-direction: row;
+  flex-wrap: wrap;
+  max-width: 1000px;
 `;
 
 export const getServerSideProps = async (pageContext: any) => {
@@ -68,6 +87,7 @@ export const getServerSideProps = async (pageContext: any) => {
     return {
       props: {
         data: [],
+        volunteers: [],
       },
     };
   } else {

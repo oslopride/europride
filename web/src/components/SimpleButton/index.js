@@ -1,19 +1,25 @@
 import styled from "@emotion/styled";
 import SanityLink from "../SanityLink";
 
-export const SimpleButton = ({ text = "", textColor = "#000", href = "/" }) => {
+export const SimpleButton = ({
+  title = "",
+  titleColor = "#000",
+  link = "/",
+}) => {
   return (
     <Touchable>
-      <Title textColor={textColor}>
-        <SanityLink href={href} text={text} />
+      <Title textColor={titleColor}>
+        <SanityLink link={link} title={title} />
       </Title>
     </Touchable>
   );
 };
 
-const Touchable = styled.a`
+const Touchable = styled.button`
   cursor: pointer;
   margin-bottom: 20px;
+  background: transparent;
+  border: none;
 `;
 
 const Title = styled.p`
@@ -22,7 +28,7 @@ const Title = styled.p`
   font-style: normal;
   font-size: 20px;
   line-height: 24px;
-  text-decoration-line: underline;
+  text-decoration: underline;
 `;
 
 export default SimpleButton;

@@ -18,7 +18,7 @@ export default {
         { type: "article" },
         { type: "frontPage" },
         { type: "articleArchive" },
-        { type: "eventOverview" },
+        { type: "program" },
         { type: "partnerOverview" },
         { type: "livestream" },
         { type: "about" },

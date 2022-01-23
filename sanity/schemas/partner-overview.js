@@ -23,11 +23,11 @@ export default {
       },
       (lang, Rule) => (lang.isDefault ? Rule.required() : undefined)
     ),
-    {
-      title: "Partner program link",
-      name: "partnerProgramLink",
-      type: "internalLink",
-    },
+    // {
+    //   title: "Partner program link",
+    //   name: "partnerProgramLink",
+    //   type: "internalLink",
+    // },
     localize({
       title: "Call to action",
       name: "callToAction",
@@ -45,11 +45,11 @@ export default {
           type: "array",
           of: [{ type: "block" }],
         },
-        {
-          title: "Link",
-          name: "link",
-          type: "internalLink",
-        },
+        // {
+        //   title: "Link",
+        //   name: "link",
+        //   type: "internalLink",
+        // },
       ],
     }),
   ],

@@ -42,7 +42,7 @@ const Footer = () => {
               <ColorBlockButton
                 key={block.text.eng}
                 color={theme.colors[color]}
-                text={block.text.eng}
+                title={block.text.eng}
                 linkTo={block.link.url}
               />
             );
@@ -60,7 +60,7 @@ const Footer = () => {
             <Title>{footer.emailTitle.eng}</Title>
             <Email href={`mailto:${footer.email}`}>{footer.email}</Email>
             <GradientButton
-              text="Donate"
+              title="Donate"
               gradient={theme?.gradients?.orange}
               backgroundColor={theme?.colors?.neutralGray}
               href={footer.donateLink}
@@ -100,15 +100,16 @@ const Footer = () => {
           </Column>
           <Column>
             <Title>{footer.shortcutsTitle.eng}</Title>
-            {footer.shortcuts.map((s, i) => (
-              <SimpleButton
-                key={s.text + i}
-                backgroundColor={"#0000"}
-                href={s}
-                text={s.text}
-                width={150}
-              />
-            ))}
+            <ShortcutsWrapper>
+              {footer.shortcuts.map((s, i) => (
+                <SimpleButton
+                  key={s.text + i}
+                  link={s}
+                  title={s.text}
+                  width={150}
+                />
+              ))}
+            </ShortcutsWrapper>
           </Column>
         </Row>
         <RowSpacer />
@@ -148,15 +149,26 @@ const Socials = styled.div`
 const Column = styled.div`
   display: flex;
   flex-direction: column;
+  margin-top: 40px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    margin-right: 30px;
+    margin-top: 0px;
+  }
 `;
 
 const ImageWrapper = styled.div`
-  display: flex;
   flex-direction: row;
   align-self: center;
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     flex-direction: column;
+    margin-right: 30px;
   }
+`;
+
+const ShortcutsWrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
 `;
 
 const Row = styled.div`
@@ -192,8 +204,8 @@ const SpaceBetween = styled.div`
   width: 100%;
 `;
 
-const Title = styled.h3`
-  font-weight: bold;
+const Title = styled.p`
+  font-weight: 700;
   margin: 10px 0;
 `;
 

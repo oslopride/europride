@@ -22,15 +22,11 @@ const Header = () => {
   );
   return data ? (
     <Outer>
-      <Menu right styles={styles} pageWrapId={"page-wrap"}>
-        <Link href="/about">
-          <LinkItem>Hello</LinkItem>
-        </Link>
-      </Menu>
+      <Menu right styles={styles} pageWrapId={"page-wrap"}></Menu>
       <Wrapper id="page-wrap">
         <Left>
           <GradientButton
-            text={data?.footer.donateButton}
+            title={data?.footer.donateButton}
             gradient={theme?.gradients?.orange}
             href={data?.footer.donateLink}
           />
@@ -40,7 +36,9 @@ const Header = () => {
             <FaIconButton faIcon={faTwitter} size="1x" />
           </Socials>
         </Left>
-        <Image src={logo} width={153} height={117} />
+        <ImageWrapper href="/">
+          <Image src={logo} width={153} height={117} />
+        </ImageWrapper>
         <DateText>{data?.date}</DateText>
       </Wrapper>
     </Outer>
@@ -55,15 +53,21 @@ const Wrapper = styled.div`
   margin: 12px;
   display: flex;
   max-width: 100%;
-  margin-bottom: 50px;
   justify-content: space-between;
   align-items: center;
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    margin: 24px;
+    margin: 0 24px 12px 24px;
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
-    margin: 80px;
+    margin: 0 80px 24px 80px;
   }
+`;
+
+const ImageWrapper = styled(Link)`
+  cursor: pointer;
+  background: transparent;
+  border: none;
+  max-width: 300px;
 `;
 
 const LinkItem = styled.a`

@@ -86,6 +86,7 @@ const Main = styled.main`
   max-width: 100%;
   align-self: center;
   margin: 24px;
+  max-width: 1200px;
   @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
     margin: 38px;
   }

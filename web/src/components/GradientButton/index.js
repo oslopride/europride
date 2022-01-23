@@ -2,11 +2,11 @@ import styled from "@emotion/styled";
 import SanityLink from "../SanityLink";
 
 export const GradientButton = ({
-  text = "",
+  title = "",
   backgroundColor = "#FFF",
-  textColor = "#000",
+  titleColor = "#000",
   gradient = ["#0000", "#0000"],
-  href = "/",
+  link = "/",
   width = 101,
 }) => {
   return (
@@ -15,8 +15,8 @@ export const GradientButton = ({
       gradient={gradient}
       backgroundColor={backgroundColor}
     >
-      <Title textColor={textColor} backgroundColor={backgroundColor}>
-        <SanityLink href={href} text={text} />
+      <Title textColor={titleColor} backgroundColor={backgroundColor}>
+        <SanityLink link={link} title={title} />
       </Title>
     </Touchable>
   );

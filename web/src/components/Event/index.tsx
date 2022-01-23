@@ -1,0 +1,53 @@
+import styled from "@emotion/styled";
+import CreateSanityImage from "../CreateSanityImage";
+import GradientButton from "../GradientButton";
+import SanityBlock from "../SanityBlock";
+import formatISOTime from "../../utils/formatISOTime";
+
+const Event = ({ event }: any) => {
+  return (
+    <Wrapper>
+      <Title>{event.title.eng}</Title>
+      <Time>{`${formatISOTime(event.startTime, "en-GB")} - ${formatISOTime(
+        event.endTime,
+        "en-GB"
+      )}`}</Time>
+      <SanityBlock blocks={event.description.eng} />
+      <Spacer />
+      <GradientButton
+        link={event.eventLink}
+        title="Read more"
+        gradient={["#F27323", "#F9A61A"]}
+        width={170}
+      />
+    </Wrapper>
+  );
+};
+
+export default Event;
+
+const Wrapper = styled.div`
+  display: flex;
+  flex-direction: column;
+`;
+
+const Title = styled.h2`
+  font-weight: 800;
+  font-size: 32px;
+  line-height: 86px;
+  background: -webkit-linear-gradient(top left, #000, #000);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+`;
+
+const Spacer = styled.div`
+  margin-top: 30px;
+`;
+
+const Time = styled.p`
+  display: flex;
+  flex: 1;
+  font-size: 24px;
+  margin-bottom: 10px;
+  line-height: 39px;
+`;
