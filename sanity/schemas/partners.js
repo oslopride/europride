@@ -1,8 +1,8 @@
 import { localize } from "../utils/locale";
 
 export default {
-  title: "Partner Overview",
-  name: "partnerOverview",
+  title: "Partners",
+  name: "partners",
   type: "document",
   fieldsets: [{ name: "header", title: "Header" }],
   fields: [
@@ -23,11 +23,11 @@ export default {
       },
       (lang, Rule) => (lang.isDefault ? Rule.required() : undefined)
     ),
-    // {
-    //   title: "Partner program link",
-    //   name: "partnerProgramLink",
-    //   type: "internalLink",
-    // },
+    {
+      title: "Partner program link",
+      name: "partnerProgramLink",
+      type: "internalLink",
+    },
     localize({
       title: "Call to action",
       name: "callToAction",
@@ -45,15 +45,15 @@ export default {
           type: "array",
           of: [{ type: "block" }],
         },
-        // {
-        //   title: "Link",
-        //   name: "link",
-        //   type: "internalLink",
-        // },
+        {
+          title: "Link",
+          name: "link",
+          type: "internalLink",
+        },
       ],
     }),
   ],
   preview: {
-    prepare: () => ({ title: "Partner Overview" }),
+    prepare: () => ({ title: "Partners" }),
   },
 };

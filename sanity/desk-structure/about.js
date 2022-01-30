@@ -11,8 +11,8 @@ export default S.listItem()
     S.document()
       .title("About")
       .id("about")
-      .schemaType("About")
-      .documentId("About")
+      .schemaType("about")
+      .documentId("about")
       .views([
         S.view.form().icon(EditIcon),
         S.view.component(JSONpreview).title("JSON"),

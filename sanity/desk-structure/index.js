@@ -5,12 +5,12 @@ import frontPage from "./front-page";
 import pages from "./pages";
 import articles from "./articles";
 import partners from "./partners";
-import partnerOverview from "./partner-overview";
 import livestream from "./livestream";
 import configuration from "./configuration";
 import events from "./events";
 import program from "./program";
 import volunteers from "./volunteer";
+import about from "./about";
 
 import JSONpreview from "./previews/json-preview";
 import articleArchive from "./article-archive";
@@ -21,15 +21,15 @@ const hiddenDocTypes = (listItem) =>
     "frontPage",
     "page",
     "article",
-    "partner",
     "articleArchive",
     "webConfiguration",
     "appConfiguration",
     "event",
     "program",
+    "partners",
     "simpleEvent",
+    "about",
     "arena",
-    "partnerOverview",
     "livestream",
     "volunteer",
   ].includes(listItem.getId());
@@ -41,11 +41,11 @@ export default () =>
       frontPage,
       articleArchive,
       program,
-      partnerOverview,
       pages,
+      about,
+      partners,
       articles,
       events,
-      partners,
       configuration,
       livestream,
       volunteers,

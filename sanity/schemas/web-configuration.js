@@ -17,24 +17,42 @@ export default {
       of: [{ type: "internalLink" }, { type: "externalLink" }],
     },
     {
-      name: "footer",
+      name: "socials",
       type: "object",
       options: { collapsible: true, collapsed: false },
-      fieldsets: [
-        { name: "social", title: "Social media links" },
-        { name: "links", title: "Shortcuts" },
-      ],
       fields: [
         {
           name: "instagram",
           type: "url",
-          fieldset: "social",
         },
         {
           name: "facebook",
           type: "url",
-          fieldset: "social",
         },
+        {
+          name: "youtube",
+          type: "url",
+        },
+        {
+          name: "snapchat",
+          type: "url",
+        },
+        {
+          name: "linkedin",
+          type: "url",
+        },
+        {
+          name: "twitter",
+          type: "url",
+        },
+      ],
+    },
+    {
+      name: "footer",
+      type: "object",
+      options: { collapsible: true, collapsed: false },
+      fieldsets: [{ name: "links", title: "Shortcuts" }],
+      fields: [
         {
           name: "links",
           fieldset: "links",

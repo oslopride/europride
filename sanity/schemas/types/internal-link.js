@@ -19,7 +19,7 @@ export default {
         { type: "frontPage" },
         { type: "articleArchive" },
         { type: "program" },
-        { type: "partnerOverview" },
+        { type: "partners" },
         { type: "livestream" },
         { type: "about" },
       ],

@@ -21,7 +21,7 @@ import event from "./event";
 import program from "./program";
 import arena from "./arena";
 import venue from "./venue";
-import partnerOverview from "./partner-overview";
+import partners from "./partners";
 import simpleEvent from "./simple-event";
 import livestream from "./livestream";
 import about from "./about";
@@ -85,7 +85,7 @@ export default createSchema({
     arena,
     venue,
     partner,
-    partnerOverview,
+    partners,
     simpleEvent,
     livestream,
     about,
