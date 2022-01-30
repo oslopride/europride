@@ -16,7 +16,6 @@ interface IProps {
 }
 
 const SanityLink = ({ link, title = "" }: IProps) => {
-  console.log(link);
   const { data, error } = useSWR(
     groq`*[_id == "${link?.url?._ref}"][0]._type`,
     async (query) => await configuredSanityClient.fetch(query)
@@ -28,7 +27,11 @@ const SanityLink = ({ link, title = "" }: IProps) => {
     return "/" + data;
   };
   if (error) return null;
-  return <Link href={getSlug()}>{title}</Link>;
+  return (
+    <Link href={getSlug()}>
+      <a>{title}</a>
+    </Link>
+  );
 };
 
 export default SanityLink;

@@ -4,14 +4,7 @@ import Image from "next/image";
 import logo from "../../../../public/logo.png";
 import GradientButton from "../../GradientButton";
 import SimpleButton from "../../SimpleButton";
-import FaIconButton from "../../FaIconButton";
-import {
-  faFacebookSquare,
-  faTwitter,
-  faInstagram,
-  faSnapchatGhost,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
+import Socials from "../../Socials";
 import ColorBlockButton from "./components/ColorBlock";
 
 import configuredSanityClient from "../../../sanity";
@@ -61,7 +54,6 @@ const Footer = () => {
             <Email href={`mailto:${footer.email}`}>{footer.email}</Email>
             <GradientButton
               title="Donate"
-              gradient={theme?.gradients?.orange}
               backgroundColor={theme?.colors?.neutralGray}
               href={footer.donateLink}
               width={101}
@@ -70,33 +62,7 @@ const Footer = () => {
           <Column>
             <Title>{footer.workingHoursTitle.eng}</Title>
             <Description>{footer.workingHours}</Description>
-            <Socials>
-              <FaIconButton
-                faIcon={faFacebookSquare}
-                size="2x"
-                color={theme.colors.purpleLight}
-              />
-              <FaIconButton
-                faIcon={faInstagram}
-                size="2x"
-                color={theme.colors.purpleLight}
-              />
-              <FaIconButton
-                faIcon={faSnapchatGhost}
-                size="2x"
-                color={theme.colors.purpleLight}
-              />
-              <FaIconButton
-                faIcon={faYoutube}
-                size="2x"
-                color={theme.colors.purpleLight}
-              />
-              <FaIconButton
-                faIcon={faTwitter}
-                size="2x"
-                color={theme.colors.purpleLight}
-              />
-            </Socials>
+            <Socials data={data.socials} />
           </Column>
           <Column>
             <Title>{footer.shortcutsTitle.eng}</Title>
@@ -138,12 +104,6 @@ const Wrapper = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     padding: 38px;
   }
-`;
-
-const Socials = styled.div`
-  display: flex;
-  justify-content: space-evenly;
-  align-self: flex-start;
 `;
 
 const Column = styled.div`

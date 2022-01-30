@@ -5,21 +5,16 @@ import logo from "../../../../public/logo.png";
 import Link from "next/link";
 import { slide as Menu } from "react-burger-menu";
 import GradientButton from "../../GradientButton";
-import FaIconButton from "../../FaIconButton";
-import {
-  faFacebookSquare,
-  faTwitter,
-  faInstagram,
-} from "@fortawesome/free-brands-svg-icons";
+import Socials from "../../Socials";
 import useSWR from "swr";
 import groq from "groq";
 
 const Header = () => {
-  const theme = useTheme();
   const { data, error } = useSWR(
     groq`*[_type == 'webConfiguration'][0]`,
     (query) => configuredSanityClient.fetch(query)
   );
+  const theme = useTheme();
   return data ? (
     <Outer>
       <Menu right styles={styles} pageWrapId={"page-wrap"}></Menu>
@@ -27,17 +22,21 @@ const Header = () => {
         <Left>
           <GradientButton
             title={data?.footer.donateButton}
-            gradient={theme?.gradients?.orange}
             href={data?.footer.donateLink}
           />
-          <Socials>
-            <FaIconButton faIcon={faFacebookSquare} size="1x" />
-            <FaIconButton faIcon={faInstagram} size="1x" />
-            <FaIconButton faIcon={faTwitter} size="1x" />
-          </Socials>
+          <SocialsWrapper>
+            <Socials
+              data={data.socials}
+              size="1x"
+              color={theme.colors.black}
+              center={true}
+            />
+          </SocialsWrapper>
         </Left>
         <ImageWrapper href="/">
-          <Image src={logo} width={153} height={117} />
+          <a>
+            <Image src={logo} width={153} height={117} />
+          </a>
         </ImageWrapper>
         <DateText>{data?.date}</DateText>
       </Wrapper>
@@ -70,12 +69,7 @@ const ImageWrapper = styled(Link)`
   max-width: 300px;
 `;
 
-const LinkItem = styled.a`
-  margin: 25px auto;
-  cursor: pointer;
-`;
-
-const Socials = styled.div`
+const SocialsWrapper = styled.div`
   display: none;
   justify-content: space-evenly;
   width: 150px;

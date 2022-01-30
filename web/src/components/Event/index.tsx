@@ -14,12 +14,7 @@ const Event = ({ event }: any) => {
       )}`}</Time>
       <SanityBlock blocks={event.description.eng} />
       <Spacer />
-      <GradientButton
-        link={event.eventLink}
-        title="Read more"
-        gradient={["#F27323", "#F9A61A"]}
-        width={170}
-      />
+      <GradientButton link={event.eventLink} title="Read more" width={170} />
     </Wrapper>
   );
 };

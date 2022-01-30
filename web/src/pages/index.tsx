@@ -1,13 +1,14 @@
 import type { NextPage } from "next";
 import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
-import configuredSanityClient, { PROJECT_ID, DATASET } from "../sanity";
+import configuredSanityClient from "../sanity";
 import Img from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
 import SanityBlock from "../components/SanityBlock";
+import { ITheme, StyledProps } from "../types/theme";
 
 const Home: NextPage = ({ data }: any) => {
-  const theme: any = useTheme();
+  const theme: ITheme = useTheme();
   const mainImageProps = useNextSanityImage(
     configuredSanityClient,
     data.header.image
@@ -15,11 +16,10 @@ const Home: NextPage = ({ data }: any) => {
 
   // TODO: refactor to implement createsanityimage
   const renderContent = () => {
-    const gradient = theme.gradients.greenYellow;
     return (
       <>
         <SubHeader>{data.header.subHeading.eng}</SubHeader>
-        <Header gradient={gradient}>{data.header.title.eng}</Header>
+        <Header>{data.header.title.eng}</Header>
         <Img
           {...mainImageProps}
           layout="responsive"
@@ -34,7 +34,7 @@ const Home: NextPage = ({ data }: any) => {
   return <Main>{renderContent()}</Main>;
 };
 
-export const getServerSideProps = async (pageContext: any) => {
+export const getServerSideProps = async () => {
   const data = await configuredSanityClient.fetch(`*[_type == "frontPage"][0]`);
   if (!data) {
     return {
@@ -53,16 +53,15 @@ export const getServerSideProps = async (pageContext: any) => {
 
 const Header = styled.h1`
   font-size: 40px;
-  background: -webkit-linear-gradient(
-    320deg,
-    ${(props: { gradient: string[] }) => props.gradient.join(", ")}
-  );
+  background: ${({ theme }: StyledProps) => theme?.gradients?.greenYellow}
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
+  @media (min-width: ${({ theme }: StyledProps) =>
+    theme?.breakpoints?.tablet}px) {
     font-size: 60px;
   }
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }: StyledProps) =>
+    theme?.breakpoints?.desktop}px) {
     font-size: 80px;
   }
 `;
@@ -70,7 +69,8 @@ const Header = styled.h1`
 const SubHeader = styled.h2`
   font-size: 24px;
   text-align: center;
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
+  @media (min-width: ${({ theme }: StyledProps) =>
+      theme?.breakpoints?.tablet}px) {
     text-align: left;
   }
 `;
@@ -87,10 +87,12 @@ const Main = styled.main`
   align-self: center;
   margin: 24px;
   max-width: 1200px;
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
+  @media (min-width: ${({ theme }: StyledProps) =>
+      theme?.breakpoints?.tablet}px) {
     margin: 38px;
   }
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }: StyledProps) =>
+      theme?.breakpoints?.desktop}px) {
     margin: 80px;
   }
 `;

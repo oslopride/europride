@@ -1,5 +1,6 @@
 import styled from "@emotion/styled";
 import CreateSanityImage from "../CreateSanityImage";
+import { StyledProps } from "../../types/theme";
 
 const Volunteer = ({ volunteer }: any) => {
   return (
@@ -27,7 +28,8 @@ const Wrapper = styled.div`
   margin: 20px 20px 0 0;
   flex-wrap: wrap;
   flex: 0 0 30%;
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }: StyledProps) =>
+      theme?.breakpoints?.desktop}px) {
     flex: 0 0 20%;
   }
 `;
@@ -43,21 +45,21 @@ const Name = styled.p`
   font-weight: bold;
   font-size: 32px;
   line-height: 39px;
-  color:${({ theme }: any) => theme.colors.neutralDark};)}
+  color:${({ theme }: StyledProps) => theme?.colors?.neutralDark};)}
 `;
 
 const Email = styled.a`
-  color:${({ theme }: any) => theme.colors.purpleLight};)}
+  color:${({ theme }: StyledProps) => theme?.colors?.purpleLight};)}
 `;
 
 const Role = styled.p`
-  color:${({ theme }: any) => theme.colors.neutralGrey};)}
+  color:${({ theme }: StyledProps) => theme?.colors?.neutralGrey};)}
 `;
 
 const Pronouns = styled.p`
   font-size: 20px;
   line-height: 32px;
-  color:${({ theme }: any) => theme.colors.neutralGrey};)}
+  color:${({ theme }: StyledProps) => theme?.colors?.neutralGrey};)}
 `;
 
 const ImageWrapper = styled.div`

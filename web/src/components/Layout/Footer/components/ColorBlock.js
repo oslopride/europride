@@ -7,25 +7,22 @@ import Link from "next/link";
 const ColorBlockButton = ({ color = "#fff", title, linkTo = "/" }) => {
   const theme = useTheme();
   return (
-    <>
-      <Link href={linkTo}>
-        <Block color={color}>
-          <>
-            <Title>{title}</Title>
-            <FontAwesomeIcon
-              icon={faArrowRight}
-              size="1x"
-              color={theme.colors.white}
-            />
-          </>
-        </Block>
-      </Link>
-    </>
+    <Link href={linkTo}>
+      <Block color={color}>
+        <Title>{title}</Title>
+        <FontAwesomeIcon
+          icon={faArrowRight}
+          size="1x"
+          color={theme.colors.white}
+        />
+      </Block>
+    </Link>
   );
 };
 
-const Block = styled.button`
+const Block = styled.a`
   display: flex;
+  cursor: pointer;
   align-items: center;
   justify-content: space-between;
   padding: 48px;

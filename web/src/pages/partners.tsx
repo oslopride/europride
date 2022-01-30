@@ -4,13 +4,20 @@ import SanityBlock from "../components/SanityBlock";
 import CreateSanityImage from "../components/CreateSanityImage";
 import AnchorButton from "../components/AnchorButton";
 import GradientButton from "../components/GradientButton";
+import ErrorNotFound from "./404";
 
-const Partners = ({ data, partnerOverview }: any) => {
+const Partners = ({ data, partners }: any) => {
+  if (!partners || !data)
+    return (
+      <Wrapper>
+        <ErrorNotFound />
+      </Wrapper>
+    );
   return (
     <Wrapper>
-      <Title>{partnerOverview.title.eng}</Title>
+      <Title>{partners.title.eng}</Title>
       <BlockWrapper>
-        <SanityBlock blocks={partnerOverview.body.eng} />
+        <SanityBlock blocks={partners.body.eng} />
       </BlockWrapper>
       <ArticleWrapper>
         {data.map((partner: any) => {
@@ -29,13 +36,12 @@ const Partners = ({ data, partnerOverview }: any) => {
           );
         })}
         <CTAWrapper>
-          <Description>{partnerOverview.callToAction.eng.title}</Description>
-          <SanityBlock blocks={partnerOverview.callToAction.eng.description} />
+          <Description>{partners.callToAction.eng.title}</Description>
+          <SanityBlock blocks={partners.callToAction.eng.description} />
           <Spacing />
           <GradientButton
-            link={partnerOverview.callToAction.eng.link.url}
-            title={partnerOverview.callToAction.eng.link.text}
-            gradient={["#F27323", "#F9A61A"]}
+            link={partners.callToAction.eng.link.url}
+            title={partners.callToAction.eng.link.text}
             width={170}
           />
         </CTAWrapper>
@@ -48,21 +54,21 @@ export default Partners;
 
 export const getServerSideProps = async (pageContext: any) => {
   const data = await configuredSanityClient.fetch(`*[_type == "partner"]`);
-  const partnerOverview = await configuredSanityClient.fetch(
-    `*[_type == "partnerOverview"][0]`
+  const partners = await configuredSanityClient.fetch(
+    `*[_type == "partners"][0]`
   );
   if (!data) {
     return {
       props: {
         data: [],
-        partnerOverview: [],
+        partners: [],
       },
     };
   } else {
     return {
       props: {
         data: data,
-        partnerOverview: partnerOverview,
+        partners: partners,
       },
     };
   }
@@ -71,12 +77,12 @@ export const getServerSideProps = async (pageContext: any) => {
 const Wrapper = styled.div`
   display: flex;
   flex-direction: column;
-  padding: 24px;
+  margin: 0 12px 12px 12px;
   @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
-    padding: 38px;
+    margin: 0 24px 24px 24px;
   }
   @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
-    margin: 80px;
+    margin: 0 80px 80px 80px;
   }
 `;
 
@@ -103,7 +109,7 @@ const Title = styled.h1`
   font-weight: 800;
   font-size: 84px;
   line-height: 86px;
-  background: -webkit-linear-gradient(top left, #f27323, #f9a61a);
+  background: ${({ theme }: any) => theme.gradients.orange};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
