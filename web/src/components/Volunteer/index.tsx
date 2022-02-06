@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import CreateSanityImage from "../CreateSanityImage";
 import { StyledProps } from "../../types/theme";
 
-const Volunteer = ({ volunteer }: any) => {
+const Volunteer = ({ volunteer, index }: any) => {
   return (
-    <Wrapper>
+    <Wrapper index={index}>
       <VolunteerWrapper>
         <ImageWrapper>
           <CreateSanityImage
@@ -23,21 +23,28 @@ const Volunteer = ({ volunteer }: any) => {
 
 export default Volunteer;
 
-const Wrapper = styled.div`
+const Wrapper = styled.div<{ index: number }>`
   display: flex;
-  margin: 20px 20px 0 0;
-  flex-wrap: wrap;
-  flex: 0 0 30%;
+  margin: ${({ index }: any) =>
+    index % 4 === 0 ? "20px 0 0 0;" : "20px 20px 0 0"};
+  flex: 0 0 20%;
   @media (min-width: ${({ theme }: StyledProps) =>
       theme?.breakpoints?.desktop}px) {
-    flex: 0 0 20%;
+    flex: 0 0 30%;
+    margin: ${({ index }: any) =>
+      index % 3 === 0 ? "20px 0 0 0;" : "20px 20px 0 0"};
   }
 `;
 
 const VolunteerWrapper = styled.div`
-  flex: 1 0 21%;
+  flex: 0 0 20%;
   flex-direction: column;
   justify-content: space-between;
+  flex-wrap: wrap;
+  @media (min-width: ${({ theme }: StyledProps) =>
+      theme?.breakpoints?.desktop}px) {
+    flex: 0 0 30%;
+  }
 `;
 
 const Name = styled.p`
@@ -63,6 +70,6 @@ const Pronouns = styled.p`
 `;
 
 const ImageWrapper = styled.div`
-  max-height: 380px;
-  max-width: 280px;
+  max-height: 450px;
+  max-width: 400px;
 `;

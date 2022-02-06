@@ -22,7 +22,7 @@ const Partners = ({ data, partners }: any) => {
       <ArticleWrapper>
         {data.map((partner: any) => {
           return (
-            <PartnerWrapper>
+            <PartnerWrapper key={partner.slug.current}>
               <ImageWrapper>
                 <CreateSanityImage
                   url={partner.image.asset}
