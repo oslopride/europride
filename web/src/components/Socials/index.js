@@ -23,7 +23,7 @@ const Socials = ({ data, size = "2x", color, center = false }) => {
   return (
     <Wrapper center={center}>
       {asArray.map((social, i) => (
-        <ItemWrapper>
+        <ItemWrapper key={Object.values(social).join("")}>
           <FaIconButton
             key={Object.keys(social) + i}
             faIcon={icons[Object.keys(social)]}
