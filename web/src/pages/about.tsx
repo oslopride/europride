@@ -20,9 +20,11 @@ const About = ({ data, volunteers }: any) => {
   );
   return (
     <Wrapper>
-      <Header>{data.header.eng}</Header>
-      <Subheader>{data.subheaderText.eng}</Subheader>
-      <AnchorButton href="#body" text="Read more" />
+      <TopWrapper>
+        <Header>{data.header.eng}</Header>
+        <Subheader>{data.subheaderText.eng}</Subheader>
+        <AnchorButton href="#body" text="Read more" />
+      </TopWrapper>
       <ImageWrapper>
         <Img
           {...mainImageProps}
@@ -34,8 +36,8 @@ const About = ({ data, volunteers }: any) => {
         <SanityBlock blocks={data?.body.eng} />
       </BlockWrapper>
       <VolunteerWrapper>
-        {volunteers.map((v: any) => (
-          <Volunteer volunteer={v} key={v.name} />
+        {volunteers.map((v: any, i: number) => (
+          <Volunteer index={i + 1} volunteer={v} key={v.name} />
         ))}
       </VolunteerWrapper>
     </Wrapper>
@@ -56,6 +58,16 @@ const Wrapper = styled.div`
   }
 `;
 
+const TopWrapper = styled.div`
+  max-width: 1280px;
+  width: 100%;
+  align-self: center;
+  margin-bottom: 30px;
+  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
+    margin-bottom: 84px;
+  }
+`;
+
 const Header = styled.h1`
   font-style: normal;
   font-weight: 800;
@@ -71,19 +83,30 @@ const Subheader = styled.div`
   font-weight: normal;
   font-size: 24px;
   line-height: 40px;
+  max-width: 750px;
 `;
 
 const ImageWrapper = styled.div`
-  max-width: 800px;
+  width: 100%;
+  max-width: 1280px;
+  align-self: center;
 `;
 
-const BlockWrapper = styled.div``;
+const BlockWrapper = styled.div`
+  max-width: 800px;
+  align-items: center;
+  margin: 0 auto;
+`;
 
 const VolunteerWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  max-width: 1000px;
+  width: 100%;
+  align-self: center;
+  margin-top: 20px;
+  max-width: 1200px;
+  justify-content: center;
 `;
 
 export const getServerSideProps = async (pageContext: any) => {
