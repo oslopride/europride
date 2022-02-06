@@ -1,8 +1,6 @@
 import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import theme from "../../styles/theme";
-import Footer from "../components/Layout/Footer";
-import Header from "../components/Layout/Header";
 import { normalize } from "polished";
 import { SWRConfig } from "swr";
 import Layout from "../components/Layout";

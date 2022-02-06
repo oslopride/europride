@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import CreateSanityImage from "../CreateSanityImage";
 import GradientButton from "../GradientButton";
 import SanityBlock from "../SanityBlock";
 import formatISOTime from "../../utils/formatISOTime";
