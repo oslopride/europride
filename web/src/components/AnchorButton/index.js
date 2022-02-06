@@ -12,7 +12,6 @@ export default AnchorButton;
 
 const Border = styled.a`
   width: 80px;
-  text-align: center;
   margin: 20px 0;
   border-bottom-style: solid;
   border-bottom-width: 5px;
