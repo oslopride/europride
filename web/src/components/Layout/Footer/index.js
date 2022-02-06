@@ -90,9 +90,7 @@ const Footer = () => {
   ) : null;
 };
 
-const Outer = styled.footer`
-  margin-top: 20px;
-`;
+const Outer = styled.footer``;
 
 const Wrapper = styled.div`
   display: flex;
