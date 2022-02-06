@@ -26,8 +26,8 @@ export default {
             lang.isDefault ? Rule.required() : undefined,
         }),
         localize({
-          name: "subtitle",
-          title: "Subtitle",
+          name: "partnerHeader",
+          title: "Partner Header",
           type: "string",
           validation: (lang, Rule) =>
             lang.isDefault ? Rule.required() : undefined,
