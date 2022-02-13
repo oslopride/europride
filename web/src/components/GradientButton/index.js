@@ -1,4 +1,5 @@
 import styled from "@emotion/styled";
+import theme from "../../../styles/theme";
 import SanityLink from "../SanityLink";
 
 export const GradientButton = ({
@@ -10,7 +11,11 @@ export const GradientButton = ({
   gradient = "orange",
 }) => {
   return (
-    <Touchable width={width} backgroundColor={backgroundColor}>
+    <Touchable
+      gradient={theme.gradients[gradient]}
+      width={width}
+      backgroundColor={backgroundColor}
+    >
       <Title textColor={titleColor} backgroundColor={backgroundColor}>
         <SanityLink link={link} title={title} />
       </Title>
@@ -20,18 +25,46 @@ export const GradientButton = ({
 
 const Touchable = styled.button`
   cursor: pointer;
+  transform: rotate(0deg);
   border-width: 4px;
-  border-image: ${({ theme }) => theme.gradients.orange} 1 100%;
+  background-color: transparent;
+  border-image: ${({ gradient }) => gradient} 1 100%;
   border-image-slice: 1;
-  background-color: ${({ backgroundColor }) => backgroundColor};
   max-width: 100%;
   width: ${({ width }) => width}px;
   height: 48px;
+  overflow: hidden;
   max-height: 100%;
+  &::before {
+    content: "";
+    width: 100%;
+    height: 100%;
+  }
+
+  &:hover::before {
+    opacity: 0;
+  }
+
+  &::after {
+    content: "";
+    position: fixed;
+    left: 0;
+    right: 0;
+    top: 0;
+    bottom: 0;
+    width: ${({ width }) => width}px;
+    background: ${({ gradient }) => gradient} 1 100%;
+    opacity: 0;
+    z-index: -1;
+    transition: opacity 0.3s;
+  }
+
+  &:hover::after {
+    opacity: 1;
+  }
 `;
 
 const Title = styled.p`
-  background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ textColor }) => textColor};
   font-style: normal;
   font-weight: bold;
