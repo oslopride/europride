@@ -43,7 +43,7 @@ const VolunteerWrapper = styled.div`
   flex-wrap: wrap;
   @media (min-width: ${({ theme }: StyledProps) =>
       theme?.breakpoints?.desktop}px) {
-    flex: 0 0 30%;
+    flex: 1;
   }
 `;
 
@@ -52,21 +52,21 @@ const Name = styled.p`
   font-weight: bold;
   font-size: 32px;
   line-height: 39px;
-  color:${({ theme }: StyledProps) => theme?.colors?.neutralDark};)}
+  color: ${({ theme }: StyledProps) => theme?.colors?.neutralDark};)}
 `;
 
 const Email = styled.a`
-  color:${({ theme }: StyledProps) => theme?.colors?.purpleLight};)}
+  color: ${({ theme }: StyledProps) => theme?.colors?.purpleLight};)}
 `;
 
 const Role = styled.p`
-  color:${({ theme }: StyledProps) => theme?.colors?.neutralGrey};)}
+  color: ${({ theme }: StyledProps) => theme?.colors?.neutralGrey};)}
 `;
 
 const Pronouns = styled.p`
   font-size: 20px;
   line-height: 32px;
-  color:${({ theme }: StyledProps) => theme?.colors?.neutralGrey};)}
+  color: ${({ theme }: StyledProps) => theme?.colors?.neutralGrey};)}
 `;
 
 const ImageWrapper = styled.div`
