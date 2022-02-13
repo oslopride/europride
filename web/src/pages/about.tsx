@@ -84,6 +84,7 @@ const Subheader = styled.div`
   font-size: 24px;
   line-height: 40px;
   max-width: 750px;
+  margin: 24px 0px;
 `;
 
 const ImageWrapper = styled.div`
