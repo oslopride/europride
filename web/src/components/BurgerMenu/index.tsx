@@ -1,4 +1,4 @@
-import { slide as Menu } from "react-burger-menu";
+import { slide as Menu, Styles } from "react-burger-menu";
 import useSWR from "swr";
 import groq from "groq";
 import styled from "@emotion/styled";
@@ -61,7 +61,7 @@ const MenuWrapper = styled.div`
   justify-content: space-between;
 `;
 
-const styles = {
+const styles: Styles = {
   bmBurgerButton: {
     display: "flex",
     left: "90%",
@@ -73,11 +73,7 @@ const styles = {
   bmBurgerBars: {
     background: "#000",
   },
-  bmBurgerBarsHover: {
-    background: "#a90000",
-  },
   bmCrossButton: {
-    flex: 1,
     height: "48px",
     width: "48px",
   },
@@ -102,9 +98,6 @@ const styles = {
   bmItemList: {
     color: "#b8b7ad",
     padding: "0.8em",
-  },
-  bmItem: {
-    display: "inline-block",
   },
   bmOverlay: {
     background: "rgba(0, 0, 0, 0.0)",
