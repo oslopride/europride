@@ -16,6 +16,6 @@
     "jsxImportSource": "@emotion/react",
     
   },
-  "include": ["block-content-to-react.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx"],
+  "include": ["block-content-to-react.d.ts", "next-env.d.ts", "**/*.ts", "**/*.tsx", "src/components/Layout/Header/index.js"],
   "exclude": ["node_modules"]
 }

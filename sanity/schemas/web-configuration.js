@@ -192,6 +192,50 @@ export default {
       ],
     },
     {
+      name: "partners",
+      type: "object",
+      options: { collapsible: true, collapsed: false },
+      fieldsets: [
+        { name: "header", title: "Header" },
+        { name: "owner", title: "Owner" },
+        { name: "main", title: "Main partners" },
+        { name: "regular", title: "Regular" },
+        { name: "supporter", title: "Supporter" },
+      ],
+      fields: [
+        localize({
+          name: "header",
+          title: "Header",
+          type: "string",
+          validation: (Rule) => Rule.required(),
+        }),
+        localize({
+          name: "owner",
+          title: "Owner",
+          type: "string",
+          validation: (Rule) => Rule.required(),
+        }),
+        localize({
+          name: "main",
+          title: "Main partners",
+          type: "string",
+          validation: (Rule) => Rule.required(),
+        }),
+        localize({
+          name: "regular",
+          title: "Regular",
+          type: "string",
+          validation: (Rule) => Rule.required(),
+        }),
+        localize({
+          name: "supporter",
+          title: "Supporter",
+          type: "string",
+          validation: (Rule) => Rule.required(),
+        }),
+      ],
+    },
+    {
       title: "Advanced",
       name: "advanced",
       type: "array",
