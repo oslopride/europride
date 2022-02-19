@@ -15,17 +15,17 @@ const theme = {
       top left,
       #4E134C,
       #91288C
-    );`,
+    )`,
     orange: `-webkit-linear-gradient(
-      top left,
+      45deg,
       #F27323,
       #F9A61A
-    );`,
+    )`,
     green: `-webkit-linear-gradient(
       top left,
       #049648,
       #8DC343
-    );`,
+    )`,
     greenYellow: `-webkit-linear-gradient(
       320deg,
       #049648,
@@ -33,7 +33,12 @@ const theme = {
       #FCBB16,
       #91288C
 
-    );`,
+    )`,
+    transparent: `-webkit-linear-gradient(
+      320deg,
+      "rgba(0, 0, 0, .0)",
+      "rgba(0, 0, 0, .0)",
+    )`,
   },
   breakpoints: {
     mobile: 0,

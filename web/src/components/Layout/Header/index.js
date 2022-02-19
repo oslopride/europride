@@ -3,8 +3,9 @@ import { useTheme } from "@emotion/react";
 import Image from "next/image";
 import logo from "../../../../public/logo.png";
 import Link from "next/link";
-import { slide as Menu } from "react-burger-menu";
+import BurgerMenu from "../../BurgerMenu";
 import GradientButton from "../../GradientButton";
+import configuredSanityClient from "../../../sanity";
 import Socials from "../../Socials";
 import useSWR from "swr";
 import groq from "groq";
@@ -17,7 +18,7 @@ const Header = () => {
   const theme = useTheme();
   return data ? (
     <Outer>
-      <Menu right styles={styles} pageWrapId={"page-wrap"}></Menu>
+      <BurgerMenu />
       <Wrapper id="page-wrap">
         <Left>
           <GradientButton
@@ -94,54 +95,5 @@ const DateText = styled.text`
     display: flex;
   }
 `;
-
-const styles = {
-  bmBurgerButton: {
-    display: "flex",
-    left: "90%",
-    position: "absolute",
-    top: "50px",
-    width: "18px",
-    height: "18px",
-  },
-  bmBurgerBars: {
-    background: "#000",
-  },
-  bmBurgerBarsHover: {
-    background: "#a90000",
-  },
-  bmCrossButton: {
-    height: "24px",
-    width: "24px",
-  },
-  bmCross: {
-    background: "#bdc3c7",
-  },
-  bmMenuWrap: {
-    position: "fixed",
-    height: "100%",
-  },
-  bmMenu: {
-    background: "#F5F5F5",
-    height: "400px",
-    width: "100%",
-    padding: "2.5em 1.5em 0",
-    fontSize: "1.15em",
-    bottom: "4em",
-  },
-  bmMorphShape: {
-    fill: "#373a47",
-  },
-  bmItemList: {
-    color: "#b8b7ad",
-    padding: "0.8em",
-  },
-  bmItem: {
-    display: "inline-block",
-  },
-  bmOverlay: {
-    background: "rgba(0, 0, 0, 0.0)",
-  },
-};
 
 export default Header;

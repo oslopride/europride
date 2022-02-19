@@ -63,7 +63,7 @@ const Title = styled.h1`
   font-weight: 800;
   font-size: 84px;
   line-height: 86px;
-  background: ${({ theme }: any) => theme.gradients.purple}
+  background: ${({ theme }: any) => theme.gradients.purple};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
 `;
