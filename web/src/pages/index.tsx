@@ -1,13 +1,48 @@
 import type { NextPage } from "next";
 import styled from "@emotion/styled";
 import configuredSanityClient from "../sanity";
-import Img from "next/image";
 import CreateSanityImage from "../components/CreateSanityImage";
-import { useNextSanityImage } from "next-sanity-image";
 import SanityBlock from "../components/SanityBlock";
 import { StyledProps } from "../types/theme";
 
-const Home: NextPage = ({ data, partners }: any) => {
+interface ISizes {
+  [key: string]: number;
+}
+
+const getWidth = (type: string) => {
+  const SIZES: ISizes = {
+    owner: 250,
+    main: 200,
+    regular: 150,
+  };
+  return SIZES[type];
+};
+
+const createPartners = (partners: any, type: string) => {
+  return (
+    <PartnerItem>
+      <PartnerRow>
+        {partners
+          .filter((partner: any) => partner.type === type)
+          .map((partner: any) => {
+            return (
+              <PartnerImageWrapper
+                width={getWidth(partner.type)}
+                key={partner.name + partner.slug.current}
+              >
+                <CreateSanityImage
+                  url={partner?.image.asset}
+                  alt={partner?.name}
+                />
+              </PartnerImageWrapper>
+            );
+          })}
+      </PartnerRow>
+    </PartnerItem>
+  );
+};
+
+const Home: NextPage = ({ data, partners, config }: any) => {
   return (
     <>
       <Wrapper>
@@ -23,22 +58,14 @@ const Home: NextPage = ({ data, partners }: any) => {
           <SanityBlock blocks={data?.body.eng} />
         </BlockWrapper>
       </Wrapper>
-      <PartnerWrapper>
+      <PartnerContainer>
         <PartnerHeader>{data?.header?.partnerHeader?.eng}</PartnerHeader>
         <PartnerImagesWrapper>
-          {partners.map((partner: any) => {
-            console.log(partner.image);
-            return (
-              <PartnerImageWrapper key={partner.name + partner.slug.current}>
-                <CreateSanityImage
-                  url={partner.image.asset}
-                  alt={partner.name}
-                />
-              </PartnerImageWrapper>
-            );
-          })}
+          {createPartners(partners, "owner")}
+          {createPartners(partners, "main")}
+          {createPartners(partners, "regular")}
         </PartnerImagesWrapper>
-      </PartnerWrapper>
+      </PartnerContainer>
     </>
   );
 };
@@ -46,11 +73,15 @@ const Home: NextPage = ({ data, partners }: any) => {
 export const getServerSideProps = async () => {
   const data = await configuredSanityClient.fetch(`*[_type == "frontPage"][0]`);
   const partners = await configuredSanityClient.fetch(`*[_type == "partner"]`);
+  const config = await configuredSanityClient.fetch(
+    `*[_type == "webConfiguration"]`
+  );
   if (!data) {
     return {
       props: {
         data: [],
         partners: [],
+        config: [],
       },
     };
   } else {
@@ -58,6 +89,7 @@ export const getServerSideProps = async () => {
       props: {
         data: data,
         partners: partners,
+        config: config,
       },
     };
   }
@@ -82,15 +114,15 @@ const Wrapper = styled.div<StyledProps>`
 
 const Header = styled.h1`
   font-size: 40px;
-  background: ${({ theme }: StyledProps) => theme?.gradients?.greenYellow}
+  background: ${({ theme }: StyledProps) => theme?.gradients?.greenYellow};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
   @media (min-width: ${({ theme }: StyledProps) =>
-    theme?.breakpoints?.tablet}px) {
+      theme?.breakpoints?.tablet}px) {
     font-size: 60px;
   }
   @media (min-width: ${({ theme }: StyledProps) =>
-    theme?.breakpoints?.desktop}px) {
+      theme?.breakpoints?.desktop}px) {
     font-size: 80px;
   }
 `;
@@ -120,8 +152,8 @@ const HeroImageWrapper = styled.div`
   align-self: center;
 `;
 
-const PartnerWrapper = styled.div`
-  display: flex;
+const PartnerContainer = styled.div`
+  flex: 1;
   flex-direction: column;
   background: #f5f5f5;
   padding: 30px;
@@ -130,7 +162,26 @@ const PartnerWrapper = styled.div`
     padding: 63px;
   }
 }
-  width: 100%;
+`;
+
+const PartnerItem = styled.article`
+  margin-bottom: 20px;
+  border-bottom: 1px solid rgba(70, 70, 70, 0.5);
+  &:last-of-type {
+    border-bottom: none;
+    margin-bottom: 0px;
+  }
+`;
+
+const PartnerRow = styled.div`
+  display: flex;
+  flex-wrap: wrap;
+  flex-direction: row;
+  padding: 20px 0;
+  @media (min-width: ${({ theme }: StyledProps) =>
+      theme?.breakpoints?.tablet}px) {
+    flex-direction: row;
+  }
 `;
 
 const PartnerHeader = styled.p`
@@ -140,22 +191,14 @@ const PartnerHeader = styled.p`
   max-width: 1440px;
 `;
 
-const PartnerImagesWrapper = styled.div`
-  display: flex;
-  flex-direction: row;
-  flex: 0 0 40%;
-  flex-wrap: wrap;
-  width: 100%;
-  max-width: 1440px;
-`;
+const PartnerImagesWrapper = styled.div``;
 
-const PartnerImageWrapper = styled.div`
-  flex: 0 0 40%;
-  max-width: 250px;
+const PartnerImageWrapper = styled.div<{ width: number }>`
+  flex: 1;
+  max-width: ${({ width }) => width}px;
+  min-width: 150px;
   max-height: 150px;
-  height: 100%;
-  width: 100%;
-  margin: 0 20px 0 0;
+  margin-right: 10px;
 `;
 
 export default Home;
