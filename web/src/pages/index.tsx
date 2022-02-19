@@ -44,7 +44,7 @@ const Home: NextPage = ({ data, partners }: any) => {
 };
 
 export const getServerSideProps = async () => {
-  const data = await configuredSanityClient.fetch(`*[_id == "about"][0]`);
+  const data = await configuredSanityClient.fetch(`*[_type == "frontPage"][0]`);
   const partners = await configuredSanityClient.fetch(`*[_type == "partner"]`);
   if (!data) {
     return {

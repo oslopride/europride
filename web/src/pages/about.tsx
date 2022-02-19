@@ -111,7 +111,7 @@ const VolunteerWrapper = styled.div`
 `;
 
 export const getServerSideProps = async (pageContext: any) => {
-  const data = await configuredSanityClient.fetch(`*[_type == "about"][0]`);
+  const data = await configuredSanityClient.fetch(`*[_id == "about"][0]`);
   const volunteers = await configuredSanityClient.fetch(
     `*[_type == "volunteer"]`
   );
