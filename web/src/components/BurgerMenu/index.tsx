@@ -49,6 +49,9 @@ const MenuItem = styled.a<{ isSelected: boolean }>`
   color: #221f20;
   margin-bottom: 40px;
   border-bottom-style: solid;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
   border-bottom-width: ${({ isSelected }) => (isSelected ? 5 : 0)}px;
   border-image: ${({ theme }: any) => theme.gradients.orange + "1"};
 `;
