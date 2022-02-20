@@ -28,7 +28,7 @@ const Touchable = styled.button`
   transform: rotate(0deg);
   border-width: 4px;
   background-color: transparent;
-  border-image: ${({ gradient }) => gradient} 1 100%;
+  border-image: ${({ gradient }) => gradient};
   border-image-slice: 1;
   max-width: 100%;
   width: ${({ width }) => width}px;
@@ -53,7 +53,7 @@ const Touchable = styled.button`
     top: 0;
     bottom: 0;
     width: ${({ width }) => width}px;
-    background: ${({ gradient }) => gradient} 1 100%;
+    background: ${({ gradient }) => gradient};
     opacity: 0;
     z-index: -1;
     transition: opacity 0.3s;

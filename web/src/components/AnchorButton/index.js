@@ -15,7 +15,13 @@ const Border = styled.a`
   margin: 20px 0;
   border-bottom-style: solid;
   border-bottom-width: 5px;
-  border-image: linear-gradient(45deg, #f27323, #f9a61a) 1;
+  border-bottom-style: solid;
+  border-left: 0px;
+  border-right: 0px;
+  border-top: 0px;
+  border-bottom-width: ${({ isSelected }) => (isSelected ? 5 : 0)}px;
+  border-image-slice: 1;
+  border-image: ${({ theme }) => theme.gradients.orange + "1"};
 `;
 
 const Text = styled.p`
