@@ -35,5 +35,18 @@ export default {
       type: "string",
       validation: (Rule) => Rule.required(),
     }),
+    localize({
+      name: "bio",
+      title: "Bio",
+      type: "array",
+      of: [
+        {
+          title: "Block",
+          type: "block",
+          styles: [{ title: "Normal", value: "normal" }],
+          lists: [],
+        },
+      ],
+    }),
   ],
 };
