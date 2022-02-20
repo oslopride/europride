@@ -18,7 +18,6 @@ const Header = () => {
   const theme = useTheme();
   return data ? (
     <Outer>
-      <BurgerMenu />
       <Wrapper id="page-wrap">
         <Left>
           <GradientButton
@@ -40,6 +39,7 @@ const Header = () => {
           </a>
         </ImageWrapper>
         <DateText>{data?.date}</DateText>
+        <BurgerMenu />
       </Wrapper>
     </Outer>
   ) : null;

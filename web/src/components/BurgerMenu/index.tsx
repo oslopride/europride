@@ -16,13 +16,15 @@ const isSelected = (text: string) => {
 
 const getMenuItems = (items: any) => {
   return (
-    <MenuWrapper>
+    <>
       {items.map((item: any) => (
-        <MenuItem isSelected={isSelected(item.text)}>
-          <SanityLink link={item} title={item.text} />
-        </MenuItem>
+        <ItemWrapper>
+          <MenuItem isSelected={isSelected(item.text)}>
+            <SanityLink link={item} title={item.text} />
+          </MenuItem>
+        </ItemWrapper>
       ))}
-    </MenuWrapper>
+    </>
   );
 };
 
@@ -56,18 +58,13 @@ const MenuItem = styled.a<{ isSelected: boolean }>`
   border-image: ${({ theme }: any) => theme.gradients.orange + "1"};
 `;
 
-const MenuWrapper = styled.div`
+const ItemWrapper = styled.div`
   display: flex;
-  height: 100%;
-  justify-content: space-between;
 `;
 
 const styles = {
   bmBurgerButton: {
-    display: "flex",
-    left: "90%",
-    position: "absolute",
-    top: "50px",
+    position: "relative",
     width: "18px",
     height: "18px",
   },
@@ -75,7 +72,6 @@ const styles = {
     background: "#000",
   },
   bmCrossButton: {
-    flex: "1",
     height: "48px",
     width: "48px",
   },
@@ -85,12 +81,13 @@ const styles = {
   bmMenuWrap: {
     position: "fixed",
     height: "100%",
+    width: "auto",
+    bottom: "0",
   },
   bmMenu: {
     background: "#F5F5F5",
     height: "auto",
-    width: "100%",
-    padding: "2.5em 1.5em 0",
+    padding: "56px, 32px, 32px, 32px",
     fontSize: "1.15em",
     bottom: "4em",
   },
@@ -99,10 +96,8 @@ const styles = {
   },
   bmItemList: {
     color: "#b8b7ad",
-    padding: "0.8em",
-  },
-  bmItem: {
-    display: "inline-block",
+    padding: "1.5em 1em 1em 1em",
+    width: "351px",
   },
   bmOverlay: {
     background: "rgba(0, 0, 0, 0.0)",
