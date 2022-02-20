@@ -1,8 +1,8 @@
 import S from "@sanity/desk-tool/structure-builder";
-import { MdBusinessCenter } from "react-icons/md";
+import { MdPerson } from "react-icons/md";
 
 export default S.listItem()
   .title("Volunteer")
-  .icon(MdBusinessCenter)
+  .icon(MdPerson)
   .schemaType("volunteer")
   .child(S.documentTypeList("volunteer").title("Volunteer"));

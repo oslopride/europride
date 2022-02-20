@@ -6,13 +6,11 @@ import schemaTypes from "all:part:@sanity/base/schema-type";
 
 // We import object and document schemas
 import blockContent from "./blockContent";
-import category from "./category";
 import volunteer from "./volunteer";
 
 import frontPage from "./front-page";
 import page from "./page";
 import webConfiguration from "./web-configuration";
-import appConfiguration from "./app-configuration";
 import article from "./article";
 import articleArchive from "./article-archive";
 import partner from "./partner";
@@ -32,7 +30,6 @@ import collapsible from "./blocks/collapsible";
 import splitPane from "./blocks/split-pane";
 import quote from "./blocks/quote";
 import colorBlock from "./blocks/color-block";
-import author from "./author";
 
 // Types
 import externalLink from "./types/external-link";
@@ -49,7 +46,6 @@ export default createSchema({
   types: schemaTypes.concat([
     // The following are document types which will appear
     // in the studio.
-    category,
     // When added to this list, object types can be used as
     // { type: 'typename' } in other document schemas
     blockContent,
@@ -68,11 +64,9 @@ export default createSchema({
     splitPane,
     colorBlock,
     volunteer,
-    author,
 
     page,
     webConfiguration,
-    appConfiguration,
     article,
     articleArchive,
     event,
