@@ -172,26 +172,16 @@ export default {
       type: "object",
       fields: [
         {
-          name: "arena",
-          type: "reference",
-          to: { type: "arena" },
-        },
-        {
-          name: "venue",
-          type: "reference",
-          to: { type: "venue" },
-        },
-        {
           name: "address",
           type: "string",
         },
       ],
       validation: (Rule) =>
         Rule.required().custom((location) => {
-          const { arena, venue, address } = location;
+          const { address } = location;
 
-          if (!arena && !venue && !address) {
-            return "Address must be provided when no arena or venue are given";
+          if (!address) {
+            return "Address must be provided when no arena is given";
           }
 
           return true;

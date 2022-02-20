@@ -20,7 +20,6 @@ export default {
         { type: "articleArchive" },
         { type: "program" },
         { type: "partners" },
-        { type: "livestream" },
         { type: "about" },
       ],
       validation: (Rule) => Rule.required(),
