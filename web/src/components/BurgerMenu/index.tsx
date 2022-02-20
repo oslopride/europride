@@ -7,7 +7,6 @@ import SanityLink from "../../components/SanityLink";
 
 const isSelected = (text: string) => {
   const slug = location.pathname.split("/").slice(1)[0];
-  console.log({ text, slug });
   if (slug === "" && text === "Home") {
     return true;
   }
@@ -18,7 +17,7 @@ const getMenuItems = (items: any) => {
   return (
     <>
       {items.map((item: any) => (
-        <ItemWrapper>
+        <ItemWrapper key={item.text}>
           <MenuItem isSelected={isSelected(item.text)}>
             <SanityLink link={item} title={item.text} />
           </MenuItem>
@@ -42,7 +41,7 @@ const BurgerMenu = () => {
   );
 };
 
-const MenuItem = styled.a<{ isSelected: boolean }>`
+const MenuItem = styled.div<{ isSelected: boolean }>`
   display: flex;
   font-style: normal;
   font-weight: bold;

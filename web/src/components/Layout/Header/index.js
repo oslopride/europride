@@ -86,7 +86,7 @@ const Left = styled.div`
   }
 `;
 
-const DateText = styled.text`
+const DateText = styled.p`
   display: none;
   font-size: 20px;
   font-weight: bold;
