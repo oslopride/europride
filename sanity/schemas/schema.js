@@ -34,6 +34,7 @@ import colorBlock from "./blocks/color-block";
 // Types
 import externalLink from "./types/external-link";
 import internalLink from "./types/internal-link";
+import colors from "./types/colors";
 import youtube from "./types/youtube";
 import iframe from "./types/iframe";
 
@@ -54,6 +55,7 @@ export default createSchema({
     internalLink,
     youtube,
     iframe,
+    colors,
     blocks,
     announcement,
     advertisement,

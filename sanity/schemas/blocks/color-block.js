@@ -16,7 +16,7 @@ export default {
     {
       name: "color",
       title: "Color",
-      type: "string",
+      type: "colors",
     },
     {
       type: "array",

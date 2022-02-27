@@ -30,7 +30,7 @@ const Footer = () => {
       <Row>
         <ColorBlockWrapper>
           {footer.colorBlock.map((block) => {
-            const color = block.color;
+            const color = block.color.category;
             return (
               <ColorBlockButton
                 key={block.text.eng}
