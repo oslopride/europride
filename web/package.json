@@ -30,7 +30,7 @@
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {
-    "@netlify/plugin-nextjs": "^4.0.0-beta.11",
+    "@netlify/plugin-nextjs": "^4.2.7",
     "@types/react": "17.0.32",
     "@types/styled-components": "^5.1.15",
     "eslint": "8.1.0",
