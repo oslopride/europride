@@ -1,14 +1,19 @@
 import styled from "@emotion/styled";
+import Link from "next/link";
 
-const AnchorButton = ({ text, href }) => {
+const ExternalLinkButton = ({ text, href }) => {
   return (
-    <Border href={href}>
-      <Text>{text}</Text>
-    </Border>
+    <Link href={href}>
+      <a>
+        <Border>
+          <Text>{text}</Text>
+        </Border>
+      </a>
+    </Link>
   );
 };
 
-export default AnchorButton;
+export default ExternalLinkButton;
 
 const Border = styled.div`
   display: flex;

@@ -30,7 +30,7 @@ export default {
   ],
   fields: [
     {
-      title: "Official Oslo Pride Event",
+      title: "Official Belgrade Pride Event",
       name: "official",
       type: "boolean",
       validation: (Rule) => Rule.required(),
@@ -151,7 +151,7 @@ export default {
     {
       name: "eventLink",
       description: "URL to the event website (e.g. facebook, youtube etc)",
-      type: "url",
+      type: "externalLink",
     },
     {
       name: "organizer",

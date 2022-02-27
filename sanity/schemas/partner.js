@@ -1,5 +1,5 @@
 import { MdBusinessCenter } from "react-icons/md";
-import { getDefaultLanguage, localize } from "../utils/locale";
+import { localize } from "../utils/locale";
 
 export default {
   title: "Partner",
@@ -60,7 +60,7 @@ export default {
     {
       name: "url",
       title: "Partner's website",
-      type: "url",
+      type: "externalLink",
       validation: (Rule) => Rule.required(),
     },
     {

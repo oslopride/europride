@@ -13,7 +13,11 @@ const Event = ({ event }: any) => {
       )}`}</Time>
       <SanityBlock blocks={event.description.eng} />
       <Spacer />
-      <GradientButton link={event.eventLink} title="Read more" width={170} />
+      <GradientButton
+        href={event.eventLink.url}
+        title={event.eventLink.text.eng}
+        width={170}
+      />
     </Wrapper>
   );
 };

@@ -5,21 +5,22 @@ import styled from "@emotion/styled";
 import configuredSanityClient, { isEmptyResult } from "../../sanity";
 import SanityLink from "../../components/SanityLink";
 
-const isSelected = (text: string) => {
+const isSelected = (text = "") => {
   const slug = location.pathname.split("/").slice(1)[0];
   if (slug === "" && text === "Home") {
     return true;
   }
-  return slug === text.toLowerCase();
+  return slug === text?.toLowerCase();
 };
 
 const getMenuItems = (items: any) => {
+  console.log("items", items);
   return (
     <>
       {items.map((item: any) => (
-        <ItemWrapper key={item.text}>
-          <MenuItem isSelected={isSelected(item.text)}>
-            <SanityLink link={item} title={item.text} />
+        <ItemWrapper key={item._key}>
+          <MenuItem isSelected={isSelected(item.text.eng)}>
+            <SanityLink href={item} title={item.text.eng} />
           </MenuItem>
         </ItemWrapper>
       ))}

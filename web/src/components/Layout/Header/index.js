@@ -21,8 +21,8 @@ const Header = () => {
       <Wrapper id="page-wrap">
         <Left>
           <GradientButton
-            title={data?.footer.donateButton}
-            href={data?.footer.donateLink}
+            title={data?.footer.donateLink[0].text.eng}
+            href={data?.footer.donateLink[0].url}
           />
           <SocialsWrapper>
             <Socials

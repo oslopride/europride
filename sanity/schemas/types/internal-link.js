@@ -1,14 +1,16 @@
+import { localize } from "../../utils/locale";
+
 export default {
   title: "Internal Link",
   name: "internalLink",
   type: "object",
   fields: [
-    {
+    localize({
       title: "Text",
       name: "text",
       type: "string",
       validation: (Rule) => Rule.required(),
-    },
+    }),
     {
       title: "URL",
       name: "url",

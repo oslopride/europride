@@ -18,12 +18,6 @@ export default {
             type: "string",
             validation: (Rule) => Rule.required(),
           },
-          {
-            name: "donateButton",
-            title: "Donate Button",
-            type: "string",
-            validation: (Rule) => Rule.required(),
-          },
         ],
       },
       (lang, Rule) => (lang.isDefault ? Rule.required() : undefined)
@@ -56,7 +50,7 @@ export default {
           {
             name: "donateLink",
             title: "Donate Link",
-            type: "string",
+            type: "externalLink",
             validation: (Rule) => Rule.required(),
           },
           {

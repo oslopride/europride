@@ -6,7 +6,7 @@ export const GradientButton = ({
   title = "",
   backgroundColor = "#FFF",
   titleColor = "#000",
-  link = "/",
+  href = "/",
   width = 101,
   gradient = "orange",
 }) => {
@@ -17,7 +17,7 @@ export const GradientButton = ({
       backgroundColor={backgroundColor}
     >
       <Title textColor={titleColor} backgroundColor={backgroundColor}>
-        <SanityLink link={link} title={title} />
+        <SanityLink href={href} title={title} />
       </Title>
     </Touchable>
   );

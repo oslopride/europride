@@ -26,32 +26,32 @@ export default {
     {
       title: "Partner program link",
       name: "partnerProgramLink",
-      type: "internalLink",
+      type: "externalLink",
     },
-    localize({
+    {
       title: "Call to action",
       name: "callToAction",
       type: "object",
       fields: [
-        {
+        localize({
           name: "title",
           title: "Title",
           type: "string",
           validation: (Rule) => Rule.required(),
-        },
-        {
+        }),
+        localize({
           title: "Description",
           name: "description",
           type: "array",
           of: [{ type: "block" }],
-        },
+        }),
         {
           title: "Link",
           name: "link",
-          type: "internalLink",
+          type: "externalLink",
         },
       ],
-    }),
+    },
   ],
   preview: {
     prepare: () => ({ title: "Partners" }),

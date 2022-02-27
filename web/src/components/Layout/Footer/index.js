@@ -25,18 +25,20 @@ const Footer = () => {
     (query) => configuredSanityClient.fetch(query)
   );
   const footer = data?.footer;
+  console.log(footer);
   return footer ? (
     <Outer>
       <Row>
         <ColorBlockWrapper>
           {footer.colorBlock.map((block) => {
             const color = block.color.category;
+            const url = block.link[0];
             return (
               <ColorBlockButton
-                key={block.text.eng}
+                key={url._key}
                 color={theme.colors[color]}
-                title={block.text.eng}
-                linkTo={block.link.url}
+                title={url.text.eng}
+                linkTo={url.url_key}
               />
             );
           })}
@@ -53,9 +55,9 @@ const Footer = () => {
             <Title>{footer.emailTitle.eng}</Title>
             <Email href={`mailto:${footer.email}`}>{footer.email}</Email>
             <GradientButton
-              title="Donate"
+              title={footer.donateLink[0].text.eng}
               backgroundColor={theme?.colors?.neutralGray}
-              href={footer.donateLink}
+              href={footer.donateLink[0].url}
               width={101}
             />
           </Column>
@@ -69,9 +71,9 @@ const Footer = () => {
             <ShortcutsWrapper>
               {footer.shortcuts.map((s, i) => (
                 <SimpleButton
-                  key={s.text + i}
+                  key={s.text.eng + i}
                   link={s}
-                  title={s.text}
+                  title={s.text.eng}
                   width={150}
                 />
               ))}

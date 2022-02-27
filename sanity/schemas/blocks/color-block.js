@@ -5,14 +5,6 @@ export default {
   title: "Color Block",
   type: "object",
   fields: [
-    localize(
-      {
-        name: "text",
-        title: "Text",
-        type: "string",
-      },
-      (lang, Rule) => lang.isDefault && Rule.required()
-    ),
     {
       name: "color",
       title: "Color",

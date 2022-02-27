@@ -3,7 +3,7 @@ import configuredSanityClient from "../../sanity";
 import useSWR from "swr";
 import groq from "groq";
 
-interface linkProps {
+interface hrefProps {
   url: {
     _type: string;
     _ref: string;
@@ -11,16 +11,20 @@ interface linkProps {
 }
 
 interface IProps {
-  link: linkProps;
+  href: hrefProps;
   title: string;
 }
 
-const SanityLink = ({ link, title = "" }: IProps) => {
+/**  Pass the entire url object as href into this component */
+const SanityLink = ({ href, title = "" }: IProps) => {
   const { data, error } = useSWR(
-    groq`*[_id == "${link?.url?._ref}"][0]._type`,
+    groq`*[_id == "${href?.url?._ref}"][0]._type`,
     async (query) => await configuredSanityClient.fetch(query)
   );
   const getSlug = () => {
+    if (typeof href === "string") {
+      return href;
+    }
     if (data === "frontPage") {
       return "/";
     }

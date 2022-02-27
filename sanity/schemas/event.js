@@ -264,7 +264,7 @@ export default {
     {
       name: "eventWebsite",
       description: "URL to the event website, usually facebook",
-      type: "url",
+      type: "externalLink",
     },
     {
       name: "organizer",

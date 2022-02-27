@@ -73,12 +73,6 @@ export default {
           validation: (Rule) => Rule.required(),
         },
         {
-          name: "donateButton",
-          title: "Donate Button",
-          type: "string",
-          validation: (Rule) => Rule.required(),
-        },
-        {
           name: "colorBlock",
           title: "Color Block",
           type: "array",
