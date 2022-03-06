@@ -46,6 +46,5 @@ const Time = styled.p`
   display: flex;
   flex: 1;
   font-size: 24px;
-  margin-bottom: 10px;
   line-height: 39px;
 `;

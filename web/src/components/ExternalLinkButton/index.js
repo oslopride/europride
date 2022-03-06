@@ -23,7 +23,7 @@ const Border = styled.div`
   border-top: 0px;
   border-bottom-style: solid;
   border-bottom-width: 5px;
-  border-image: ${({ theme }) => theme.gradients.orange + "1"};
+  border-image: ${({ theme }) => theme.gradients.green + "1"};
   margin: 15px 0;
 `;
 

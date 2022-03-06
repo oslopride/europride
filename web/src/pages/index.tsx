@@ -56,7 +56,6 @@ const Wrapper = styled.div<StyledProps>`
   flex: 1;
   display: flex;
   flex-direction: column;
-  max-width: 1280px;
   margin: 0 auto;
   padding: 24px;
   align-self: center;

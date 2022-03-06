@@ -1,4 +1,3 @@
-import type { AppProps } from "next/app";
 import { useEffect } from "react";
 import theme from "../../styles/theme";
 import { normalize } from "polished";

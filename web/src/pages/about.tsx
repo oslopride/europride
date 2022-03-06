@@ -59,7 +59,6 @@ const Wrapper = styled.div`
 `;
 
 const TopWrapper = styled.div`
-  max-width: 1280px;
   width: 100%;
   align-self: center;
   margin-bottom: 30px;
@@ -89,7 +88,6 @@ const Subheader = styled.div`
 
 const ImageWrapper = styled.div`
   width: 100%;
-  max-width: 1280px;
   align-self: center;
 `;
 
@@ -103,11 +101,7 @@ const VolunteerWrapper = styled.div`
   display: flex;
   flex-direction: row;
   flex-wrap: wrap;
-  width: 100%;
-  align-self: center;
   margin-top: 20px;
-  max-width: 1200px;
-  justify-content: center;
 `;
 
 export const getServerSideProps = async (pageContext: any) => {

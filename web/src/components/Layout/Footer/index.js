@@ -11,13 +11,6 @@ import configuredSanityClient from "../../../sanity";
 import useSWR from "swr";
 import groq from "groq";
 
-/**  TODO - put all placeholder text in sanity
- *    add socials
- *    move out of SWR
- *   DRY map of elements
- * Home component
- */
-
 const Footer = () => {
   const theme = useTheme();
   const { data, error } = useSWR(
@@ -25,7 +18,6 @@ const Footer = () => {
     (query) => configuredSanityClient.fetch(query)
   );
   const footer = data?.footer;
-  console.log(footer);
   return footer ? (
     <Outer>
       <Row>

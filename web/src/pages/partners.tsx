@@ -14,7 +14,6 @@ const Partners = ({ data, partners }: any) => {
       </Wrapper>
     );
   }
-  console.log(partners);
   return (
     <Wrapper>
       <Title>{partners?.title?.eng}</Title>

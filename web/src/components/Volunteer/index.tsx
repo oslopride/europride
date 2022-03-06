@@ -2,9 +2,9 @@ import styled from "@emotion/styled";
 import CreateSanityImage from "../CreateSanityImage";
 import { StyledProps } from "../../types/theme";
 
-const Volunteer = ({ volunteer, index }: any) => {
+const Volunteer = ({ volunteer }: any) => {
   return (
-    <Wrapper index={index}>
+    <Wrapper>
       <VolunteerWrapper>
         <ImageWrapper>
           <CreateSanityImage
@@ -23,31 +23,30 @@ const Volunteer = ({ volunteer, index }: any) => {
 
 export default Volunteer;
 
-const Wrapper = styled.div<{ index: number }>`
-  display: flex;
-  margin: ${({ index }: any) =>
-    index % 4 === 0 ? "20px 0 0 0;" : "20px 20px 0 0"};
-  flex: 0 0 20%;
+const Wrapper = styled.div`
+  flex: 1 0 90%;
+  margin: 10px;
+  @media (min-width: ${({ theme }: StyledProps) =>
+      theme?.breakpoints?.tablet}px) {
+    flex: 0 0 45%;
+    margin: 15px;
+  }
   @media (min-width: ${({ theme }: StyledProps) =>
       theme?.breakpoints?.desktop}px) {
-    flex: 0 0 30%;
-    margin: ${({ index }: any) =>
-      index % 3 === 0 ? "20px 0 0 0;" : "20px 20px 0 0"};
+    flex: 0 0 28%;
+    margin: 20px;
   }
 `;
 
 const VolunteerWrapper = styled.div`
-  flex: 0 0 20%;
+  flex: 1;
   flex-direction: column;
-  justify-content: space-between;
+  align-self: center;
   flex-wrap: wrap;
-  @media (min-width: ${({ theme }: StyledProps) =>
-      theme?.breakpoints?.desktop}px) {
-    flex: 1;
-  }
 `;
 
 const Name = styled.p`
+  display: flex;
   font-style: normal;
   font-weight: bold;
   font-size: 32px;

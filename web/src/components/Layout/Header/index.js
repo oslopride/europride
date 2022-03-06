@@ -38,8 +38,10 @@ const Header = () => {
             <Image src={logo} width={153} height={117} />
           </a>
         </ImageWrapper>
-        <DateText>{data?.date}</DateText>
-        <BurgerMenu />
+        <Right>
+          <DateText>{data?.date}</DateText>
+          <BurgerMenu />
+        </Right>
       </Wrapper>
     </Outer>
   ) : null;
@@ -86,10 +88,17 @@ const Left = styled.div`
   }
 `;
 
+const Right = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+`;
+
 const DateText = styled.p`
   display: none;
   font-size: 20px;
   font-weight: bold;
+  margin-right: 40px;
   color: #049648;
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     display: flex;

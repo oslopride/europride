@@ -10,7 +10,7 @@ const AnchorButton = ({ text, href }) => {
 
 export default AnchorButton;
 
-const Border = styled.div`
+const Border = styled.a`
   display: flex;
   width: 80px;
   border-left: 0px;
