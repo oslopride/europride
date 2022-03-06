@@ -72,6 +72,12 @@ export default {
           type: "string",
           validation: (Rule) => Rule.required(),
         },
+        localize({
+          name: "menuHeader",
+          title: "Menu header",
+          type: "string",
+          validation: (Rule) => Rule.required(),
+        }),
         {
           name: "colorBlock",
           title: "Color Block",

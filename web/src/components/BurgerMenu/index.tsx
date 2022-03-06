@@ -1,4 +1,5 @@
 import { slide as Menu } from "react-burger-menu";
+import { useState } from "react";
 import useSWR from "swr";
 import groq from "groq";
 import styled from "@emotion/styled";
@@ -13,34 +14,50 @@ const isSelected = (text = "") => {
   return slug === text?.toLowerCase();
 };
 
-const getMenuItems = (items: any) => {
-  console.log("items", items);
-  return (
-    <>
-      {items.map((item: any) => (
-        <ItemWrapper key={item._key}>
-          <MenuItem isSelected={isSelected(item.text.eng)}>
-            <SanityLink href={item} title={item.text.eng} />
-          </MenuItem>
-        </ItemWrapper>
-      ))}
-    </>
-  );
-};
+interface BMState {
+  [key: string]: boolean;
+}
 
 const BurgerMenu = () => {
+  const [menuState, setMenuState] = useState(false);
   const { data, error } = useSWR(
     groq`*[_type == 'webConfiguration'][0]`,
     (query) => configuredSanityClient.fetch(query)
   );
   if (error) return null;
+
   const items = data.footer.shortcuts;
+  const header = data.footer.menuHeader.eng;
   return (
-    <Menu right styles={styles} pageWrapId={"page-wrap"}>
-      {getMenuItems(items)}
+    <Menu
+      isOpen={menuState}
+      onStateChange={(state: BMState) => setMenuState(state.isOpen)}
+      right
+      styles={styles}
+      pageWrapId={"page-wrap"}
+    >
+      <>
+        <MenuHeader>{header.toUpperCase()}</MenuHeader>
+        {items.map((item: any) => (
+          <ItemWrapper key={item._key}>
+            <MenuItem
+              onClick={() => setMenuState(false)}
+              isSelected={isSelected(item.text.eng)}
+            >
+              <SanityLink href={item} title={item.text.eng} />
+            </MenuItem>
+          </ItemWrapper>
+        ))}
+      </>
     </Menu>
   );
 };
+
+const MenuHeader = styled.span`
+  font-style: normal;
+  font-weight: 600;
+  font-size: 24px;
+`;
 
 const MenuItem = styled.div<{ isSelected: boolean }>`
   display: flex;
@@ -58,7 +75,7 @@ const MenuItem = styled.div<{ isSelected: boolean }>`
   border-image: ${({ theme }: any) => theme.gradients.orange + "1"};
 `;
 
-const ItemWrapper = styled.div`
+const ItemWrapper = styled.span`
   display: flex;
 `;
 
@@ -68,14 +85,13 @@ const styles = {
     width: "18px",
     height: "18px",
   },
-  bmBurgerBars: {
-    background: "#000",
-  },
+  bmBurgerBars: { background: "#000" },
   bmCrossButton: {
     height: "48px",
     width: "48px",
   },
   bmCross: {
+    flex: "1",
     background: "#000",
   },
   bmMenuWrap: {
@@ -87,12 +103,6 @@ const styles = {
   bmMenu: {
     background: "#F5F5F5",
     height: "auto",
-    padding: "56px, 32px, 32px, 32px",
-    fontSize: "1.15em",
-    bottom: "4em",
-  },
-  bmMorphShape: {
-    fill: "#373a47",
   },
   bmItemList: {
     color: "#b8b7ad",
