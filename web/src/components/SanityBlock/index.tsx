@@ -42,7 +42,7 @@ const SanityBlock = ({ blocks }: any) => {
 const Margin = styled.div`
   margin-top: 48px 0;
   @media (min-width: ${({ theme }: StyledProps) =>
-      theme!.breakpoints.tablet}px) {
+      theme?.breakpoints?.tablet}px) {
     margin-top: 80px;
   }
 `;
