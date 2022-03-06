@@ -1445,6 +1445,26 @@
   resolved "https://registry.yarnpkg.com/@popperjs/core/-/core-2.10.2.tgz#0798c03351f0dea1a5a4cabddf26a55a7cbee590"
   integrity sha512-IXf3XA7+XyN7CP9gGh/XB0UxVMlvARGEgGXLubFICsUMGz6Q+DU+i4gGlpOxTjKvXjkJDJC8YdqdKkDj9qZHEQ==
 
+"@portabletext/react@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@portabletext/react/-/react-1.0.3.tgz#44bc66ccf30c4ea18fc7e08fafd69bc2b6e7d00c"
+  integrity sha512-gZk8d5xHXQSsABTyOnh0YSC/bjKCJAEPhdgfjW0xH9L0HCU/eUhteEHVBSbsIO4oUMeNTCXJ/r/ar71TWcGltw==
+  dependencies:
+    "@portabletext/toolkit" "^1.0.4"
+    "@portabletext/types" "^1.0.3"
+
+"@portabletext/toolkit@^1.0.4":
+  version "1.0.4"
+  resolved "https://registry.yarnpkg.com/@portabletext/toolkit/-/toolkit-1.0.4.tgz#0187397655eee3a4924ace8cf2a364e15db60df7"
+  integrity sha512-r8xMn8HYWAlNBjS7H5lpegWQM7izs0mAW9c6DnleyJSH92xyTyaiVbDIRePEViWlMgRtBzcO9mlRmOBwvbdG0Q==
+  dependencies:
+    "@portabletext/types" "^1.0.3"
+
+"@portabletext/types@^1.0.3":
+  version "1.0.3"
+  resolved "https://registry.yarnpkg.com/@portabletext/types/-/types-1.0.3.tgz#b23f832ae5331c1d864195a95eba34abf340597e"
+  integrity sha512-SDDsdury2SaTI2D5Ea6o+Y39SSZMYHRMWJHxkxYl3yzFP0n/0EknOhoXcoaV+bxGr2dTTqZi2TOEj+uWYuavSw==
+
 "@reach/auto-id@^0.13.2":
   version "0.13.2"
   resolved "https://registry.yarnpkg.com/@reach/auto-id/-/auto-id-0.13.2.tgz#6c7fe7142285707b0f38b2f556f32accb467df32"
@@ -1562,23 +1582,22 @@
     nanoid "^3.1.12"
     rxjs "^6.4.0"
 
-"@sanity/block-content-to-hyperscript@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@sanity/block-content-to-hyperscript/-/block-content-to-hyperscript-3.0.0.tgz#a8437b608daac9b7cc4124c490d345fa84d4a267"
-  integrity sha512-uoXWLdFY5LqO8A9sFJqnZWWDCBC+0r3Egeh0bwKQ2EK2Vil5L40iJGNXMZhDB8BnvH+6B4155SU8Q3vY59T6pA==
+"@sanity/block-content-to-hyperscript@^2.0.5":
+  version "2.0.10"
+  resolved "https://registry.yarnpkg.com/@sanity/block-content-to-hyperscript/-/block-content-to-hyperscript-2.0.10.tgz#9cf805c5d2341d043bcab8b3740c9b3466b5ae6b"
+  integrity sha512-xT3iEmZkK0fvO5PDFpn9GMWGfvOopvbrRCBU48XxpFoTxRrfsHhxbRy8J0eND1HGXHUENkIKv5jbohtGd1MiVg==
   dependencies:
     "@sanity/generate-help-url" "^0.140.0"
     "@sanity/image-url" "^0.140.15"
     hyperscript "^2.0.2"
     object-assign "^4.1.1"
 
-"@sanity/block-content-to-react@^3.0.0":
-  version "3.0.0"
-  resolved "https://registry.yarnpkg.com/@sanity/block-content-to-react/-/block-content-to-react-3.0.0.tgz#1deac74763540fdf61b14ad52fb1a01b35d60453"
-  integrity sha512-oHPLlIsulsnL3ITs93RIvUPBI6nAeoSFOUf16vX4T7z4wWywxP39N1DF9mAx2tV6Kjr1fJAx5GF7zfiMXYLaqA==
+"@sanity/block-content-to-markdown@^0.0.5":
+  version "0.0.5"
+  resolved "https://registry.yarnpkg.com/@sanity/block-content-to-markdown/-/block-content-to-markdown-0.0.5.tgz#a4f13780782382782187010bf2ca20a881767ae5"
+  integrity sha512-wnBfusG67TU2+MXcDSNDtEdE5MMYXQ9t5hHtU+0dQ2MUHPbF6FfX0nfX0IvjfNWGpMEniCOtmJR0k71maO9zYA==
   dependencies:
-    "@sanity/block-content-to-hyperscript" "^3.0.0"
-    prop-types "^15.6.2"
+    "@sanity/block-content-to-hyperscript" "^2.0.5"
 
 "@sanity/block-tools@2.21.5":
   version "2.21.5"
