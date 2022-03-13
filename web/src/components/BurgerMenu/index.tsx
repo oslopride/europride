@@ -53,10 +53,11 @@ const BurgerMenu = () => {
   );
 };
 
-const MenuHeader = styled.span`
+const MenuHeader = styled.p`
   font-style: normal;
   font-weight: 600;
   font-size: 24px;
+  margin-bottom: 20px;
 `;
 
 const MenuItem = styled.div<{ isSelected: boolean }>`

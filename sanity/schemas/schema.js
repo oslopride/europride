@@ -11,8 +11,7 @@ import volunteer from "./volunteer";
 import frontPage from "./front-page";
 import page from "./page";
 import webConfiguration from "./web-configuration";
-import article from "./article";
-import articleArchive from "./article-archive";
+import articles from "./articles";
 import partner from "./partner";
 import event from "./event";
 import program from "./program";
@@ -69,8 +68,7 @@ export default createSchema({
 
     page,
     webConfiguration,
-    article,
-    articleArchive,
+    articles,
     event,
     program,
     partner,

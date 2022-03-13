@@ -17,9 +17,8 @@ export default {
       type: "reference",
       to: [
         { type: "page" },
-        { type: "article" },
         { type: "frontPage" },
-        { type: "articleArchive" },
+        { type: "articles" },
         { type: "program" },
         { type: "partners" },
         { type: "about" },

@@ -4,7 +4,7 @@ import { StyledProps } from "../../types/theme";
 
 const Volunteer = ({ volunteer }: any) => {
   return (
-    <Wrapper>
+    <Flex>
       <VolunteerWrapper>
         <ImageWrapper>
           <CreateSanityImage
@@ -17,13 +17,13 @@ const Volunteer = ({ volunteer }: any) => {
         <Role>{volunteer.role.eng}</Role>
         <Email href={`mailto:${volunteer.email}`}>{volunteer.email}</Email>
       </VolunteerWrapper>
-    </Wrapper>
+    </Flex>
   );
 };
 
 export default Volunteer;
 
-const Wrapper = styled.div`
+const Flex = styled.div`
   flex: 1 0 90%;
   margin: 10px;
   @media (min-width: ${({ theme }: StyledProps) =>
