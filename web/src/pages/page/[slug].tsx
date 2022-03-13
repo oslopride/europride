@@ -1,5 +1,3 @@
-import type { NextPage } from "next";
-import styled from "@emotion/styled";
 import configuredSanityClient from "../../sanity";
 import CreateSanityImage from "../../components/CreateSanityImage";
 import SanityBlock from "../../components/SanityBlock";
@@ -12,22 +10,21 @@ import {
 } from "../../components/common";
 
 const Page = ({ page }: any) => {
-  const { body, header } = page;
   if (!page) {
     return <ErrorNotFound />;
   }
   return (
     <Wrapper>
-      <Header>{header.eng.title}</Header>
-      <Subheader>{header.eng.subtitle}</Subheader>
+      <Header>{page.header.eng.title}</Header>
+      <Subheader>{page.header.eng.subtitle}</Subheader>
       <ImageWrapper>
         <CreateSanityImage
-          url={header.eng.image.asset}
-          alt={header.eng.title}
+          url={page.header.eng.image.asset}
+          alt={page.header.eng.title}
         />
       </ImageWrapper>
       <ImageWrapper></ImageWrapper>
-      <SanityBlock blocks={body.eng} />
+      <SanityBlock blocks={page.body.eng} />
     </Wrapper>
   );
 };
