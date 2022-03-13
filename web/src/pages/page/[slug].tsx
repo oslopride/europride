@@ -12,9 +12,7 @@ import {
 } from "../../components/common";
 
 const Page = ({ page }: any) => {
-  console.log(page);
   const { body, header } = page;
-  console.log(body);
   if (!page) {
     return <ErrorNotFound />;
   }

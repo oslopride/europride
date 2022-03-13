@@ -5,7 +5,6 @@ import Link from "next/link";
 
 const Thumbnail = ({ articles }) => {
   const sorted = sortByDate(articles);
-  console.log(articles, sorted);
   return articles.map((a) => {
     return (
       <Link href={"/page/" + encodeURIComponent(a?.slug?.current)}>

@@ -5,7 +5,6 @@ import Thumbnail from "../components/Thumbnail";
 import { Wrapper, Header, Subheader } from "../components/common";
 
 const Articles = ({ data, articles }: any) => {
-  console.log(articles);
   if (!data) {
     return (
       <Wrapper>
