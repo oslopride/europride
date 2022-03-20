@@ -12,7 +12,7 @@ interface IProps {
   };
   children?: any;
   containerStyle?: CSS.Properties;
-  title: {
+  title?: {
     eng: string;
     srp: string;
   };
