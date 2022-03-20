@@ -8,9 +8,9 @@ export const SimpleButton = ({
 }) => {
   return (
     <Touchable>
-      <Title textColor={titleColor}>
-        <SanityLink href={link} title={title} />
-      </Title>
+      <SanityLink href={link}>
+        <Title textColor={titleColor}>{title}</Title>
+      </SanityLink>
     </Touchable>
   );
 };

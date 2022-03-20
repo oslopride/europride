@@ -4,7 +4,7 @@ import useSWR from "swr";
 import groq from "groq";
 import styled from "@emotion/styled";
 import configuredSanityClient, { isEmptyResult } from "../../sanity";
-import SanityLink from "../../components/SanityLink";
+import SanityLink from "../SanityLink";
 
 const isSelected = (text = "") => {
   const slug = location.pathname.split("/").slice(1)[0];
@@ -40,12 +40,14 @@ const BurgerMenu = () => {
         <MenuHeader>{header.toUpperCase()}</MenuHeader>
         {items.map((item: any) => (
           <ItemWrapper key={item._key}>
-            <MenuItem
-              onClick={() => setMenuState(false)}
-              isSelected={isSelected(item.text.eng)}
-            >
-              <SanityLink href={item} title={item.text.eng} />
-            </MenuItem>
+            <SanityLink href={item}>
+              <MenuItem
+                onClick={() => setMenuState(false)}
+                isSelected={isSelected(item.text.eng)}
+              >
+                {item.text.eng}
+              </MenuItem>
+            </SanityLink>
           </ItemWrapper>
         ))}
       </>
@@ -103,11 +105,11 @@ const styles = {
   },
   bmMenu: {
     background: "#F5F5F5",
-    height: "auto",
+    height: "100vh",
   },
   bmItemList: {
     color: "#b8b7ad",
-    padding: "1.5em 1em 1em 1em",
+    padding: "2em",
     width: "351px",
   },
   bmOverlay: {

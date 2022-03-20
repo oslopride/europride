@@ -20,10 +20,10 @@ const Header = () => {
     <Outer>
       <Wrapper id="page-wrap">
         <Left>
-          <GradientButton
+          {/* <GradientButton
             title={data?.footer.donateLink[0].text.eng}
             href={data?.footer.donateLink[0].url}
-          />
+          /> */}
           <SocialsWrapper>
             <Socials
               data={data.socials}
@@ -49,20 +49,20 @@ const Header = () => {
 
 const Outer = styled.div`
   flex-direction: row;
+  margin: 0 12px 12px 12px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    margin: 0 24px 24px 24px;
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+    margin: 0 80px 80px 80px;
+  }
 `;
 
 const Wrapper = styled.div`
-  margin: 12px;
   display: flex;
   max-width: 100%;
   justify-content: space-between;
   align-items: center;
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    margin: 0 24px 12px 24px;
-  }
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
-    margin: 0 80px 24px 80px;
-  }
 `;
 
 const ImageWrapper = styled(Link)`
@@ -74,7 +74,7 @@ const ImageWrapper = styled(Link)`
 
 const SocialsWrapper = styled.div`
   display: none;
-  justify-content: space-evenly;
+  justify-content: space-between;
   width: 150px;
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     display: flex;

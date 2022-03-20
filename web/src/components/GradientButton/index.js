@@ -11,15 +11,17 @@ export const GradientButton = ({
   gradient = "orange",
 }) => {
   return (
-    <Touchable
-      gradient={theme.gradients[gradient]}
-      width={width}
-      backgroundColor={backgroundColor}
-    >
-      <Title textColor={titleColor} backgroundColor={backgroundColor}>
-        <SanityLink href={href} title={title} />
-      </Title>
-    </Touchable>
+    <SanityLink href={href}>
+      <Touchable
+        gradient={theme.gradients[gradient]}
+        width={width}
+        backgroundColor={backgroundColor}
+      >
+        <Title textColor={titleColor} backgroundColor={backgroundColor}>
+          {title}
+        </Title>
+      </Touchable>
+    </SanityLink>
   );
 };
 

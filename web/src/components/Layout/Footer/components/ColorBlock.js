@@ -2,29 +2,32 @@ import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
-import Link from "next/link";
+import SanityLink from "../../../SanityLink";
 
 const ColorBlockButton = ({ color = "#fff", title, linkTo = "/" }) => {
   const theme = useTheme();
   return (
-    <Link href={linkTo}>
+    <SanityLink
+      containerStyle={{ display: "flex", width: "100%" }}
+      href={linkTo}
+    >
       <Block color={color}>
-        <Title>{title}</Title>
-        <FontAwesomeIcon
-          icon={faArrowRight}
-          size="1x"
-          color={theme.colors.white}
-        />
+        <Row>
+          <Title>{title}</Title>
+          <FontAwesomeIcon
+            icon={faArrowRight}
+            size="1x"
+            color={theme.colors.white}
+          />
+        </Row>
       </Block>
-    </Link>
+    </SanityLink>
   );
 };
 
-const Block = styled.a`
+const Block = styled.div`
   display: flex;
   cursor: pointer;
-  align-items: center;
-  justify-content: space-between;
   padding: 48px;
   @media (max-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     padding: 32px;
@@ -32,6 +35,14 @@ const Block = styled.a`
   width: 100%;
   background-color: ${(props) => props.color};
   border: none;
+`;
+
+const Row = styled.div`
+  display: flex;
+  width: 100%;
+  align-items: center;
+  flex-direction: row;
+  justify-content: space-between;
 `;
 
 const Title = styled.p`

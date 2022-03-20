@@ -1,5 +1,5 @@
 import styled from "@emotion/styled";
-import CreateSanityImage from "../../components/CreateSanityImage";
+import CreateSanityImage from "../CreateSanityImage";
 import { StyledProps } from "../../types/theme";
 
 interface ISizes {

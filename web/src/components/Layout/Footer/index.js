@@ -30,7 +30,7 @@ const Footer = () => {
                 key={url._key}
                 color={theme.colors[color]}
                 title={url.text.eng}
-                linkTo={url.url_key}
+                linkTo={url}
               />
             );
           })}
@@ -46,12 +46,12 @@ const Footer = () => {
             <Description>{footer.address}</Description>
             <Title>{footer.emailTitle.eng}</Title>
             <Email href={`mailto:${footer.email}`}>{footer.email}</Email>
-            <GradientButton
+            {/* <GradientButton
               title={footer.donateLink[0].text.eng}
               backgroundColor={theme?.colors?.neutralGray}
               href={footer.donateLink[0].url}
               width={101}
-            />
+            /> */}
           </Column>
           <Column>
             <Title>{footer.workingHoursTitle.eng}</Title>
@@ -134,6 +134,7 @@ const Row = styled.div`
 
 const ColorBlockWrapper = styled.div`
   display: flex;
+  flex: 1;
   width: 100%;
   flex-direction: column;
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {

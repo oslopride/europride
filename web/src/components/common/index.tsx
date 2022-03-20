@@ -26,15 +26,13 @@ export const Header = styled.h1`
       theme?.breakpoints?.desktop}px) {
     font-size: 80px;
   }
+  margin: 16px 0;
 `;
 
 export const Subheader = styled.h2`
-  font-size: 24px;
-  text-align: center;
-  @media (min-width: ${({ theme }: StyledProps) =>
-      theme?.breakpoints?.tablet}px) {
-    text-align: left;
-  }
+  font-size: 16px;
+
+  text-align: left;
 `;
 
 export const ImageWrapper = styled.div`

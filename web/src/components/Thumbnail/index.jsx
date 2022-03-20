@@ -7,7 +7,7 @@ const Thumbnail = ({ articles }) => {
   const sorted = sortByDate(articles);
   return articles.map((a) => {
     return (
-      <Link href={"/page/" + encodeURIComponent(a?.slug?.current)}>
+      <Link href={"/articles/" + encodeURIComponent(a?.slug?.current)}>
         <Flex key={a?.slug?.current}>
           <AWrapper>
             <AHeader>{a?.header?.eng?.title}</AHeader>
