@@ -36,7 +36,7 @@ const SanityLink = ({ href, children, containerStyle }: IProps) => {
     }
     return "/" + data;
   };
-  if (error) return "/404";
+  if (error) return null;
   console.log(href, getSlug());
   return (
     <Link href={getSlug()}>
