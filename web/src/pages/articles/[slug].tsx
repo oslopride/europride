@@ -9,29 +9,29 @@ import {
   ImageWrapper,
 } from "../../components/common";
 
-const Page = ({ page }: any) => {
-  if (!page) {
+const Article = ({ article }: any) => {
+  if (!article) {
     return <ErrorNotFound />;
   }
   return (
     <Wrapper>
-      <Header>{page.header.eng.title}</Header>
-      <Subheader>{page.header.eng.subtitle}</Subheader>
+      <Header>{article.header.eng.title}</Header>
+      <Subheader>{article.header.eng.subtitle}</Subheader>
       <ImageWrapper>
         <CreateSanityImage
-          url={page.header.eng.image.asset}
-          alt={page.header.eng.title}
+          url={article.header.eng.image.asset}
+          alt={article.header.eng.title}
         />
       </ImageWrapper>
       <ImageWrapper></ImageWrapper>
-      <SanityBlock blocks={page.body.eng} />
+      <SanityBlock blocks={article.body.eng} />
     </Wrapper>
   );
 };
 
 export async function getStaticPaths() {
   const paths = await configuredSanityClient.fetch(
-    `*[_type == "page" && defined(slug.current)][].slug.current`
+    `*[_type == "article" && defined(slug.current)][].slug.current`
   );
 
   return {
@@ -42,17 +42,17 @@ export async function getStaticPaths() {
 
 export async function getStaticProps(context: any) {
   const { slug = "" } = context.params;
-  const page = await configuredSanityClient.fetch(
+  const article = await configuredSanityClient.fetch(
     `
-    *[_type == "page" && slug.current == $slug][0]
+    *[_type == "article" && slug.current == $slug][0]
   `,
     { slug }
   );
   return {
     props: {
-      page,
+      article,
     },
   };
 }
 
-export default Page;
+export default Article;

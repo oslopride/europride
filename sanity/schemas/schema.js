@@ -10,8 +10,9 @@ import volunteer from "./volunteer";
 
 import frontPage from "./front-page";
 import page from "./page";
+import article from "./article";
 import webConfiguration from "./web-configuration";
-import articles from "./articles";
+import articleOverview from "./articleOverview";
 import partner from "./partner";
 import event from "./event";
 import program from "./program";
@@ -67,8 +68,9 @@ export default createSchema({
     volunteer,
 
     page,
+    article,
     webConfiguration,
-    articles,
+    articleOverview,
     event,
     program,
     partner,

@@ -1,20 +1,23 @@
 import S from "@sanity/desk-tool/structure-builder";
 import EditIcon from "part:@sanity/base/edit-icon";
-import { MdArchive } from "react-icons/md";
+import { MdOutlineArticle } from "react-icons/md";
 
 import JSONpreview from "./previews/json-preview";
 
 export default S.listItem()
   .title("Articles")
-  .icon(MdArchive)
+  .icon(MdOutlineArticle)
+  .schemaType("article")
   .child(
-    S.document()
+    S.documentTypeList("article")
       .title("Articles")
-      .id("articles")
-      .schemaType("articles")
-      .documentId("articles")
-      .views([
-        S.view.form().icon(EditIcon),
-        S.view.component(JSONpreview).title("JSON"),
-      ])
+      .child((documentId) =>
+        S.document()
+          .documentId(documentId)
+          .schemaType("article")
+          .views([
+            S.view.form().icon(EditIcon),
+            S.view.component(JSONpreview).title("JSON"),
+          ])
+      )
   );

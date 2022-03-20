@@ -18,7 +18,7 @@ export default {
       to: [
         { type: "page" },
         { type: "frontPage" },
-        { type: "articles" },
+        { type: "article" },
         { type: "program" },
         { type: "partners" },
         { type: "about" },

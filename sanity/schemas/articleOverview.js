@@ -1,8 +1,8 @@
 import { localize } from "../utils/locale";
 
 export default {
-  title: "Articles",
-  name: "articles",
+  title: "Article Overview",
+  name: "articleOverview",
   type: "document",
   fieldsets: [{ name: "header", title: "Header" }],
   fields: [
@@ -24,6 +24,6 @@ export default {
     ),
   ],
   preview: {
-    prepare: () => ({ title: "Article Archive" }),
+    prepare: () => ({ title: "Article Overview" }),
   },
 };

@@ -3,9 +3,9 @@ import { getDefaultLanguage, localize } from "../utils/locale";
 import { MdOutlineArticle } from "react-icons/md";
 
 export default {
-  title: "Page",
+  title: "Article",
   icon: MdOutlineArticle,
-  name: "page",
+  name: "article",
   type: "document",
   fields: [
     localize(

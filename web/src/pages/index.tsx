@@ -23,7 +23,7 @@ const Home: NextPage = ({ data, partners, config }: any) => {
           <SanityBlock blocks={data?.body.eng} />
         </BlockWrapper>
       </Wrapper>
-      <PartnerBox partners={partners} config={config} />
+      {/* <PartnerBox partners={partners} config={config} /> */}
     </>
   );
 };

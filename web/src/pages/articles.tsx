@@ -44,8 +44,10 @@ const AContainer = styled.div`
 `;
 
 export const getServerSideProps = async (pageContext: any) => {
-  const data = await configuredSanityClient.fetch(`*[_id == "articles"][0]`);
-  const articles = await configuredSanityClient.fetch(`*[_type == "page"]`);
+  const data = await configuredSanityClient.fetch(
+    `*[_id == "articleOverview"][0]`
+  );
+  const articles = await configuredSanityClient.fetch(`*[_type == "article"]`);
   if (!data) {
     return {
       props: {

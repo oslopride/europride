@@ -9,9 +9,10 @@ import events from "./events";
 import program from "./program";
 import volunteers from "./volunteer";
 import about from "./about";
+import articleOverview from "./articleOverview";
+import articles from "./articles";
 
 import JSONpreview from "./previews/json-preview";
-import articles from "./articles";
 
 // Hide document types that we already have a structure definition for
 const hiddenDocTypes = (listItem) =>
@@ -19,13 +20,13 @@ const hiddenDocTypes = (listItem) =>
     "frontPage",
     "page",
     "article",
-    "articles",
     "webConfiguration",
     "appConfiguration",
     "event",
     "program",
     "partners",
     "simpleEvent",
+    "articleOverview",
     "about",
     "volunteer",
   ].includes(listItem.getId());
@@ -37,6 +38,7 @@ export default () =>
       frontPage,
       articles,
       program,
+      articleOverview,
       pages,
       about,
       partners,

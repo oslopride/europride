@@ -1,8 +1,8 @@
 import { localize } from "../utils/locale";
 
 export default {
-  name: "about",
   title: "About",
+  name: "about",
   type: "document",
   fieldsets: [{ name: "header", title: "Header" }],
   fields: [
