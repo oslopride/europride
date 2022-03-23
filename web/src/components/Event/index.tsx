@@ -6,18 +6,20 @@ import formatISOTime from "../../utils/formatISOTime";
 const Event = ({ event }: any) => {
   return (
     <Wrapper>
-      <Title>{event.title.eng}</Title>
+      <Title>{event?.title?.eng}</Title>
       <Time>{`${formatISOTime(event.startTime, "en-GB")} - ${formatISOTime(
         event.endTime,
         "en-GB"
       )}`}</Time>
-      <SanityBlock blocks={event.description.eng} />
+      <SanityBlock blocks={event?.description?.eng} />
       <Spacer />
-      <GradientButton
-        href={event.eventLink.url}
-        title={event.eventLink.text.eng}
-        width={170}
-      />
+      {event?.eventLink?.url ? (
+        <GradientButton
+          href={event?.eventLink?.url}
+          title={event?.eventLink?.text?.eng}
+          width={170}
+        />
+      ) : null}
     </Wrapper>
   );
 };
