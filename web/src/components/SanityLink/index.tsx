@@ -21,7 +21,7 @@ interface IProps {
 /**  Pass the entire url object as href into this component */
 const SanityLink = ({ href, children, containerStyle }: IProps) => {
   const { data, error } = useSWR(
-    groq`*[_id == "${href?.url?._ref}"][0]._type`,
+    groq`*[_id == "${href?.url?._ref}"][0]`,
     async (query) => await configuredSanityClient.fetch(query)
   );
   const getSlug = () => {
@@ -31,13 +31,19 @@ const SanityLink = ({ href, children, containerStyle }: IProps) => {
     if (href?._type === "externalLink") {
       return href.url;
     }
-    if (data === "frontPage") {
+    if (data?._type === "frontPage") {
       return "/";
     }
-    return "/" + data;
+    // hopefully temporary while figuring out sanity mess
+    if (data?._type === "about") {
+      return data._type;
+    }
+    if (data?.slug?.current) {
+      return "/" + data?.slug?.current;
+    }
+    return "/";
   };
   if (error) return null;
-  console.log(href, getSlug());
   return (
     <Link href={getSlug()}>
       <a style={containerStyle}>{children}</a>

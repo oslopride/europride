@@ -22,6 +22,15 @@ export default {
       },
       (lang, Rule) => (lang.isDefault ? Rule.required() : undefined)
     ),
+    {
+      title: "URL",
+      name: "slug",
+      type: "slug",
+      options: {
+        source: "name",
+      },
+      validation: (Rule) => Rule.required(),
+    },
   ],
   preview: {
     prepare: () => ({ title: "Program" }),

@@ -37,6 +37,15 @@ export default {
         hotspot: true,
       },
     },
+    {
+      title: "URL",
+      name: "slug",
+      type: "slug",
+      options: {
+        source: "name",
+      },
+      validation: (Rule) => Rule.required(),
+    },
   ],
   preview: {
     prepare: () => ({ title: "About page" }),

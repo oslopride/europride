@@ -50,6 +50,15 @@ export default {
           name: "link",
           type: "externalLink",
         },
+        {
+          title: "URL",
+          name: "slug",
+          type: "slug",
+          options: {
+            source: "name",
+          },
+          validation: (Rule) => Rule.required(),
+        },
       ],
     },
   ],
