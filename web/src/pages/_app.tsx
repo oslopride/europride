@@ -4,6 +4,8 @@ import { normalize } from "polished";
 import { SWRConfig } from "swr";
 import Layout from "../components/Layout";
 import configuredSanityClient, { previewMode } from "../sanity";
+import { DefaultSeo } from "next-seo";
+import SEO from "../../next-seo.config";
 
 import { ThemeProvider, Global, css } from "@emotion/react";
 
@@ -16,16 +18,27 @@ const globalStyles = css`
   }
 
   html,
-  body,
   body {
     font-family: proxima-nova, sans-serif;
   }
 
   p,
+  li,
   blockquote,
   ul {
     font-size: 1.1rem;
     line-height: 1.75rem;
+  }
+
+  h4,
+  h2,
+  h3 {
+    margin: 15px 0;
+    line-height: 1.75rem;
+  }
+
+  li {
+    line-height: 2rem;
   }
 
   a {
@@ -51,6 +64,7 @@ function MyApp({ Component, pageProps, data }: any) {
   }, []);
   return (
     <ThemeProvider theme={theme}>
+      <DefaultSeo {...SEO} />
       <Global styles={globalStyles} />
       <SWRConfig
         value={{
