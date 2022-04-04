@@ -8,17 +8,19 @@ const Page = ({ page }: any) => {
   if (!page) {
     return <ErrorNotFound />;
   }
+  const image = page.header.eng.image;
   return (
     <Wrapper>
       <Header>{page.header.eng.title}</Header>
       <Subheader>{page.header.eng.subtitle}</Subheader>
-      <ImageWrapper>
-        <CreateSanityImage
-          url={page.header.eng.image.asset}
-          alt={page.header.eng.title}
-        />
-      </ImageWrapper>
-      <ImageWrapper></ImageWrapper>
+      {image ? (
+        <ImageWrapper>
+          <CreateSanityImage
+            url={page.header.eng.image.asset}
+            alt={page.header.eng.title}
+          />
+        </ImageWrapper>
+      ) : null}
       <SanityBlock blocks={page.body.eng} />
     </Wrapper>
   );

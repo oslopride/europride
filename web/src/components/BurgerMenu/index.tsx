@@ -7,7 +7,7 @@ import configuredSanityClient, { isEmptyResult } from "../../sanity";
 import SanityLink from "../SanityLink";
 
 const isSelected = (text = "") => {
-  const slug = location.pathname.split("/").slice(1)[0];
+  const slug = location.pathname.split("/").slice(1)[0].replace("-", " ");
   if (slug === "" && text === "Home") {
     return true;
   }
