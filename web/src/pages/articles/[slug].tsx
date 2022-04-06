@@ -19,8 +19,8 @@ const Article = ({ article }: any) => {
       <Subheader>{article.header.eng.subtitle}</Subheader>
       <ImageWrapper>
         <CreateSanityImage
-          url={article.header.eng.image.asset}
-          alt={article.header.eng.title}
+          url={article?.header?.eng?.image?.asset}
+          alt={article?.header?.eng?.title}
         />
       </ImageWrapper>
       <ImageWrapper></ImageWrapper>

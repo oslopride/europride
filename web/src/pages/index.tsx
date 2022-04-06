@@ -15,8 +15,8 @@ const Home: NextPage = ({ data, partners, config }: any) => {
         <Header>{data.header.title.eng}</Header>
         <HeroImageWrapper>
           <CreateSanityImage
-            url={data.header.image}
-            alt={data.header.title.eng}
+            url={data?.header?.image}
+            alt={data?.header?.title?.eng}
           />
         </HeroImageWrapper>
         <BlockWrapper>

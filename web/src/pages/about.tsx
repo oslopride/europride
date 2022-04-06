@@ -22,7 +22,7 @@ const About = ({ data, volunteers }: any) => {
         <AnchorButton href="#body" text="Read more" />
       </TopWrapper>
       <ImageWrapper>
-        <CreateSanityImage url={data.image.asset} alt={data.header.eng} />
+        <CreateSanityImage url={data?.image?.asset} alt={data?.header?.eng} />
       </ImageWrapper>
       <BlockWrapper id="body">
         <SanityBlock blocks={data?.body.eng} />

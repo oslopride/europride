@@ -31,7 +31,7 @@ const PartnerBox = ({ partners, config }: any) => {
                   key={partner.name + partner.slug.current}
                 >
                   <CreateSanityImage
-                    url={partner?.image.asset}
+                    url={partner?.image?.asset}
                     alt={partner?.name}
                   />
                 </PartnerImageWrapper>
