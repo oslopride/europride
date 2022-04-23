@@ -6,6 +6,7 @@ import Layout from "../components/Layout";
 import configuredSanityClient, { previewMode } from "../sanity";
 import { DefaultSeo } from "next-seo";
 import SEO from "../../next-seo.config";
+import Head from "next/head";
 
 import { ThemeProvider, Global, css } from "@emotion/react";
 
@@ -64,6 +65,9 @@ function MyApp({ Component, pageProps, data }: any) {
   }, []);
   return (
     <ThemeProvider theme={theme}>
+      <Head>
+        <link rel="shortcut icon" href="/favicon.ico" />
+      </Head>
       <DefaultSeo {...SEO} />
       <Global styles={globalStyles} />
       <SWRConfig

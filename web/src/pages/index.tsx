@@ -2,7 +2,6 @@ import type { NextPage } from "next";
 import styled from "@emotion/styled";
 import configuredSanityClient from "../sanity";
 import CreateSanityImage from "../components/CreateSanityImage";
-import { StyledProps } from "../types/theme";
 import SanityBlock from "../components/SanityBlock";
 import PartnerBox from "../components/PartnerBox";
 import { Header, Wrapper, Subheader } from "../components/common";

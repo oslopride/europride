@@ -1,6 +1,4 @@
-export interface StyledProps {
-  theme?: ITheme;
-}
+export type Gradient = IGradients[keyof IGradients];
 
 export interface ITheme {
   colors?: IColors;
@@ -8,7 +6,7 @@ export interface ITheme {
   gradients?: IGradients;
 }
 
-interface IColors {
+export interface IColors {
   white: string;
   black: string;
   greenDark: string;
@@ -20,14 +18,14 @@ interface IColors {
   neutralGrey: string;
 }
 
-interface IGradients {
+export interface IGradients {
   purple: string;
   green: string;
   orange: string;
   greenYellow: string;
 }
 
-interface IBreakpoints {
+export interface IBreakpoints {
   mobile: number;
   tablet: number;
   laptop: number;

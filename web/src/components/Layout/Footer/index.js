@@ -46,12 +46,12 @@ const Footer = () => {
             <Description>{footer.address}</Description>
             <Title>{footer.emailTitle.eng}</Title>
             <Email href={`mailto:${footer.email}`}>{footer.email}</Email>
-            {/* <GradientButton
+            <GradientButton
               title={footer.donateLink[0].text.eng}
-              backgroundColor={theme?.colors?.neutralGray}
+              backgroundColor={theme.colors.neutralGray}
               href={footer.donateLink[0].url}
               width={101}
-            /> */}
+            />
           </Column>
           <Column>
             <Title>{footer.workingHoursTitle.eng}</Title>

@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import CreateSanityImage from "../CreateSanityImage";
-import { StyledProps } from "../../types/theme";
+import { Theme } from "@emotion/react";
 
 const Volunteer = ({ volunteer }: any) => {
   return (
@@ -23,16 +23,18 @@ const Volunteer = ({ volunteer }: any) => {
 
 export default Volunteer;
 
-const Flex = styled.div`
+interface IFlexProps {
+  theme?: Theme;
+}
+
+const Flex = styled.div<IFlexProps>`
   flex: 1 0 90%;
   margin: 10px;
-  @media (min-width: ${({ theme }: StyledProps) =>
-      theme?.breakpoints?.tablet}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     flex: 0 0 45%;
     margin: 15px;
   }
-  @media (min-width: ${({ theme }: StyledProps) =>
-      theme?.breakpoints?.desktop}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     flex: 0 0 28%;
     margin: 20px;
   }
@@ -51,21 +53,21 @@ const Name = styled.p`
   font-weight: bold;
   font-size: 32px;
   line-height: 39px;
-  color: ${({ theme }: StyledProps) => theme?.colors?.neutralDark};)}
+  color: ${({ theme }) => theme.colors.neutralDark};)}
 `;
 
 const Email = styled.a`
-  color: ${({ theme }: StyledProps) => theme?.colors?.purpleLight};)}
+  color: ${({ theme }) => theme.colors.purpleLight};)}
 `;
 
 const Role = styled.p`
-  color: ${({ theme }: StyledProps) => theme?.colors?.neutralGrey};)}
+  color: ${({ theme }) => theme.colors.neutralGrey};)}
 `;
 
 const Pronouns = styled.p`
   font-size: 20px;
   line-height: 32px;
-  color: ${({ theme }: StyledProps) => theme?.colors?.neutralGrey};)}
+  color: ${({ theme }) => theme.colors.neutralGrey};)}
 `;
 
 const ImageWrapper = styled.div`

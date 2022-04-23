@@ -1,9 +1,9 @@
 import { slide as Menu } from "react-burger-menu";
-import { useState } from "react";
+import { useState, useRef, useEffect } from "react";
 import useSWR from "swr";
 import groq from "groq";
 import styled from "@emotion/styled";
-import configuredSanityClient, { isEmptyResult } from "../../sanity";
+import configuredSanityClient from "../../sanity";
 import SanityLink from "../SanityLink";
 
 const isSelected = (text = "") => {
@@ -26,32 +26,54 @@ const BurgerMenu = () => {
   );
   if (error) return null;
 
+  const focusRef = useRef<HTMLDivElement>(null);
+
+  const onClickOutside = () => setMenuState(false);
+
+  useEffect(() => {
+    const handleClickOutside = (event: MouseEvent) => {
+      if (
+        focusRef.current &&
+        !focusRef.current.contains(event.target as Node)
+      ) {
+        onClickOutside();
+      }
+    };
+    document.addEventListener("click", handleClickOutside, true);
+    return () => {
+      document.removeEventListener("click", handleClickOutside, true);
+    };
+  }, [onClickOutside]);
+
   const items = data.footer.shortcuts;
   const header = data.footer.menuHeader.eng;
   return (
-    <Menu
-      isOpen={menuState}
-      onStateChange={(state: BMState) => setMenuState(state.isOpen)}
-      right
-      styles={styles}
-      pageWrapId={"page-wrap"}
-    >
-      <>
-        <MenuHeader>{header.toUpperCase()}</MenuHeader>
-        {items.map((item: any) => (
-          <ItemWrapper key={item._key}>
-            <SanityLink href={item}>
-              <MenuItem
-                onClick={() => setMenuState(false)}
-                isSelected={isSelected(item.text.eng)}
-              >
-                {item.text.eng}
-              </MenuItem>
-            </SanityLink>
-          </ItemWrapper>
-        ))}
-      </>
-    </Menu>
+    <div ref={focusRef}>
+      <Menu
+        isOpen={menuState}
+        onStateChange={(state: BMState) => setMenuState(state.isOpen)}
+        right
+        styles={styles}
+        pageWrapId={"page-wrap"}
+        forwardRef={focusRef}
+      >
+        <>
+          <MenuHeader>{header.toUpperCase()}</MenuHeader>
+          {items.map((item: any) => (
+            <ItemWrapper key={item._key}>
+              <SanityLink href={item}>
+                <MenuItem
+                  onClick={() => setMenuState(false)}
+                  isSelected={isSelected(item.text.eng)}
+                >
+                  {item.text.eng}
+                </MenuItem>
+              </SanityLink>
+            </ItemWrapper>
+          ))}
+        </>
+      </Menu>
+    </div>
   );
 };
 
@@ -78,7 +100,7 @@ const MenuItem = styled.div<{ isSelected: boolean }>`
   border-image: ${({ theme }: any) => theme.gradients.orange + "1"};
 `;
 
-const ItemWrapper = styled.span`
+const ItemWrapper = styled.li`
   display: flex;
 `;
 

@@ -2,8 +2,11 @@ import styled from "@emotion/styled";
 import configuredSanityClient from "../sanity";
 import Event from "../components/Event";
 import ErrorNotFound from "./404";
+import { useTheme } from "@emotion/react";
+import { Wrapper, Header } from "../components/common";
 
 const Program = ({ events, data }: any) => {
+  const theme = useTheme();
   if (!events || !data)
     return (
       <Wrapper>
@@ -12,7 +15,7 @@ const Program = ({ events, data }: any) => {
     );
   return (
     <Wrapper>
-      <Title>{data?.title?.eng}</Title>
+      <Header gradient={theme.gradients.purple}>{data?.title?.eng}</Header>
       <Subheader>{data?.subtitle?.eng}</Subheader>
       <Spacer />
       {events.map((event: any, i: number) => (
@@ -46,27 +49,6 @@ export const getServerSideProps = async (pageContext: any) => {
 };
 
 export default Program;
-
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 12px 12px 12px;
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
-    margin: 0 24px 24px 24px;
-  }
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
-    margin: 0 80px 80px 80px;
-  }
-`;
-
-const Title = styled.h1`
-  font-weight: 800;
-  font-size: 84px;
-  line-height: 86px;
-  background: ${({ theme }: any) => theme.gradients.purple};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
-`;
 
 const Spacer = styled.div`
   margin-top: 30px;

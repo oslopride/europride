@@ -5,8 +5,11 @@ import CreateSanityImage from "../components/CreateSanityImage";
 import ExternalLinkButton from "../components/ExternalLinkButton";
 import GradientButton from "../components/GradientButton";
 import ErrorNotFound from "./404";
+import { Wrapper, Header } from "../components/common";
+import { useTheme } from "@emotion/react";
 
 const Partners = ({ data, partners }: any) => {
+  const theme = useTheme();
   if (!partners || !data) {
     return (
       <Wrapper>
@@ -16,7 +19,7 @@ const Partners = ({ data, partners }: any) => {
   }
   return (
     <Wrapper>
-      <Title>{partners?.title?.eng}</Title>
+      <Header gradient={theme.gradients.orange}>{partners?.title?.eng}</Header>
       <BlockWrapper>
         <SanityBlock blocks={partners?.body?.eng} />
       </BlockWrapper>
@@ -80,18 +83,6 @@ export const getServerSideProps = async (pageContext: any) => {
   }
 };
 
-const Wrapper = styled.div`
-  display: flex;
-  flex-direction: column;
-  margin: 0 12px 12px 12px;
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.tablet}px) {
-    margin: 0 24px 24px 24px;
-  }
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
-    margin: 0 80px 80px 80px;
-  }
-`;
-
 const Spacing = styled.div`
   margin-top: 30px;
 `;
@@ -109,15 +100,6 @@ const PartnerWrapper = styled.div`
 const ImageWrapper = styled.div`
   max-height: 220px;
   max-width: 150px;
-`;
-
-const Title = styled.h1`
-  font-weight: 800;
-  font-size: 84px;
-  line-height: 86px;
-  background: ${({ theme }: any) => theme.gradients.orange};
-  -webkit-background-clip: text;
-  -webkit-text-fill-color: transparent;
 `;
 
 const Description = styled.p`

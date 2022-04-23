@@ -1,6 +1,5 @@
 import styled from "@emotion/styled";
 import CreateSanityImage from "../CreateSanityImage";
-import { StyledProps } from "../../types/theme";
 
 interface ISizes {
   [key: string]: number;
@@ -58,8 +57,7 @@ const PartnerContainer = styled.div`
   flex-direction: column;
   background: #f5f5f5;
   padding: 30px;
-  @media (min-width: ${({ theme }: StyledProps) =>
-    theme?.breakpoints?.tablet}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     padding: 63px;
   }
 }
@@ -96,8 +94,7 @@ const PartnerRow = styled.div`
   flex-wrap: wrap;
   flex-direction: row;
   padding: 20px 0;
-  @media (min-width: ${({ theme }: StyledProps) =>
-      theme?.breakpoints?.tablet}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     flex-direction: row;
   }
 `;
