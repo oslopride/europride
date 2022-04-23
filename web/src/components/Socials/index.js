@@ -1,20 +1,13 @@
 import FaIconButton from "../FaIconButton";
-import {
-  faFacebookSquare,
-  faTwitter,
-  faInstagram,
-  faSnapchatGhost,
-  faYoutube,
-} from "@fortawesome/free-brands-svg-icons";
 import { useTheme } from "@emotion/react";
 import styled from "@emotion/styled";
 
 const icons = {
-  facebook: faFacebookSquare,
-  youtube: faYoutube,
-  snapchat: faSnapchatGhost,
-  instagram: faInstagram,
-  twitter: faTwitter,
+  facebook: ["fab", "facebook-square"],
+  youtube: ["fab", "youtube"],
+  snapchat: ["fab", "snapchat-ghost"],
+  instagram: ["fab", "instagram"],
+  twitter: ["fab", "fa-twitter"],
 };
 
 const Socials = ({ data, size = "2x", color, center = false }) => {

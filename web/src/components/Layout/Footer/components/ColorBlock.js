@@ -1,7 +1,6 @@
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
 import SanityLink from "../../../SanityLink";
 
 const ColorBlockButton = ({ color = "#fff", title, linkTo = "/" }) => {
@@ -15,7 +14,7 @@ const ColorBlockButton = ({ color = "#fff", title, linkTo = "/" }) => {
         <Row>
           <Title>{title}</Title>
           <FontAwesomeIcon
-            icon={faArrowRight}
+            icon={"arrow-right"}
             size="1x"
             color={theme.colors.white}
           />

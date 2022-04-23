@@ -4,7 +4,6 @@ import Image from "next/image";
 import logo from "../../../../public/logo.png";
 import Link from "next/link";
 import BurgerMenu from "../../BurgerMenu";
-import GradientButton from "../../GradientButton";
 import configuredSanityClient from "../../../sanity";
 import Socials from "../../Socials";
 import useSWR from "swr";
@@ -13,17 +12,16 @@ import groq from "groq";
 const Header = () => {
   const { data, error } = useSWR(
     groq`*[_type == 'webConfiguration'][0]`,
-    (query) => configuredSanityClient.fetch(query)
+    async (query) => await configuredSanityClient.fetch(query)
   );
+  if (error) {
+    console.warn(error);
+  }
   const theme = useTheme();
   return data ? (
     <Outer>
       <Wrapper id="page-wrap">
         <Left>
-          {/* <GradientButton
-            title={data?.footer.donateLink[0].text.eng}
-            href={data?.footer.donateLink[0].url}
-          /> */}
           <SocialsWrapper>
             <Socials
               data={data.socials}

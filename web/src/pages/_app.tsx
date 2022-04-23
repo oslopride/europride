@@ -7,6 +7,27 @@ import configuredSanityClient, { previewMode } from "../sanity";
 import { DefaultSeo } from "next-seo";
 import SEO from "../../next-seo.config";
 import Head from "next/head";
+import { library } from "@fortawesome/fontawesome-svg-core";
+import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import {
+  faFacebookSquare,
+  faTwitter,
+  faInstagram,
+  faSnapchatGhost,
+  faYoutube,
+} from "@fortawesome/free-brands-svg-icons";
+import "@fortawesome/fontawesome-svg-core/styles.css";
+import { config } from "@fortawesome/fontawesome-svg-core";
+config.autoAddCss = false;
+
+library.add(
+  faFacebookSquare,
+  faTwitter,
+  faInstagram,
+  faSnapchatGhost,
+  faYoutube,
+  faArrowRight
+);
 
 import { ThemeProvider, Global, css } from "@emotion/react";
 
