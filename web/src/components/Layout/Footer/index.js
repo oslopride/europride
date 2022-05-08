@@ -6,6 +6,7 @@ import GradientButton from "../../GradientButton";
 import SimpleButton from "../../SimpleButton";
 import Socials from "../../Socials";
 import ColorBlockButton from "./components/ColorBlock";
+import SanityBlock from "../../../components/SanityBlock";
 
 import configuredSanityClient from "../../../sanity";
 import useSWR from "swr";
@@ -75,8 +76,8 @@ const Footer = () => {
         <RowSpacer />
         <Row>
           <SpaceBetween>
-            <Description>{footer.license}</Description>
-            <Description>{footer.signature}</Description>
+            <SanityBlock blocks={footer.license} />
+            <SanityBlock blocks={footer.signature} />
           </SpaceBetween>
         </Row>
       </Wrapper>

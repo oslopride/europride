@@ -119,19 +119,8 @@ export default {
         {
           name: "license",
           title: "License",
-          type: "string",
-          validation: (Rule) => Rule.required(),
-        },
-        {
-          name: "epoaLink",
-          title: "Epoa link",
-          type: "string",
-          validation: (Rule) => Rule.required(),
-        },
-        {
-          name: "gdprStatement",
-          title: "GDPR statement",
-          type: "string",
+          type: "array",
+          of: [{ type: "block" }],
           validation: (Rule) => Rule.required(),
         },
         localize({
@@ -149,7 +138,8 @@ export default {
         {
           name: "signature",
           title: "Signature",
-          type: "string",
+          type: "array",
+          of: [{ type: "block" }],
           validation: (Rule) => Rule.required(),
         },
         localize({
