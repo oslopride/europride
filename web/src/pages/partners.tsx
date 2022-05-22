@@ -65,11 +65,7 @@ const Partners = ({ data, partners }: any) => {
           <Description>{ctaTitle}</Description>
           <SanityBlock blocks={ctaBlocks} />
           <Spacing />
-          <GradientButton
-            href={ctaLink?.url}
-            title={ctaLink?.text?.eng}
-            width={170}
-          />
+          <GradientButton href={ctaLink?.url} title={ctaLink?.text?.eng} />
         </CTAWrapper>
       </ArticleWrapper>
     </Wrapper>

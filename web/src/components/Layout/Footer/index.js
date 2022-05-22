@@ -51,7 +51,6 @@ const Footer = () => {
               title={footer.donateLink[0].text.eng}
               backgroundColor={theme.colors.neutralGray}
               href={footer.donateLink[0].url}
-              width={101}
             />
           </Column>
           <Column>
