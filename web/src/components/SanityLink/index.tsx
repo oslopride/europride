@@ -41,7 +41,7 @@ const SanityLink = ({ href, children, containerStyle }: IProps) => {
     if (data?.slug?.current) {
       return "/" + data?.slug?.current;
     }
-    return "/";
+    return "/404";
   };
   if (error) return null;
   return (
