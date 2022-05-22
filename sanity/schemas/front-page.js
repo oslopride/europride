@@ -33,10 +33,18 @@ export default {
             lang.isDefault ? Rule.required() : undefined,
         }),
         {
-          title: "Links",
-          name: "links",
+          name: "leftButtonLink",
+          title: "Left Button Link",
           type: "array",
           of: [{ type: "internalLink" }, { type: "externalLink" }],
+          validation: (Rule) => Rule.max(1),
+        },
+        {
+          name: "rightButtonLink",
+          title: "Right Button Link",
+          type: "array",
+          of: [{ type: "internalLink" }, { type: "externalLink" }],
+          validation: (Rule) => Rule.max(1),
         },
         {
           title: "Image",
