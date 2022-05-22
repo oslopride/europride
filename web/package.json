@@ -30,7 +30,6 @@
     "react-burger-menu": "^3.0.6",
     "react-dom": "17.0.2",
     "swr": "^1.0.1",
-    "use-sse": "^2.0.1",
     "webfontloader": "^1.6.28"
   },
   "devDependencies": {

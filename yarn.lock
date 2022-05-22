@@ -11532,11 +11532,6 @@ use-sidecar@^1.0.5:
     detect-node-es "^1.1.0"
     tslib "^1.9.3"
 
-use-sse@^2.0.1:
-  version "2.0.1"
-  resolved "https://registry.yarnpkg.com/use-sse/-/use-sse-2.0.1.tgz#8c4c389d310aa878f8b61c4ecd47a2c5d6f4cfd5"
-  integrity sha512-fsq+7VklgNiHEU2FqpI/DijlX5DoveOFtyazrA/8vXuvzf5lPyXRWcSWDZef6NsKdh9cqtIfKD7rMkgcmFHxUA==
-
 use-subscription@1.5.1:
   version "1.5.1"
   resolved "https://registry.yarnpkg.com/use-subscription/-/use-subscription-1.5.1.tgz#73501107f02fad84c6dd57965beb0b75c68c42d1"
