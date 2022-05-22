@@ -1,4 +1,4 @@
-import configuredSanityClient from "../../sanity";
+import configuredSanityClient, { urlFor } from "../../sanity";
 import CreateSanityImage from "../../components/CreateSanityImage";
 import SanityBlock from "../../components/SanityBlock";
 import ErrorNotFound from "../404";
@@ -8,23 +8,48 @@ import {
   Subheader,
   ImageWrapper,
 } from "../../components/common";
+import { NextSeo } from "next-seo";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { SanityArticle } from "../../types/sanity";
 
-const Article = ({ article }: any) => {
+const Article = ({ article }: SanityArticle) => {
   if (!article) {
     return <ErrorNotFound />;
   }
+  const title = article?.header?.eng?.title;
+  const subtitle = article?.header?.eng?.subtitle;
+  const image = article?.header?.eng?.image.asset;
+  const blocks = article?.body?.eng;
+  const slug = article?.slug?.current;
+  const ogImgUrl = urlFor(image as SanityImageSource)
+    .width(800)
+    .url();
+
+  const openGraph = {
+    url: `https://www.europride2022.com/articles/${slug}`,
+    title: title,
+    description: subtitle,
+    ...(image && {
+      images: [
+        {
+          url: ogImgUrl,
+          alt: title,
+          type: "image/jpeg",
+        },
+      ],
+    }),
+  };
+
   return (
     <Wrapper>
-      <Header>{article.header.eng.title}</Header>
-      <Subheader>{article.header.eng.subtitle}</Subheader>
+      <NextSeo title={title} description={subtitle} openGraph={openGraph} />
+      <Header>{title}</Header>
+      <Subheader>{subtitle}</Subheader>
       <ImageWrapper>
-        <CreateSanityImage
-          url={article?.header?.eng?.image?.asset}
-          alt={article?.header?.eng?.title}
-        />
+        <CreateSanityImage url={image} alt={title} />
       </ImageWrapper>
       <ImageWrapper></ImageWrapper>
-      <SanityBlock blocks={article.body.eng} />
+      <SanityBlock blocks={blocks} />
     </Wrapper>
   );
 };

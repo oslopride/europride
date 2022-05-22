@@ -1,25 +1,49 @@
 import type { NextPage } from "next";
 import styled from "@emotion/styled";
-import configuredSanityClient from "../sanity";
+import configuredSanityClient, { urlFor } from "../sanity";
 import CreateSanityImage from "../components/CreateSanityImage";
 import SanityBlock from "../components/SanityBlock";
 import PartnerBox from "../components/PartnerBox";
+import { NextSeo } from "next-seo";
 import { Header, Wrapper, Subheader } from "../components/common";
 
 const Home: NextPage = ({ data, partners, config }: any) => {
+  const title = data?.header?.title?.eng;
+  const description = data?.header?.subHeading?.eng;
+  const image = data?.header?.image?.asset;
+  const blocks = data?.body?.eng;
+  const ogImageUrl = image ? urlFor(image).width(800).url() : "";
+
+  const openGraph = {
+    url: `https://www.europride2022.com/`,
+    title: title,
+    description: description,
+    ...(image && {
+      images: [
+        {
+          url: ogImageUrl,
+          alt: description,
+          type: "image/jpeg",
+        },
+      ],
+    }),
+  };
+
   return (
     <>
       <Wrapper>
-        <Subheader>{data.header.subHeading.eng}</Subheader>
-        <Header>{data.header.title.eng}</Header>
+        <NextSeo
+          title={title}
+          description={description}
+          openGraph={openGraph}
+        />
+        <Subheader>{description}</Subheader>
+        <Header>{title}</Header>
         <HeroImageWrapper>
-          <CreateSanityImage
-            url={data?.header?.image}
-            alt={data?.header?.title?.eng}
-          />
+          <CreateSanityImage url={image} alt={description} />
         </HeroImageWrapper>
         <BlockWrapper>
-          <SanityBlock blocks={data?.body.eng} />
+          <SanityBlock blocks={blocks} />
         </BlockWrapper>
       </Wrapper>
       {/* <PartnerBox partners={partners} config={config} /> */}

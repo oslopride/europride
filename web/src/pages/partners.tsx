@@ -7,9 +7,17 @@ import GradientButton from "../components/GradientButton";
 import ErrorNotFound from "./404";
 import { Wrapper, Header } from "../components/common";
 import { useTheme } from "@emotion/react";
+import { NextSeo } from "next-seo";
 
 const Partners = ({ data, partners }: any) => {
   const theme = useTheme();
+  const title = data?.title?.eng;
+  const blocks = data?.body?.eng;
+
+  const ctaTitle = data?.callToAction?.title.eng;
+  const ctaBlocks = data?.callToAction.description.eng;
+  const ctaLink = data?.callToAction?.link;
+
   if (!partners || !data) {
     return (
       <Wrapper>
@@ -19,12 +27,21 @@ const Partners = ({ data, partners }: any) => {
   }
   return (
     <Wrapper>
-      <Header gradient={theme.gradients.orange}>{partners?.title?.eng}</Header>
+      <NextSeo
+        title={title}
+        description={title}
+        openGraph={{
+          url: `https://www.europride2022.com/partners`,
+          title: title,
+          description: title,
+        }}
+      />
+      <Header gradient={theme.gradients.orange}>{title}</Header>
       <BlockWrapper>
-        <SanityBlock blocks={partners?.body?.eng} />
+        <SanityBlock blocks={blocks} />
       </BlockWrapper>
       <ArticleWrapper>
-        {data.map((partner: any) => {
+        {partners.map((partner: any) => {
           return (
             <PartnerWrapper key={partner?.slug?.current}>
               <ImageWrapper>
@@ -35,22 +52,22 @@ const Partners = ({ data, partners }: any) => {
               </ImageWrapper>
               <Description>{partner.name}</Description>
               <SanityBlock blocks={partner?.description?.eng} />
-              {partner?.url.url && partner?.url?.text ? (
+              {partner?.url?.url && partner?.url?.text ? (
                 <ExternalLinkButton
-                  href={partner.url.url}
-                  text={partner.url.text.eng}
+                  href={partner?.url?.url}
+                  text={partner?.url?.text?.eng}
                 />
               ) : null}
             </PartnerWrapper>
           );
         })}
         <CTAWrapper>
-          <Description>{partners?.callToAction?.title.eng}</Description>
-          <SanityBlock blocks={partners?.callToAction.description.eng} />
+          <Description>{ctaTitle}</Description>
+          <SanityBlock blocks={ctaBlocks} />
           <Spacing />
           <GradientButton
-            href={partners?.callToAction?.link?.url}
-            title={partners?.callToAction?.link?.text.eng}
+            href={ctaLink?.url}
+            title={ctaLink?.text?.eng}
             width={170}
           />
         </CTAWrapper>
@@ -62,11 +79,11 @@ const Partners = ({ data, partners }: any) => {
 export default Partners;
 
 export const getServerSideProps = async (pageContext: any) => {
-  const data = await configuredSanityClient.fetch(`*[_type == "partner"]`);
-  const partners = await configuredSanityClient.fetch(
-    `*[_type == "partners"][0]`
+  const pageData = await configuredSanityClient.fetch(
+    `*[_id == "partners"][0]`
   );
-  if (!data) {
+  const partners = await configuredSanityClient.fetch(`*[_type == "partner"]`);
+  if (!pageData) {
     return {
       props: {
         data: [],
@@ -76,7 +93,7 @@ export const getServerSideProps = async (pageContext: any) => {
   } else {
     return {
       props: {
-        data: data,
+        data: pageData,
         partners: partners,
       },
     };

@@ -1,11 +1,12 @@
 import styled from "@emotion/styled";
-import configuredSanityClient from "../sanity";
+import configuredSanityClient, { urlFor } from "../sanity";
 import AnchorButton from "../components/AnchorButton";
 import SanityBlock from "../components/SanityBlock";
 import Volunteer from "../components/Volunteer";
 import CreateSanityImage from "../components/CreateSanityImage";
 import ErrorNotFound from "./404";
 import { Wrapper, Header, Subheader } from "../components/common";
+import { NextSeo } from "next-seo";
 
 const About = ({ data, volunteers }: any) => {
   if (!data || !volunteers)
@@ -14,18 +15,39 @@ const About = ({ data, volunteers }: any) => {
         <ErrorNotFound />
       </Wrapper>
     );
+  const title = data.header.eng;
+  const subtitle = data.subheaderText.eng;
+  const image = data?.image?.asset;
+  const blocks = data?.body.eng;
+  const ogImageUrl = image ? urlFor(image).width(800).url() : "";
+  const openGraph = {
+    url: "europride2022.com/about",
+    title: title,
+    description: subtitle,
+    ...(image && {
+      images: [
+        {
+          url: ogImageUrl,
+          alt: title,
+          type: "image/jpeg",
+        },
+      ],
+    }),
+  };
+
   return (
     <Wrapper>
+      <NextSeo title={title} description={subtitle} openGraph={openGraph} />
       <TopWrapper>
-        <Header>{data.header.eng}</Header>
-        <Subheader>{data.subheaderText.eng}</Subheader>
+        <Header>{title}</Header>
+        <Subheader>{subtitle}</Subheader>
         <AnchorButton href="#body" text="Read more" />
       </TopWrapper>
       <ImageWrapper>
-        <CreateSanityImage url={data?.image?.asset} alt={data?.header?.eng} />
+        <CreateSanityImage url={image} alt={title} />
       </ImageWrapper>
       <BlockWrapper id="body">
-        <SanityBlock blocks={data?.body.eng} />
+        <SanityBlock blocks={blocks} />
       </BlockWrapper>
       <VolunteerWrapper>
         {volunteers.map((v: any, i: number) => (

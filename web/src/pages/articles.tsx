@@ -3,6 +3,7 @@ import configuredSanityClient from "../sanity";
 import ErrorNotFound from "./404";
 import Thumbnail from "../components/Thumbnail";
 import { Wrapper, Header, Subheader } from "../components/common";
+import { NextSeo } from "next-seo";
 
 const Articles = ({ data, articles }: any) => {
   if (!data) {
@@ -12,11 +13,20 @@ const Articles = ({ data, articles }: any) => {
       </Wrapper>
     );
   }
+  const title = data?.title?.eng;
+  const subtitle = data?.subtitle?.eng;
+  const openGraph = {
+    url: `https://www.europride2022.com/articles`,
+    title: title,
+    description: subtitle,
+  };
+
   return (
     <Wrapper>
+      <NextSeo title={title} description={subtitle} openGraph={openGraph} />
       <TopWrapper>
-        <Header>{data?.title?.eng}</Header>
-        <Subheader>{data?.subtitle?.eng}</Subheader>
+        <Header>{title}</Header>
+        <Subheader>{subtitle}</Subheader>
       </TopWrapper>
       <AContainer>
         <Thumbnail articles={articles} />
