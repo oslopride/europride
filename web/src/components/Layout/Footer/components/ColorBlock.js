@@ -4,7 +4,6 @@ import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SanityLink from "../../../SanityLink";
 
 const ColorBlockButton = ({ color = "#fff", title, linkTo = "/" }) => {
-  const theme = useTheme();
   return (
     <SanityLink
       containerStyle={{ display: "flex", width: "100%" }}
@@ -13,11 +12,7 @@ const ColorBlockButton = ({ color = "#fff", title, linkTo = "/" }) => {
       <Block color={color}>
         <Row>
           <Title>{title}</Title>
-          <FontAwesomeIcon
-            icon={"arrow-right"}
-            size="1x"
-            color={theme.colors.white}
-          />
+          <FontAwesomeIcon icon={"arrow-right"} className="colorBlock-arrow" />
         </Row>
       </Block>
     </SanityLink>

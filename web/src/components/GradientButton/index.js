@@ -7,14 +7,12 @@ export const GradientButton = ({
   backgroundColor = "#FFF",
   titleColor = "#000",
   href = "/",
-  width = 101,
   gradient = "orange",
 }) => {
   return (
     <SanityLink href={href}>
       <Touchable
         gradient={theme.gradients[gradient]}
-        width={width}
         backgroundColor={backgroundColor}
       >
         <Title textColor={titleColor} backgroundColor={backgroundColor}>
@@ -29,12 +27,12 @@ const Touchable = styled.button`
   cursor: pointer;
   transform: rotate(0deg);
   border-width: 4px;
+  width: 100%;
   background-color: transparent;
   border-image: ${({ gradient }) => gradient};
   border-image-slice: 1;
   max-width: 100%;
-  width: ${({ width }) => width}px;
-  height: 48px;
+  padding: 10px 15px;
   overflow: hidden;
   max-height: 100%;
   &::before {
@@ -54,7 +52,6 @@ const Touchable = styled.button`
     right: 0;
     top: 0;
     bottom: 0;
-    width: ${({ width }) => width}px;
     background: ${({ gradient }) => gradient};
     opacity: 0;
     z-index: -1;
@@ -63,6 +60,14 @@ const Touchable = styled.button`
 
   &:hover::after {
     opacity: 1;
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    padding: 10px 20px;
+    width: auto;
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+    padding: 15px 25px;
+    width: auto;
   }
 `;
 

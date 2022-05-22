@@ -97,11 +97,19 @@ const MenuItem = styled.div<{ isSelected: boolean }>`
   border-right: 0px;
   border-top: 0px;
   border-bottom-width: ${({ isSelected }) => (isSelected ? 5 : 0)}px;
-  border-image: ${({ theme }: any) => theme.gradients.orange + "1"};
+  border-image: ${({ theme }) => theme.gradients.orange + "1"};
+  transition-duration: 0.2s;
+  transition-timing-function: ease-in-out;
+  &:hover {
+    background: ${({ theme }) => theme.gradients.greenYellow};
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+  }
 `;
 
 const ItemWrapper = styled.li`
   display: flex;
+  transition: all 0.3s;
 `;
 
 const styles = {
@@ -110,7 +118,9 @@ const styles = {
     width: "18px",
     height: "18px",
   },
-  bmBurgerBars: { background: "#000" },
+  bmBurgerBars: {
+    background: "#000",
+  },
   bmCrossButton: {
     height: "48px",
     width: "48px",

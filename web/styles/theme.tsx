@@ -1,3 +1,6 @@
+import { normalize } from "polished";
+import { css } from "@emotion/react";
+
 const theme = {
   colors: {
     white: "#FFF",
@@ -7,8 +10,13 @@ const theme = {
     purpleDark: "#4E134C",
     purpleLight: "#91288C",
     blueLight: "#2A3B8F",
+    blueDark: "#19134B",
     neutralDark: "#221F20",
     neutralGrey: "#464646",
+    orangeLight: "#F9A61A",
+    orangeDark: "#F27323",
+    redLight: "#ED2F25",
+    redDark: "#A61E22",
   },
   gradients: {
     purple: `-webkit-linear-gradient(
@@ -34,11 +42,6 @@ const theme = {
       #91288C
 
     )`,
-    transparent: `-webkit-linear-gradient(
-      320deg,
-      "rgba(0, 0, 0, .0)",
-      "rgba(0, 0, 0, .0)",
-    )`,
   },
   breakpoints: {
     mobile: 0,
@@ -47,5 +50,59 @@ const theme = {
     desktop: 1000,
   },
 };
+
+export const globalStyles = css`
+  ${normalize()}
+
+  * {
+    box-sizing: border-box;
+    margin: 0;
+  }
+
+  html,
+  body {
+    font-family: proxima-nova, sans-serif;
+  }
+
+  p,
+  li,
+  blockquote,
+  ul {
+    font-size: 1.1rem;
+    line-height: 1.75rem;
+  }
+
+  h4,
+  h2,
+  h3 {
+    margin: 15px 0;
+    line-height: 1.75rem;
+  }
+
+  li {
+    line-height: 2rem;
+  }
+
+  a {
+    text-decoration: none;
+    color: black;
+  }
+
+  .socials {
+    &:hover {
+      color: ${theme.colors.purpleLight};
+    }
+  }
+
+  .colorBlock-arrow {
+    font-size: 32px;
+    color: #fff;
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+    transition: all 0.3s;
+    &:hover {
+      color: ${theme.colors.orangeLight};
+    }
+  `;
 
 export default theme;

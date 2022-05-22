@@ -23,6 +23,7 @@ const Socials = ({ data, size = "2x", color, center = false }) => {
             size={size}
             color={color ?? theme.colors.purpleLight}
             href={Object.values(social).join("")}
+            className="socials"
           />
         </ItemWrapper>
       ))}
