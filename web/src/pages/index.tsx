@@ -126,7 +126,7 @@ const Spacer = styled.div`
     margin: 12px;
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
-    margin: 24px;
+    margin: 16px;
   }
 `;
 

@@ -66,7 +66,7 @@ const Touchable = styled.button`
     width: auto;
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
-    padding: 15px 25px;
+    padding: 10px 25px;
     width: auto;
   }
 `;
