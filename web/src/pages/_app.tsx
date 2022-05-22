@@ -1,6 +1,5 @@
 import { useEffect } from "react";
-import theme from "../../styles/theme";
-import { normalize } from "polished";
+import theme, { globalStyles } from "../../styles/theme";
 import { SWRConfig } from "swr";
 import Layout from "../components/Layout";
 import configuredSanityClient, { previewMode } from "../sanity";
@@ -29,49 +28,7 @@ library.add(
   faArrowRight
 );
 
-import { ThemeProvider, Global, css } from "@emotion/react";
-
-const globalStyles = css`
-  ${normalize()}
-
-  * {
-    box-sizing: border-box;
-    margin: 0;
-  }
-
-  html,
-  body {
-    font-family: proxima-nova, sans-serif;
-  }
-
-  p,
-  li,
-  blockquote,
-  ul {
-    font-size: 1.1rem;
-    line-height: 1.75rem;
-  }
-
-  h4,
-  h2,
-  h3 {
-    margin: 15px 0;
-    line-height: 1.75rem;
-  }
-
-  li {
-    line-height: 2rem;
-  }
-
-  a {
-    text-decoration: none;
-    color: black;
-  }
-
-  footer {
-    flex-shrink: 0;
-  }
-`;
+import { ThemeProvider, Global } from "@emotion/react";
 
 function MyApp({ Component, pageProps, data }: any) {
   useEffect(() => {
