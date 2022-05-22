@@ -1,8 +1,21 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+import { PortableTextBlock } from "@portabletext/types";
 
 export interface SanityEvent {
   address: string;
+  description: {
+    eng?: PortableTextBlock;
+    srp?: PortableTextBlock;
+  };
   alcoholFree: boolean;
+  eventLink: {
+    text: {
+      eng?: string;
+      srp?: string;
+    };
+    url: string;
+    _type: string;
+  };
   wheelchairFriendly: boolean;
   blurb: {
     srp?: string;
@@ -13,6 +26,8 @@ export interface SanityEvent {
   offical: boolean;
   organization: string;
   signLanguageInterpreted: boolean;
+  endTime: Date;
+  startTime: Date;
   title: {
     srp?: string;
     eng?: string;
@@ -20,7 +35,6 @@ export interface SanityEvent {
   slug: {
     _type: string;
     current: string;
-    startTime: Date;
   };
   _createdAt: Date;
   _id: string;
