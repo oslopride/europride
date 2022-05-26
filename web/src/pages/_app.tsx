@@ -7,7 +7,7 @@ import { DefaultSeo } from "next-seo";
 import SEO from "../../next-seo.config";
 import Head from "next/head";
 import { library } from "@fortawesome/fontawesome-svg-core";
-import { faArrowRight } from "@fortawesome/free-solid-svg-icons";
+import { faArrowRight, faTimes } from "@fortawesome/free-solid-svg-icons";
 import {
   faFacebookSquare,
   faTwitter,
@@ -25,7 +25,8 @@ library.add(
   faInstagram,
   faSnapchatGhost,
   faYoutube,
-  faArrowRight
+  faArrowRight,
+  faTimes
 );
 
 import { ThemeProvider, Global } from "@emotion/react";

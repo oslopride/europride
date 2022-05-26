@@ -5,6 +5,8 @@ import groq from "groq";
 import styled from "@emotion/styled";
 import configuredSanityClient from "../../sanity";
 import SanityLink from "../SanityLink";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import theme from "../../../styles/theme";
 
 const isSelected = (text = "") => {
   const slug = location.pathname.split("/").slice(1)[0].replace("-", " ");
@@ -56,9 +58,19 @@ const BurgerMenu = () => {
         styles={styles}
         pageWrapId={"page-wrap"}
         forwardRef={focusRef}
+        customCrossIcon={false}
       >
         <>
-          <MenuHeader>{header.toUpperCase()}</MenuHeader>
+          <HeaderWrapper>
+            <MenuHeader>{header.toUpperCase()}</MenuHeader>
+            <FontAwesomeIcon
+              icon="times"
+              style={{ cursor: "pointer" }}
+              color={theme.colors.neutralDark}
+              size="2x"
+              onClick={() => setMenuState(false)}
+            />
+          </HeaderWrapper>
           {items.map((item: any) => (
             <ItemWrapper key={item._key}>
               <SanityLink href={item}>
@@ -77,17 +89,25 @@ const BurgerMenu = () => {
   );
 };
 
+const HeaderWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  margin-bottom: 20px;
+  justify-content: space-between;
+`;
+
 const MenuHeader = styled.p`
   font-style: normal;
-  font-weight: 600;
+  font-weight: 500;
   font-size: 24px;
-  margin-bottom: 20px;
+  line-height: 29px;
 `;
 
 const MenuItem = styled.div<{ isSelected: boolean }>`
   display: block;
   font-style: normal;
-  font-weight: bold;
+  font-weight: 700;
   font-size: 32px;
   line-height: 39px;
   color: ${({ theme }) => theme.colors.neutralDark};
