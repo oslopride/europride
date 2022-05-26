@@ -37,6 +37,9 @@ const theme = {
     greenYellow: `-webkit-linear-gradient(
     340.3deg, #049648 6.27%, #8DC343 29.71%, #FCBB16 50.63%, #91288C 83.27%
     )`,
+    red: `-webkit-linear-gradient(
+      360deg, #A61E22 0%, #ED2F25 82.17%
+    )`,
   },
   breakpoints: {
     mobile: 0,
@@ -91,7 +94,7 @@ export const globalStyles = css`
   }
 
   .colorBlock-arrow {
-    font-size: 32px;
+    font-size: 24px;
     color: #fff;
     -webkit-background-clip: text;
     -webkit-text-fill-color: transparent;
@@ -99,6 +102,7 @@ export const globalStyles = css`
     &:hover {
       color: ${theme.colors.orangeLight};
     }
-  `;
+  }
+`;
 
 export default theme;
