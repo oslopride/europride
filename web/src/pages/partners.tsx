@@ -12,10 +12,10 @@ import { NextSeo } from "next-seo";
 const Partners = ({ data, partners }: any) => {
   const theme = useTheme();
   const title = data?.title?.eng;
-  const blocks = data?.body?.eng;
+  const value = data?.body?.eng;
 
   const ctaTitle = data?.callToAction?.title.eng;
-  const ctaBlocks = data?.callToAction.description.eng;
+  const ctaValue = data?.callToAction.description.eng;
   const ctaLink = data?.callToAction?.link;
 
   if (!partners || !data) {
@@ -38,7 +38,7 @@ const Partners = ({ data, partners }: any) => {
       />
       <Header gradient={theme.gradients.orange}>{title}</Header>
       <BlockWrapper>
-        <SanityBlock blocks={blocks} />
+        <SanityBlock value={value} />
       </BlockWrapper>
       <ArticleWrapper>
         {partners.map((partner: any) => {
@@ -51,7 +51,7 @@ const Partners = ({ data, partners }: any) => {
                 />
               </ImageWrapper>
               <Description>{partner.name}</Description>
-              <SanityBlock blocks={partner?.description?.eng} />
+              <SanityBlock value={partner?.description?.eng} />
               {partner?.url?.url && partner?.url?.text ? (
                 <ExternalLinkButton
                   href={partner?.url?.url}
@@ -63,7 +63,7 @@ const Partners = ({ data, partners }: any) => {
         })}
         <CTAWrapper>
           <Description>{ctaTitle}</Description>
-          <SanityBlock blocks={ctaBlocks} />
+          <SanityBlock value={ctaValue} />
           <Spacing />
           <GradientButton href={ctaLink?.url} title={ctaLink?.text?.eng} />
         </CTAWrapper>

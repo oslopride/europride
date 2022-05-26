@@ -13,7 +13,7 @@ const Page = ({ page }: any) => {
   const title = page?.header?.eng?.title;
   const subtitle = page?.header?.eng?.subtitle;
   const description = page?.header?.eng?.summary?.eng;
-  const blocks = page?.body?.eng;
+  const value = page?.body?.eng;
   const slug = page?.slug?.current;
   const ogImageUrl = image ? urlFor(image).width(800).url() : "";
 
@@ -42,7 +42,7 @@ const Page = ({ page }: any) => {
           <CreateSanityImage url={image} alt={description} />
         </ImageWrapper>
       ) : null}
-      <SanityBlock blocks={blocks} />
+      <SanityBlock value={value} />
     </Wrapper>
   );
 };

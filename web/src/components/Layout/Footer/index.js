@@ -75,8 +75,8 @@ const Footer = () => {
         <RowSpacer />
         <Row>
           <SpaceBetween>
-            <SanityBlock blocks={footer.license} />
-            <SanityBlock blocks={footer.signature} />
+            <SanityBlock value={footer.license} />
+            <SanityBlock value={footer.signature} />
           </SpaceBetween>
         </Row>
       </Wrapper>
@@ -157,7 +157,7 @@ const SpaceBetween = styled.div`
   width: 100%;
 `;
 
-const Title = styled.p`
+const Title = styled.h3`
   font-weight: 700;
   margin: 10px 0;
 `;

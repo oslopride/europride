@@ -12,7 +12,7 @@ const Home: NextPage = ({ data, partners, config }: any) => {
   const title = data?.header?.title?.eng;
   const description = data?.header?.subHeading?.eng;
   const image = data?.header?.image?.asset;
-  const blocks = data?.body?.eng;
+  const value = data?.body?.eng;
   const leftButton = data?.header?.leftButtonLink?.[0];
   const rightButton = data?.header?.rightButtonLink?.[0];
   const ogImageUrl = image ? urlFor(image).width(800).url() : "";
@@ -56,7 +56,7 @@ const Home: NextPage = ({ data, partners, config }: any) => {
           <CreateSanityImage url={image} alt={description} />
         </HeroImageWrapper>
         <BlockWrapper>
-          <SanityBlock blocks={blocks} />
+          <SanityBlock value={value} />
         </BlockWrapper>
       </Wrapper>
       {/* <PartnerBox partners={partners} config={config} /> */}
@@ -97,10 +97,12 @@ const HeaderButtons = styled.div`
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     flex-direction: row;
     align-items: flex-start;
+    margin: 32px 0 40px 0;
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     flex-direction: row;
     align-items: flex-start;
+    margin: 64px 0 80px 0;
   }
 `;
 

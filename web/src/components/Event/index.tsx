@@ -15,7 +15,7 @@ const Event = ({ event }: EventProps) => {
   const theme = useTheme();
   const gradients: Gradient[] = Object.values(theme.gradients as IGradients);
   const random = gradients[Math.floor(Math.random() * gradients.length)];
-  const blocks = event.description.eng;
+  const value = event.description.eng;
   return (
     <Wrapper>
       <Header gradient={random}>{event?.title?.eng}</Header>
@@ -23,7 +23,7 @@ const Event = ({ event }: EventProps) => {
         event.endTime,
         "en-GB"
       )}`}</Time>
-      <SanityBlock blocks={blocks} />
+      <SanityBlock value={value} />
       <Spacer />
       {event?.eventLink?.url ? (
         <GradientButton

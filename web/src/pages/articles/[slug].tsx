@@ -19,7 +19,7 @@ const Article = ({ article }: SanityArticle) => {
   const title = article?.header?.eng?.title;
   const subtitle = article?.header?.eng?.subtitle;
   const image = article?.header?.eng?.image.asset;
-  const blocks = article?.body?.eng;
+  const value = article?.body?.eng;
   const slug = article?.slug?.current;
   const ogImgUrl = urlFor(image as SanityImageSource)
     .width(800)
@@ -49,7 +49,7 @@ const Article = ({ article }: SanityArticle) => {
         <CreateSanityImage url={image} alt={title} />
       </ImageWrapper>
       <ImageWrapper></ImageWrapper>
-      <SanityBlock blocks={blocks} />
+      <SanityBlock value={value} />
     </Wrapper>
   );
 };

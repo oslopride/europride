@@ -1,9 +1,19 @@
-import { PortableText } from "@portabletext/react";
+import {
+  PortableText,
+  ReactPortableTextList,
+  ReactPortableTextListItem,
+  PortableTextTypeComponent,
+  PortableTextComponent,
+  PortableTextReactComponents,
+  PortableTextProps,
+  PortableTextBlockComponent,
+} from "@portabletext/react";
 import { getImageDimensions } from "@sanity/asset-utils";
 import urlBuilder from "@sanity/image-url";
 import Img from "next/image";
 import styled from "@emotion/styled";
 
+// Currently unused as we dont support adding images to blocks
 const ImageComponent = ({ value }: any) => {
   const { width, height } = getImageDimensions(value);
   return (
@@ -15,32 +25,43 @@ const ImageComponent = ({ value }: any) => {
   );
 };
 
-const components = {
+const components: Partial<PortableTextReactComponents> = {
   types: {
     image: ImageComponent,
   },
+  block: {
+    normal: ({ children }) => <PComponent>{children}</PComponent>,
+  },
 
   marks: {
-    link: ({ children, value }: any) => {
+    link: ({ children, value }) => {
       const rel = !value.href.startsWith("/")
         ? "noreferrer noopener"
         : undefined;
       return (
-        <A href={value.href} rel={rel}>
+        <AnchorComponent href={value.href} rel={rel}>
           {children}
-        </A>
+        </AnchorComponent>
       );
     },
   },
 };
 
-const A = styled.a`
+const AnchorComponent = styled.a`
   color: blue;
   text-decoration: underline;
 `;
 
-const SanityBlock = ({ blocks }: any) => {
-  return <PortableText value={blocks} components={components} />;
-};
+const PComponent = styled.p`
+  color: ${({ theme }) => theme.colors.neutralGrey};
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 40px;
+`;
+
+function SanityBlock({ value }: any) {
+  return <PortableText value={value} components={components} />;
+}
 
 export default SanityBlock;
