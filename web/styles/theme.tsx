@@ -69,6 +69,7 @@ export const globalStyles = css`
   ul {
     font-size: 1.1rem;
     line-height: 1.75rem;
+    color: ${theme.colors.neutralGrey};
   }
 
   h4,
@@ -84,7 +85,7 @@ export const globalStyles = css`
 
   a {
     text-decoration: none;
-    color: black;
+    color: ${theme.colors.neutralDark};
   }
 
   .socials {

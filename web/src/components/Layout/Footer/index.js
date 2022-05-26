@@ -1,12 +1,13 @@
 import styled from "@emotion/styled";
 import { useTheme } from "@emotion/react";
-import Image from "next/image";
 import logo from "../../../../public/logo.png";
 import GradientButton from "../../GradientButton";
 import SimpleButton from "../../SimpleButton";
 import Socials from "../../Socials";
 import ColorBlockButton from "./components/ColorBlock";
 import SanityBlock from "../../../components/SanityBlock";
+import Image from "next/image";
+import epoa from "../../../../static/epoa.png";
 
 import configuredSanityClient from "../../../sanity";
 import useSWR from "swr";
@@ -76,7 +77,10 @@ const Footer = () => {
         <RowSpacer />
         <Row>
           <SpaceBetween>
-            <SanityBlock value={footer.license} />
+            <Left>
+              <SanityBlock value={footer.license} />
+              <Image width={78} height={28} src={epoa} />
+            </Left>
             <SanityBlock value={footer.signature} />
           </SpaceBetween>
         </Row>
@@ -96,6 +100,20 @@ const Wrapper = styled.div`
   padding: 24px;
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     padding: 38px;
+  }
+`;
+
+const Left = styled.div`
+  display: flex;
+  flex-direction: column;
+  gap: 14px;
+  align-items: flex-start;
+  justify-content: flex-start;
+  margin: 10px 0;
+  padding-right: 30px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    flex-direction: row;
+    margin: 0;
   }
 `;
 
@@ -122,6 +140,7 @@ const ShortcutsWrapper = styled.div`
   display: flex;
   flex-direction: column;
   align-items: flex-start;
+  justify-content: flex-start;
 `;
 
 const Row = styled.div`
@@ -152,6 +171,7 @@ const SpaceBetween = styled.div`
   display: flex;
   justify-content: space-between;
   flex-direction: column;
+  margin-top: 10px;
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     flex-direction: row;
   }

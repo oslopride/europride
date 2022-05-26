@@ -3,7 +3,7 @@ import configuredSanityClient from "../sanity";
 import Event from "../components/Event";
 import ErrorNotFound from "./404";
 import { useTheme } from "@emotion/react";
-import { Wrapper, Header } from "../components/common";
+import { Wrapper, Header, Subheader } from "../components/common";
 import { NextSeo } from "next-seo";
 import { SanityEvent } from "../types/sanity";
 
@@ -67,11 +67,4 @@ export default Program;
 
 const Spacer = styled.div`
   margin-top: 30px;
-`;
-
-const Subheader = styled.p`
-  font-style: normal;
-  font-weight: normal;
-  font-size: 24px;
-  line-height: 40px;
 `;

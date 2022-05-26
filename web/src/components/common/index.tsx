@@ -35,8 +35,11 @@ export const Header = styled.h1<ElementStyleProps>`
 `;
 
 export const Subheader = styled.h2`
-  font-size: 16px;
   text-align: left;
+  font-weight: 400;
+  font-size: 20px;
+  line-height: 32px;
+  color: ${({ theme }) => theme.colors.neutralGrey};
 `;
 
 export const ImageWrapper = styled.div`

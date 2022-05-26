@@ -28,6 +28,7 @@ const Title = styled.p`
   font-size: 20px;
   line-height: 24px;
   text-decoration: underline;
+  text-align: left;
 `;
 
 export default SimpleButton;
