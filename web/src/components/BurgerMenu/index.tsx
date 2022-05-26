@@ -85,12 +85,12 @@ const MenuHeader = styled.p`
 `;
 
 const MenuItem = styled.div<{ isSelected: boolean }>`
-  display: flex;
+  display: block;
   font-style: normal;
   font-weight: bold;
   font-size: 32px;
   line-height: 39px;
-  color: #221f20;
+  color: ${({ theme }) => theme.colors.neutralDark};
   margin-bottom: 40px;
   border-bottom-style: solid;
   border-left: 0px;
@@ -101,9 +101,14 @@ const MenuItem = styled.div<{ isSelected: boolean }>`
   transition-duration: 0.2s;
   transition-timing-function: ease-in-out;
   &:hover {
-    background: ${({ theme }) => theme.gradients.greenYellow};
-    -webkit-background-clip: text;
-    -webkit-text-fill-color: transparent;
+    @supports ((background-clip: text) or (-webkit-background-clip: text)) and
+      ((text-fill-color: transparent) or (-webkit-text-fill-color: transparent)) {
+      background: ${({ theme }) => theme.gradients.orange};
+      background-size: cover;
+      text-fill-color: transparent;
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
   }
 `;
 
