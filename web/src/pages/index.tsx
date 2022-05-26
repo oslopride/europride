@@ -5,7 +5,13 @@ import CreateSanityImage from "../components/CreateSanityImage";
 import SanityBlock from "../components/SanityBlock";
 import PartnerBox from "../components/PartnerBox";
 import { NextSeo } from "next-seo";
-import { Header, Wrapper, Subheader } from "../components/common";
+import {
+  Header,
+  Wrapper,
+  Subheader,
+  ImageWrapper,
+  Spacer,
+} from "../components/common";
 import GradientButton from "../components/GradientButton";
 
 const Home: NextPage = ({ data, partners, config }: any) => {
@@ -52,9 +58,9 @@ const Home: NextPage = ({ data, partners, config }: any) => {
             href={rightButton}
           />
         </HeaderButtons>
-        <HeroImageWrapper>
+        <ImageWrapper>
           <CreateSanityImage url={image} alt={description} />
-        </HeroImageWrapper>
+        </ImageWrapper>
         <BlockWrapper>
           <SanityBlock value={value} />
         </BlockWrapper>
@@ -114,22 +120,6 @@ const BlockWrapper = styled.div`
   justify-content: center;
   width: 100%;
   max-width: 900px;
-`;
-
-const HeroImageWrapper = styled.div`
-  width: 100%;
-  max-width: 1280px;
-  align-self: center;
-`;
-
-const Spacer = styled.div`
-  margin: 10px;
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    margin: 12px;
-  }
-  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
-    margin: 16px;
-  }
 `;
 
 export default Home;

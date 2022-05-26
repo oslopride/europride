@@ -41,12 +41,29 @@ export const Subheader = styled.h2`
 
 export const ImageWrapper = styled.div`
   width: 100%;
-  margin-top: 10px;
+  max-width: 1280px;
   align-self: center;
+  margin: 48px 0;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    margin: 62px 0;
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+    font-size: 80px;
+  }
 `;
 
 export const Anchor = styled.a`
   cursor: pointer;
   text-decoration: underline;
   color: blue;
+`;
+
+export const Spacer = styled.div`
+  margin: 10px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    margin: 12px;
+  }
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
+    margin: 16px;
+  }
 `;
