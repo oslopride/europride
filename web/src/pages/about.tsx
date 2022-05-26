@@ -18,7 +18,7 @@ const About = ({ data, volunteers }: any) => {
   const title = data.header.eng;
   const subtitle = data.subheaderText.eng;
   const image = data?.image?.asset;
-  const blocks = data?.body.eng;
+  const value = data?.body.eng;
   const ogImageUrl = image ? urlFor(image).width(800).url() : "";
   const openGraph = {
     url: "europride2022.com/about",
@@ -47,7 +47,7 @@ const About = ({ data, volunteers }: any) => {
         <CreateSanityImage url={image} alt={title} />
       </ImageWrapper>
       <BlockWrapper id="body">
-        <SanityBlock blocks={blocks} />
+        <SanityBlock value={value} />
       </BlockWrapper>
       <VolunteerWrapper>
         {volunteers.map((v: any, i: number) => (

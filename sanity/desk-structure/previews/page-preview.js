@@ -5,7 +5,7 @@ import PreviewWrapper from "./preview-wrapper";
 
 export default function PagePreview({ document }) {
   const { displayed } = document;
-  const blocks = displayed.blocks.eng;
+  const value = displayed.blocks.eng;
   const context = {
     locale: "eng",
     baseUrl: "/",
@@ -16,7 +16,7 @@ export default function PagePreview({ document }) {
   return (
     <PreviewWrapper>
       <PageProvider context={context}>
-        <Page blocks={blocks} />
+        <Page value={value} />
       </PageProvider>
     </PreviewWrapper>
   );
