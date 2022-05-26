@@ -35,12 +35,7 @@ const theme = {
       #8DC343
     )`,
     greenYellow: `-webkit-linear-gradient(
-      320deg,
-      #049648,
-      #8DC343,
-      #FCBB16,
-      #91288C
-
+    340.3deg, #049648 6.27%, #8DC343 29.71%, #FCBB16 50.63%, #91288C 83.27%
     )`,
   },
   breakpoints: {
@@ -64,7 +59,8 @@ export const globalStyles = css`
     font-family: proxima-nova, sans-serif;
   }
 
-  p,
+  p {
+  }
   li,
   blockquote,
   ul {

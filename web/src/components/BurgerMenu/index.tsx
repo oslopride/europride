@@ -98,8 +98,8 @@ const MenuItem = styled.div<{ isSelected: boolean }>`
   border-top: 0px;
   border-bottom-width: ${({ isSelected }) => (isSelected ? 5 : 0)}px;
   border-image: ${({ theme }) => theme.gradients.orange + "1"};
-  transition-duration: 0.2s;
-  transition-timing-function: ease-in-out;
+  transition-duration: 0.3s;
+  transition-timing-function: linear;
   &:hover {
     @supports ((background-clip: text) or (-webkit-background-clip: text)) and
       ((text-fill-color: transparent) or (-webkit-text-fill-color: transparent)) {
