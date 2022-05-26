@@ -1,5 +1,4 @@
 import styled from "@emotion/styled";
-import { useTheme } from "@emotion/react";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import SanityLink from "../../../SanityLink";
 
