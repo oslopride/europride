@@ -4,8 +4,8 @@ import SanityBlock from "../SanityBlock";
 import formatISOTime from "../../utils/formatISOTime";
 import { Header } from "../common";
 import { useTheme } from "@emotion/react";
-import { IGradients, Gradient } from "../../types/theme";
 import { SanityEvent } from "../../types/sanity";
+import getRandomGradient from "../../utils/getRandomGradient";
 
 interface EventProps {
   event: SanityEvent;
@@ -13,12 +13,12 @@ interface EventProps {
 
 const Event = ({ event }: EventProps) => {
   const theme = useTheme();
-  const gradients: Gradient[] = Object.values(theme.gradients as IGradients);
-  const random = gradients[Math.floor(Math.random() * gradients.length)];
   const value = event.description.eng;
   return (
     <Wrapper>
-      <Header gradient={random}>{event?.title?.eng}</Header>
+      <Header gradient={getRandomGradient(theme.gradients)}>
+        {event?.title?.eng}
+      </Header>
       <Time>{`${formatISOTime(event.startTime, "en-GB")} - ${formatISOTime(
         event.endTime,
         "en-GB"

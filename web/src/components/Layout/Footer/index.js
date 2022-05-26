@@ -49,7 +49,7 @@ const Footer = () => {
             <Email href={`mailto:${footer.email}`}>{footer.email}</Email>
             <GradientButton
               title={footer.donateLink[0].text.eng}
-              backgroundColor={theme.colors.neutralGray}
+              backgroundColor={theme.colors.neutralGrey}
               href={footer.donateLink[0].url}
             />
           </Column>
@@ -66,6 +66,7 @@ const Footer = () => {
                   key={s.text.eng + i}
                   link={s}
                   title={s.text.eng}
+                  titleColor={theme.colors.neutralGrey}
                   width={150}
                 />
               ))}
@@ -88,7 +89,7 @@ const Outer = styled.footer``;
 
 const Wrapper = styled.div`
   display: flex;
-  background-color: ${({ theme }) => theme.colors.neutralGray};
+  background-color: ${({ theme }) => theme.colors.backgroundGrey};
   flex-direction: column;
   justify-content: space-evenly;
   width: 100%;
@@ -160,14 +161,17 @@ const SpaceBetween = styled.div`
 const Title = styled.p`
   font-weight: 700;
   margin: 10px 0;
+  color: ${({ theme }) => theme.colors.neutralDark};
 `;
 
 const Description = styled.p`
   margin: 10px 0;
+  color: ${({ theme }) => theme.colors.neutralGrey};
 `;
 
 const Email = styled.a`
   margin: 10px 0;
+  color: ${({ theme }) => theme.colors.neutralGrey};
 `;
 
 export default Footer;

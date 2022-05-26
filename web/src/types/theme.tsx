@@ -10,7 +10,7 @@ export interface IColors {
   white: string;
   black: string;
   greenDark: string;
-  neutralGray: string;
+  backgroundGrey: string;
   purpleDark: string;
   purpleLight: string;
   blueLight: string;

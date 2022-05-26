@@ -25,7 +25,6 @@ const Touchable = styled.button`
 const Title = styled.p`
   background-color: ${({ backgroundColor }) => backgroundColor};
   color: ${({ textColor }) => textColor};
-  font-style: normal;
   font-size: 20px;
   line-height: 24px;
   text-decoration: underline;
