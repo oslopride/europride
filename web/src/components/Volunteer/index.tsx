@@ -1,8 +1,14 @@
 import styled from "@emotion/styled";
 import CreateSanityImage from "../CreateSanityImage";
 import { Theme } from "@emotion/react";
+import { SanityVolunteer } from "../../types/sanity";
 
-const Volunteer = ({ volunteer }: any) => {
+interface VolunteerProps {
+  volunteer: SanityVolunteer;
+  index: number;
+}
+
+const Volunteer = ({ volunteer, index }: VolunteerProps) => {
   return (
     <Flex>
       <VolunteerWrapper>

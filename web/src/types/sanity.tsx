@@ -1,7 +1,7 @@
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 import { PortableTextBlock } from "@portabletext/types";
 
-export interface SanityEvent {
+export type SanityEvent = {
   address: string;
   description: {
     eng?: PortableTextBlock;
@@ -41,9 +41,9 @@ export interface SanityEvent {
   _rev: string;
   _type: string;
   _updatedAt: Date;
-}
+};
 
-export interface SanityArticle {
+export type SanityArticle = {
   article: {
     body: {
       eng?: Array<Object>;
@@ -62,4 +62,18 @@ export interface SanityArticle {
       current: string;
     };
   };
-}
+};
+
+export type SanityVolunteer = {
+  bio: { eng?: PortableTextBlock; srp?: PortableTextBlock };
+  email: string;
+  name: string;
+  portrait: { _type: string; asset: SanityImageSource };
+  pronouns: { eng: string; srp: string };
+  role: { eng: string; srp: string };
+  _createdAt: Date;
+  _id: string;
+  _rev: string;
+  _type: string;
+  _updatedAt: Date;
+};
