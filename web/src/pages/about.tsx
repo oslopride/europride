@@ -7,8 +7,14 @@ import CreateSanityImage from "../components/CreateSanityImage";
 import ErrorNotFound from "./404";
 import { Wrapper, Header, Subheader } from "../components/common";
 import { NextSeo } from "next-seo";
+import { SanityVolunteer } from "../types/sanity";
 
-const About = ({ data, volunteers }: any) => {
+interface AboutProps {
+  data: any;
+  volunteers: SanityVolunteer[];
+}
+
+const About = ({ data, volunteers }: AboutProps) => {
   if (!data || !volunteers)
     return (
       <Wrapper>
@@ -50,7 +56,7 @@ const About = ({ data, volunteers }: any) => {
         <SanityBlock value={value} />
       </BlockWrapper>
       <VolunteerWrapper>
-        {volunteers.map((v: any, i: number) => (
+        {volunteers.map((v: SanityVolunteer, i: number) => (
           <Volunteer index={i + 1} volunteer={v} key={v.name} />
         ))}
       </VolunteerWrapper>
