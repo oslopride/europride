@@ -25,13 +25,15 @@ export const Header = styled.h1<ElementStyleProps>`
     gradient ? gradient : theme?.gradients?.greenYellow};
   -webkit-background-clip: text;
   -webkit-text-fill-color: transparent;
+  margin: 16px 0;
+  text-align: center;
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     font-size: 60px;
+    text-align: left;
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     font-size: 80px;
   }
-  margin: 16px 0;
 `;
 
 export const Subheader = styled.h2`
@@ -40,6 +42,10 @@ export const Subheader = styled.h2`
   font-size: 20px;
   line-height: 32px;
   color: ${({ theme }) => theme.colors.neutralGrey};
+  text-align: center;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    text-align: left;
+  }
 `;
 
 export const ImageWrapper = styled.div`

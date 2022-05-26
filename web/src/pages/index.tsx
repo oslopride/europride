@@ -47,7 +47,7 @@ const Home: NextPage = ({ data, partners, config }: any) => {
           openGraph={openGraph}
         />
         <FrontPageSubheader>{description}</FrontPageSubheader>
-        <FrontPageHeader>{title}</FrontPageHeader>
+        <Header>{title}</Header>
         <HeaderButtons>
           {/* TODO - make this an array in Sanity and map */}
           <GradientButton title={leftButton?.text?.eng} href={leftButton} />
@@ -122,20 +122,9 @@ const BlockWrapper = styled.div`
   max-width: 900px;
 `;
 
-const FrontPageHeader = styled(Header)`
-  text-align: center;
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    text-align: left;
-  }
-`;
-
 const FrontPageSubheader = styled(Subheader)`
   font-weight: 700;
   color: ${({ theme }) => theme.colors.neutralDark};
-  text-align: center;
-  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
-    text-align: left;
-  }
 `;
 
 export default Home;
