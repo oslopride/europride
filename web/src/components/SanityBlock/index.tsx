@@ -32,7 +32,6 @@ const components: Partial<PortableTextReactComponents> = {
   block: {
     normal: ({ children }) => <PComponent>{children}</PComponent>,
   },
-
   marks: {
     link: ({ children, value }) => {
       const rel = !value.href.startsWith("/")
@@ -54,13 +53,11 @@ const AnchorComponent = styled.a`
 
 const PComponent = styled.p`
   color: ${({ theme }) => theme.colors.neutralGrey};
-  font-style: normal;
-  font-weight: 400;
-  font-size: 24px;
-  line-height: 40px;
+  line-height: 24px;
 `;
 
 function SanityBlock({ value }: any) {
+  console.log(value);
   return <PortableText value={value} components={components} />;
 }
 

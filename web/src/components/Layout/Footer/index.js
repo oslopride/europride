@@ -157,7 +157,7 @@ const SpaceBetween = styled.div`
   width: 100%;
 `;
 
-const Title = styled.h3`
+const Title = styled.p`
   font-weight: 700;
   margin: 10px 0;
 `;

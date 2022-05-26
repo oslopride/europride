@@ -3,7 +3,7 @@ declare module "@sanity/block-content-to-react" {
 	import { SanityObjectArray, SanityBlockContent } from "../sanity/models";
 
 	const content: React.FC<{
-		blocks: SanityObjectArray<SanityBlockContent>;
+		value: SanityObjectArray<SanityBlockContent>;
 		serializers?: {
 			types: {
 				[key: string]: React.FC | React.Component;
