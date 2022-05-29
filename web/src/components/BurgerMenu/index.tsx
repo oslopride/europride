@@ -156,9 +156,8 @@ const styles = {
   },
   bmMenuWrap: {
     position: "fixed",
-    height: "100%",
     width: "auto",
-    bottom: "0",
+    top: 0,
   },
   bmMenu: {
     background: "#F5F5F5",

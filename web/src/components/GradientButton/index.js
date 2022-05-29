@@ -41,29 +41,29 @@ const Touchable = styled.button`
     height: 100%;
   }
 
-  &:hover::before {
-    opacity: 0;
-  }
-
-  &::after {
-    content: "";
-    position: fixed;
-    left: 0;
-    right: 0;
-    top: 0;
-    bottom: 0;
-    background: ${({ gradient }) => gradient};
-    opacity: 0;
-    z-index: -1;
-    transition: opacity 0.3s;
-  }
-
-  &:hover::after {
-    opacity: 1;
-  }
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
     padding: 10px 20px;
     width: auto;
+    &:hover::before {
+      opacity: 0;
+    }
+
+    &::after {
+      content: "";
+      position: fixed;
+      left: 0;
+      right: 0;
+      top: 0;
+      bottom: 0;
+      background: ${({ gradient }) => gradient};
+      opacity: 0;
+      z-index: -1;
+      transition: opacity 0.3s;
+    }
+
+    &:hover::after {
+      opacity: 1;
+    }
   }
   @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     padding: 10px 25px;
