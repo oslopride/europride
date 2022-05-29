@@ -1,6 +1,6 @@
 import styled from "@emotion/styled";
 import configuredSanityClient from "../sanity";
-import Event from "../components/Event";
+import EventThumbnail from "../components/EventThumbnail";
 import ErrorNotFound from "./404";
 import { useTheme } from "@emotion/react";
 import { Wrapper, Header, Subheader } from "../components/common";
@@ -33,10 +33,11 @@ const Program = ({ events, data }: any) => {
       <Header gradient={theme.gradients.purple}>{title}</Header>
       <Subheader>{subtitle}</Subheader>
       <Spacer />
-      {events.map((event: SanityEvent, i: number) => {
-        return <Event key={event.slug.current} event={event} />;
-      })}
-      <Spacer />
+      <EventWrapper>
+        {events.map((event: SanityEvent, i: number) => {
+          return <EventThumbnail key={event.slug.current} event={event} />;
+        })}
+      </EventWrapper>
     </Wrapper>
   );
 };
@@ -67,4 +68,14 @@ export default Program;
 
 const Spacer = styled.div`
   margin-top: 30px;
+`;
+
+const EventWrapper = styled.div`
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  gap: 10px;
+  @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {
+    gap: 20px;
+  }
 `;
