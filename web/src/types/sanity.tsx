@@ -77,3 +77,21 @@ export type SanityVolunteer = {
   _type: string;
   _updatedAt: Date;
 };
+
+export type SanityObject<T extends string, O extends object> = { _type: T } & O;
+export type SanityReference = SanityObject<"reference", { _ref: string }>;
+
+export type SanityExternalLink = SanityObject<
+  "externalLink",
+  {
+    text: string;
+    url: string;
+  }
+>;
+export type SanityInternalLink = SanityObject<
+  "internalLink",
+  {
+    text: string;
+    url: SanityReference;
+  }
+>;

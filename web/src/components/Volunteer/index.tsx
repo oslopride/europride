@@ -29,11 +29,7 @@ const Volunteer = ({ volunteer, index }: VolunteerProps) => {
 
 export default Volunteer;
 
-interface IFlexProps {
-  theme?: Theme;
-}
-
-const Flex = styled.div<IFlexProps>`
+const Flex = styled.div`
   flex: 1 0 90%;
   margin: 10px;
   @media (min-width: ${({ theme }) => theme.breakpoints.tablet}px) {

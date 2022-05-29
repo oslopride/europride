@@ -1,16 +1,12 @@
-import Link, { LinkProps } from "next/link";
+import Link from "next/link";
 import configuredSanityClient from "../../sanity";
-import { UrlObject } from "url";
 import useSWR from "swr";
 import CSS from "csstype";
 import groq from "groq";
-interface IProps {
-  href: {
-    url: any;
-    _type: string;
-    _ref: string;
-  };
-  children?: any;
+import { SanityInternalLink, SanityExternalLink } from "../../types/sanity";
+interface SanityLinkProps {
+  href: SanityExternalLink | SanityInternalLink;
+  children?: JSX.Element;
   containerStyle?: CSS.Properties;
   title?: {
     eng: string;
@@ -18,12 +14,8 @@ interface IProps {
   };
 }
 
-/**  Pass the entire url object as href into this component */
-const SanityLink = ({ href, children, containerStyle }: IProps) => {
-  const { data, error } = useSWR(
-    groq`*[_id == "${href?.url?._ref}"][0]`,
-    async (query) => await configuredSanityClient.fetch(query)
-  );
+/**  Use with a Sanity Reference. Pass the entire url object as href into this component */
+const SanityLink = ({ href, children, containerStyle }: SanityLinkProps) => {
   const getSlug = () => {
     if (typeof href === "string") {
       return href;
@@ -31,19 +23,26 @@ const SanityLink = ({ href, children, containerStyle }: IProps) => {
     if (href?._type === "externalLink") {
       return href.url;
     }
-    if (data?._type === "frontPage") {
-      return "/";
+
+    if (href.url._ref) {
+      const { data, error } = useSWR(
+        groq`*[_id == "${href?.url?._ref}"][0]`,
+        async (query) => await configuredSanityClient.fetch(query)
+      );
+      if (error) return "/404";
+      if (data?._type === "frontPage") {
+        return "/";
+      }
+      // hopefully temporary while figuring out sanity mess
+      if (data?._type === "about") {
+        return data._type;
+      }
+      if (data?.slug?.current) {
+        return "/" + data?.slug?.current;
+      }
+      return "/404";
     }
-    // hopefully temporary while figuring out sanity mess
-    if (data?._type === "about") {
-      return data._type;
-    }
-    if (data?.slug?.current) {
-      return "/" + data?.slug?.current;
-    }
-    return "/404";
   };
-  if (error) return null;
   return (
     <Link href={getSlug()}>
       <a style={containerStyle}>{children}</a>
