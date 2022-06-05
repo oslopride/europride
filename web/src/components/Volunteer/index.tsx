@@ -13,10 +13,7 @@ const Volunteer = ({ volunteer, index }: VolunteerProps) => {
     <Flex>
       <VolunteerWrapper>
         <ImageWrapper>
-          <CreateSanityImage
-            url={volunteer.portrait.asset}
-            alt={volunteer.name}
-          />
+          <CreateSanityImage url={volunteer.portrait} alt={volunteer.name} />
         </ImageWrapper>
         <Name>{volunteer.name}</Name>
         <Pronouns>{volunteer.pronouns.eng}</Pronouns>

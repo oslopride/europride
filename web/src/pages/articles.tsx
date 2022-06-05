@@ -4,8 +4,21 @@ import ErrorNotFound from "./404";
 import Thumbnail from "../components/Thumbnail";
 import { Wrapper, Header, Subheader } from "../components/common";
 import { NextSeo } from "next-seo";
+import { SanityArticle, TranslatedString } from "../types/sanity";
 
-const Articles = ({ data, articles }: any) => {
+interface ArticlesProps {
+  data: {
+    slug: {
+      current: string;
+      _type: string;
+    };
+    subtitle: TranslatedString;
+    title: TranslatedString;
+  };
+  articles: SanityArticle[];
+}
+
+const Articles = ({ data, articles }: ArticlesProps) => {
   if (!data) {
     return (
       <Wrapper>
@@ -41,7 +54,7 @@ const TopWrapper = styled.div`
   width: 100%;
   align-self: center;
   margin-bottom: 10px;
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     margin-bottom: 15px;
   }
 `;
@@ -53,7 +66,7 @@ const AContainer = styled.div`
   margin-top: 20px;
 `;
 
-export const getServerSideProps = async (pageContext: any) => {
+export const getServerSideProps = async () => {
   const data = await configuredSanityClient.fetch(
     `*[_id == "articleOverview"][0]`
   );

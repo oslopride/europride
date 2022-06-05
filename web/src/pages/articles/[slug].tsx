@@ -10,7 +10,8 @@ import {
 } from "../../components/common";
 import { NextSeo } from "next-seo";
 import { SanityImageSource } from "@sanity/image-url/lib/types/types";
-import { SanityArticle } from "../../types/sanity";
+import { SanityArticle, Params } from "../../types/sanity";
+import { GetStaticProps } from "next";
 
 const Article = ({ article }: SanityArticle) => {
   if (!article) {
@@ -18,7 +19,7 @@ const Article = ({ article }: SanityArticle) => {
   }
   const title = article?.header?.eng?.title;
   const subtitle = article?.header?.eng?.subtitle;
-  const image = article?.header?.eng?.image.asset;
+  const image = article?.header?.eng?.image;
   const value = article?.body?.eng;
   const slug = article?.slug?.current;
   const ogImgUrl = urlFor(image as SanityImageSource)
@@ -60,13 +61,16 @@ export async function getStaticPaths() {
   );
 
   return {
-    paths: paths.map((slug: any) => ({ params: { slug } })),
+    paths: paths.map((slug: string) => ({ params: { slug } })),
     fallback: true,
   };
 }
 
-export async function getStaticProps(context: any) {
-  const { slug = "" } = context.params;
+export const getStaticProps: GetStaticProps<
+  { article: SanityArticle },
+  Params
+> = async ({ params }) => {
+  const slug = params!.slug;
   const article = await configuredSanityClient.fetch(
     `
     *[_type == "article" && slug.current == $slug][0]
@@ -78,6 +82,6 @@ export async function getStaticProps(context: any) {
       article,
     },
   };
-}
+};
 
 export default Article;

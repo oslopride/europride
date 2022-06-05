@@ -1,8 +1,14 @@
 import styled from "@emotion/styled";
 import CreateSanityImage from "../CreateSanityImage";
+import { SanityPartner } from "../../types/sanity";
 
 interface ISizes {
   [key: string]: number;
+}
+
+interface PartnerBoxProps {
+  partners: SanityPartner[];
+  config: any;
 }
 
 const SIZES: ISizes = {
@@ -11,28 +17,25 @@ const SIZES: ISizes = {
   regular: 150,
 };
 
-const PartnerBox = ({ partners, config }: any) => {
+const PartnerBox = ({ partners, config }: PartnerBoxProps) => {
   const partnerTypes = ["owner", "main", "regular"];
 
   const getWidth = (type: string) => SIZES[type];
 
-  const createPartners = (partners: any, type: string) => {
+  const createPartners = (partners: SanityPartner[], type: string) => {
     return (
       <PartnerItem key={type}>
         <PartnerTypeHeader>{config[type].eng}</PartnerTypeHeader>
         <PartnerRow>
           {partners
-            .filter((partner: any) => partner.type === type)
-            .map((partner: any) => {
+            .filter((partner) => partner.type === type)
+            .map((partner) => {
               return (
                 <PartnerImageWrapper
                   width={getWidth(partner.type)}
                   key={partner.name + partner.slug.current}
                 >
-                  <CreateSanityImage
-                    url={partner?.image?.asset}
-                    alt={partner?.name}
-                  />
+                  <CreateSanityImage url={partner?.image} alt={partner?.name} />
                 </PartnerImageWrapper>
               );
             })}

@@ -13,11 +13,18 @@ import {
   Spacer,
 } from "../components/common";
 import GradientButton from "../components/GradientButton";
+import { SanityPartner } from "../types/sanity";
 
-const Home: NextPage = ({ data, partners, config }: any) => {
+interface HomePageProps {
+  data: any;
+  partners: SanityPartner[];
+  config: any;
+}
+
+const Home = ({ data, partners, config }: HomePageProps) => {
   const title = data?.header?.title?.eng;
   const description = data?.header?.subHeading?.eng;
-  const image = data?.header?.image?.asset;
+  const image = data?.header?.image;
   const value = data?.body?.eng;
   const leftButton = data?.header?.leftButtonLink?.[0];
   const rightButton = data?.header?.rightButtonLink?.[0];

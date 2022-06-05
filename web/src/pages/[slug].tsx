@@ -4,12 +4,16 @@ import SanityBlock from "../components/SanityBlock";
 import ErrorNotFound from "./404";
 import { NextSeo } from "next-seo";
 import { Header, Wrapper, Subheader, ImageWrapper } from "../components/common";
+import { GetStaticProps } from "next";
+import { InferGetStaticPropsType } from "next";
+import { Params, SanityPage } from "../types/sanity";
+import { ParsedUrlQuery } from "querystring";
 
-const Page = ({ page }: any) => {
+const Page = ({ page }: InferGetStaticPropsType<typeof getStaticProps>) => {
   if (!page) {
     return <ErrorNotFound />;
   }
-  const image = page?.header?.eng?.image?.asset;
+  const image = page?.header?.eng?.image;
   const title = page?.header?.eng?.title;
   const subtitle = page?.header?.eng?.subtitle;
   const description = page?.header?.eng?.summary?.eng;
@@ -53,14 +57,17 @@ export async function getStaticPaths() {
   );
 
   return {
-    paths: paths.map((slug: any) => ({ params: { slug } })),
+    paths: paths.map((slug: string) => ({ params: { slug } })),
     fallback: true,
   };
 }
 
-export async function getStaticProps(context: any) {
-  const { slug = "" } = context.params;
-  const page = await configuredSanityClient.fetch(
+export const getStaticProps: GetStaticProps<
+  { page: SanityPage },
+  Params
+> = async ({ params }) => {
+  const slug = params!.slug;
+  const page: SanityPage = await configuredSanityClient.fetch(
     `
     *[_type == "page" && slug.current == $slug][0]
   `,
@@ -71,6 +78,6 @@ export async function getStaticProps(context: any) {
       page,
     },
   };
-}
+};
 
 export default Page;

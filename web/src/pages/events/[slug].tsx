@@ -7,12 +7,10 @@ import { useTheme } from "@emotion/react";
 import { SanityEvent } from "../../types/sanity";
 import getRandomGradient from "../../utils/getRandomGradient";
 import configuredSanityClient from "../../sanity";
+import { GetStaticProps, InferGetStaticPropsType } from "next";
+import { ParsedUrlQuery } from "querystring";
 
-interface EventProps {
-  event: SanityEvent;
-}
-
-const Event = ({ event }: EventProps) => {
+const Event = ({ event }: InferGetStaticPropsType<typeof getStaticProps>) => {
   const theme = useTheme();
   const value = event?.description?.eng;
   const startTime = formatISOTime(event?.startTime, "en-GB");
@@ -39,20 +37,27 @@ const Event = ({ event }: EventProps) => {
 
 export default Event;
 
+interface Params extends ParsedUrlQuery {
+  id: string;
+}
+
 export async function getStaticPaths() {
   const paths = await configuredSanityClient.fetch(
     `*[_type == "simpleEvent" && defined(slug.current)][].slug.current`
   );
 
   return {
-    paths: paths.map((slug: any) => ({ params: { slug } })),
+    paths: paths.map((slug: string) => ({ params: { slug } })),
     fallback: true,
   };
 }
 
-export async function getStaticProps(context: any) {
-  const { slug = "" } = context.params;
-  const event = await configuredSanityClient.fetch(
+export const getStaticProps: GetStaticProps<
+  { event: SanityEvent },
+  Params
+> = async ({ params }) => {
+  const slug = params!.slug;
+  const event: SanityEvent = await configuredSanityClient.fetch(
     `
       *[_type == "simpleEvent" && slug.current == $slug][0]
     `,
@@ -63,7 +68,7 @@ export async function getStaticProps(context: any) {
       event,
     },
   };
-}
+};
 
 const Time = styled.p`
   display: flex;

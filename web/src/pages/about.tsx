@@ -7,10 +7,21 @@ import CreateSanityImage from "../components/CreateSanityImage";
 import ErrorNotFound from "./404";
 import { Wrapper, Header, Subheader } from "../components/common";
 import { NextSeo } from "next-seo";
-import { SanityVolunteer } from "../types/sanity";
+import { SanityVolunteer, TranslatedString } from "../types/sanity";
+import { PortableTextBlock } from "@portabletext/types";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
 
 interface AboutProps {
-  data: any;
+  data: {
+    body: {
+      eng?: PortableTextBlock;
+      srp?: PortableTextBlock;
+    };
+    image?: { asset: SanityImageSource };
+    header: TranslatedString;
+    subheaderText: TranslatedString;
+    slug: { current: string };
+  };
   volunteers: SanityVolunteer[];
 }
 
@@ -23,7 +34,7 @@ const About = ({ data, volunteers }: AboutProps) => {
     );
   const title = data.header.eng;
   const subtitle = data.subheaderText.eng;
-  const image = data?.image?.asset;
+  const image = data?.image;
   const value = data?.body.eng;
   const ogImageUrl = image ? urlFor(image).width(800).url() : "";
   const openGraph = {
@@ -70,7 +81,7 @@ const TopWrapper = styled.div`
   width: 100%;
   align-self: center;
   margin-bottom: 30px;
-  @media (min-width: ${({ theme }: any) => theme.breakpoints.desktop}px) {
+  @media (min-width: ${({ theme }) => theme.breakpoints.desktop}px) {
     margin-bottom: 84px;
   }
 `;
@@ -94,7 +105,7 @@ const VolunteerWrapper = styled.div`
   margin-top: 20px;
 `;
 
-export const getServerSideProps = async (pageContext: any) => {
+export const getServerSideProps = async () => {
   const data = await configuredSanityClient.fetch(`*[_id == "about"][0]`);
   const volunteers = await configuredSanityClient.fetch(
     `*[_type == "volunteer"]`

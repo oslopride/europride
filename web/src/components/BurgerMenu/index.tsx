@@ -7,6 +7,7 @@ import configuredSanityClient from "../../sanity";
 import SanityLink from "../SanityLink";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import theme from "../../../styles/theme";
+import { SanityURL } from "../../types/sanity";
 
 const isSelected = (text = "") => {
   const slug = location.pathname.split("/").slice(1)[0].replace("-", " ");
@@ -47,7 +48,7 @@ const BurgerMenu = () => {
     };
   }, [onClickOutside]);
 
-  const items = data.footer.shortcuts;
+  const items: SanityURL[] = data.footer.shortcuts;
   const header = data.footer.menuHeader.eng;
   return (
     <div ref={focusRef}>
@@ -71,7 +72,7 @@ const BurgerMenu = () => {
               onClick={() => setMenuState(false)}
             />
           </HeaderWrapper>
-          {items.map((item: any) => (
+          {items.map((item) => (
             <ItemWrapper key={item._key}>
               <SanityLink href={item}>
                 <MenuItem

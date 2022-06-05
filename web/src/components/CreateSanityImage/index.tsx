@@ -1,14 +1,24 @@
 import Img from "next/image";
 import { useNextSanityImage } from "next-sanity-image";
 import configuredSanityClient from "../../sanity";
+import { SanityImageSource } from "@sanity/image-url/lib/types/types";
+
+interface SanityImageProps {
+  url?: { asset: SanityImageSource };
+  alt?: string;
+  sizes?: string;
+}
 
 const CreateSanityImage = ({
-  url = "",
-  alt,
+  url,
+  alt = "image",
   sizes = "(max-width: 200px, max-height: 100px) 200px",
-}: any) => {
+}: SanityImageProps) => {
+  if (!url) {
+    return null;
+  }
   const imageProps = useNextSanityImage(configuredSanityClient, url);
-  return url ? (
+  return (
     <Img
       {...imageProps}
       alt={alt}
@@ -16,7 +26,7 @@ const CreateSanityImage = ({
       sizes={sizes}
       objectFit="contain"
     />
-  ) : null;
+  );
 };
 
 export default CreateSanityImage;

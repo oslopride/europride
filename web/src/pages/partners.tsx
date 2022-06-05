@@ -8,8 +8,30 @@ import ErrorNotFound from "./404";
 import { Wrapper, Header } from "../components/common";
 import { useTheme } from "@emotion/react";
 import { NextSeo } from "next-seo";
+import {
+  SanityPartner,
+  TranslatedString,
+  SanityExternalLink,
+} from "../types/sanity";
+import { PortableTextBlock } from "@portabletext/types";
 
-const Partners = ({ data, partners }: any) => {
+interface PartnerProps {
+  data: {
+    body: {
+      eng?: PortableTextBlock;
+      srp?: PortableTextBlock;
+    };
+    title: TranslatedString;
+    callToAction: {
+      title: TranslatedString;
+      description: TranslatedString;
+      link: SanityExternalLink;
+    };
+  };
+  partners: SanityPartner[];
+}
+
+const Partners = ({ data, partners }: PartnerProps) => {
   const theme = useTheme();
   const title = data?.title?.eng;
   const value = data?.body?.eng;
@@ -41,14 +63,11 @@ const Partners = ({ data, partners }: any) => {
         <SanityBlock value={value} />
       </BlockWrapper>
       <ArticleWrapper>
-        {partners.map((partner: any) => {
+        {partners.map((partner: SanityPartner) => {
           return (
             <PartnerWrapper key={partner?.slug?.current}>
               <ImageWrapper>
-                <CreateSanityImage
-                  url={partner?.image?.asset}
-                  alt={partner?.name}
-                />
+                <CreateSanityImage url={partner?.image} alt={partner?.name} />
               </ImageWrapper>
               <Description>{partner.name}</Description>
               <SanityBlock value={partner?.description?.eng} />
@@ -74,11 +93,13 @@ const Partners = ({ data, partners }: any) => {
 
 export default Partners;
 
-export const getServerSideProps = async (pageContext: any) => {
+export const getServerSideProps = async () => {
   const pageData = await configuredSanityClient.fetch(
     `*[_id == "partners"][0]`
   );
-  const partners = await configuredSanityClient.fetch(`*[_type == "partner"]`);
+  const partners: SanityPartner[] = await configuredSanityClient.fetch(
+    `*[_type == "partner"]`
+  );
   if (!pageData) {
     return {
       props: {

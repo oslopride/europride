@@ -15,7 +15,7 @@ const Thumbnail = ({ articles }) => {
           <AWrapper>
             <AHeader>{a?.header?.eng?.title}</AHeader>
             <Date>{a?.publishedAt}</Date>
-            <CreateSanityImage url={a?.header?.eng.image?.asset} />
+            <CreateSanityImage url={a?.header?.eng.image} />
           </AWrapper>
         </Flex>
       </Link>
